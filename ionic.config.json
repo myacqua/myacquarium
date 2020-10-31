@@ -1,0 +1,7 @@
+{
+  "name": "myAquarium",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
