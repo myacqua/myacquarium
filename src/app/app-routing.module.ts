@@ -14,7 +14,12 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+  },
+  {
+    path: 'nuovo-acquario',
+    loadChildren: () => import('./pages/nuovo-acquario/nuovo-acquario.module').then( m => m.NuovoAcquarioPageModule)
   }
+
 
 ];
 
