@@ -3,7 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-icon size="large" slot="end" name="checkmark-outline"></ion-icon>
+    
+      <ion-button fill= "clear" slots="icon-only"  slot="end" [routerLink]="['/aggiungi']" > 
+    <ion-icon size="large"  name="checkmark-outline"></ion-icon>
+  </ion-button>
+
     <ion-title class="ion-text-center">Nuovo Acquario</ion-title>
   </ion-toolbar>
 </ion-header>
