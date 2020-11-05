@@ -6,17 +6,15 @@
 
 <ion-content class="card-background-page">
 
-  <ion-card [routerLink]="['/ricerca']">
-     
+  <ion-card (click)="onClick('pesci')" [routerLink]="['/ricerca']">
     <img src="assets/img/aggiungi-pesci.jpg"/>
     <div class="card-title">PESCI</div>
- 
   </ion-card>
-  <ion-card>
+  <ion-card (click)="onClick('piante')" [routerLink]="['/ricerca']">
     <img src="assets/img/aggiungi-piante.jpg"/>
     <div class="card-title">PIANTE</div>
   </ion-card>
-  <ion-card>
+  <ion-card (click)="onClick('accessori')" [routerLink]="['/ricerca']">
     <img src="assets/img/aggiungi-accessorio.jpg"/>
     <div class="card-title">ACCESSORI</div>
   </ion-card>

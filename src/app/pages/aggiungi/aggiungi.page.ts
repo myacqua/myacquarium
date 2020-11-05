@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppStateService } from 'src/app/services/appstate.service';
 
 @Component({
   selector: 'app-aggiungi',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AggiungiPage implements OnInit {
 
-  constructor() { }
+  constructor(private appstate:AppStateService) { }
 
   ngOnInit() {
+  }
+
+  onClick(tipo: string) {
+    this.appstate.state = tipo;
   }
 
 }
