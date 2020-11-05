@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SelezionepescePageRoutingModule } from './selezionepesce-routing.module';
 
 import { SelezionepescePage } from './selezionepesce.page';
+import { SchedaPesceComponent } from 'src/app/components/scheda-pesce/scheda-pesce.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { SelezionepescePage } from './selezionepesce.page';
     IonicModule,
     SelezionepescePageRoutingModule
   ],
-  declarations: [SelezionepescePage]
+  declarations: [SelezionepescePage,SchedaPesceComponent]
 })
 export class SelezionepescePageModule {}

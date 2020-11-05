@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { RicercaPageRoutingModule } from './ricerca-routing.module';
 
 import { RicercaPage } from './ricerca.page';
+import { RicercaPesceComponent } from 'src/app/components/ricerca-pesce/ricerca-pesce.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RicercaPageRoutingModule
+    RicercaPageRoutingModule,
   ],
-  declarations: [RicercaPage]
+  declarations: [
+    RicercaPage,
+    RicercaPesceComponent
+  ]
 })
 export class RicercaPageModule {}
