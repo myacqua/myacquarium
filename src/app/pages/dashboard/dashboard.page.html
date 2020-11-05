@@ -8,19 +8,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Benvenuto in MyAcquarium</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content> Crea il tuo primo acquario </ion-card-content>
-  </ion-card>
-  <ion-row>
-    <ion-col size="12" class="ion-text-center">
-      <ion-button [routerLink]="['/nuovo-acquario']"
-        >Aggiungi
+  <div class="container-center">
+    <ion-card class="align-item-center">
+      <ion-card-header>
+        <ion-card-subtitle>Benvenuto in MyAcquarium</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content> Crea il tuo primo acquario </ion-card-content>
+    </ion-card>
+    <ion-button class="ion-margin" expand="block" [routerLink]="['/nuovo-acquario']">Aggiungi
         <ion-icon size="large" name="add-outline"></ion-icon>
       </ion-button>
-    </ion-col>
-  </ion-row>
+  </div>
 </ion-content>
