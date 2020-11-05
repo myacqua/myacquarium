@@ -6,10 +6,15 @@
     <ion-button fill= "clear" slots="icon-only"  slot="end" [routerLink]="['/selezionepesce']" > 
     <ion-icon size="large"  name="checkmark-outline"></ion-icon>
   </ion-button>
+  
    <ion-title class="ion-text-center">Nome Acquario</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <app-ricerca-pesce *ngIf="appstate.state =='pesci'"></app-ricerca-pesce>
+  <app-ricerca-pesce *ngIf="appstate.state =='pesci'"></app-ricerca-pesce> 
+  <app-ricerca-piante *ngIf="appstate.state =='piante'"></app-ricerca-piante> 
+  <app-ricerca-accessori *ngIf="appstate.state =='accessori'"></app-ricerca-accessori> 
 </ion-content>
+
+
