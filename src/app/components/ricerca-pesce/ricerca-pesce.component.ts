@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppStateService } from 'src/app/services/appstate.service';
 
 @Component({
   selector: 'app-ricerca-pesce',
@@ -7,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RicercaPesceComponent implements OnInit {
 
-  constructor() { }
+  private array_pesci =[];
 
-  ngOnInit() {}
+  constructor(private appstate:AppStateService) { }
+
+  ngOnInit() {
+    this.array_pesci = this.appstate.pesci;
+  }
+
+  onClick (pesce){
+    this.appstate.currentPesce = pesce;
+  }
 
 }

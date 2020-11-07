@@ -7,6 +7,7 @@ export class AppStateService {
 
   public acquarioCorrente: any = {};
   public state: string = "";
+  public currentPesce: {}
 
   //  oggetti acquario
   public pesci: any[] = [];

@@ -2,3 +2,12 @@
   <ion-title class="ion-text-center"> Ricerca Pesci</ion-title>
 </ion-toolbar>
   <ion-searchbar></ion-searchbar>
+  <ion-content>
+    <ion-list>
+       
+      <ion-item  (click)="onClick(pesce)" [routerLink]="['/selezionepesce']"*ngFor= "let pesce of array_pesci">
+        {{pesce.nome}}
+      </ion-item>
+      
+    </ion-list>
+  </ion-content>

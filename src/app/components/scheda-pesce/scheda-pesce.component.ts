@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppStateService } from 'src/app/services/appstate.service';
 
 @Component({
   selector: 'app-scheda-pesce',
@@ -6,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./scheda-pesce.component.scss'],
 })
 export class SchedaPesceComponent implements OnInit {
+  private pesce = {}
+  constructor(private appstate:AppStateService) { }
 
-  constructor() { }
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.pesce = this.appstate.currentPesce;
+  }
 
 }
