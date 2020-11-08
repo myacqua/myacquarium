@@ -38,7 +38,9 @@ export class AppStateService {
         famiglia: "Ciclidae",
         genere: "Pterophyllum"
       }]
-      this.piante =[
+
+      this.piante =
+      [
       {nome: "Ammannia gracilis"
     },
     {nome: "Anubias barteri var. barteri"

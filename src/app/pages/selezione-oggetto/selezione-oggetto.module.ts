@@ -8,6 +8,7 @@ import { SelezioneOggettoPageRoutingModule } from './selezione-oggetto-routing.m
 
 import { SelezioneOggettoPage } from './selezione-oggetto.page';
 import { SchedaPesceComponent } from 'src/app/components/scheda-pesce/scheda-pesce.component';
+import { SchedaPianteComponent } from 'src/app/components/scheda-piante/scheda-piante.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { SchedaPesceComponent } from 'src/app/components/scheda-pesce/scheda-pes
     IonicModule,
     SelezioneOggettoPageRoutingModule
   ],
-  declarations: [SelezioneOggettoPage,SchedaPesceComponent]
+  declarations: [SelezioneOggettoPage,SchedaPesceComponent,SchedaPianteComponent]
 })
 export class SelezioneOggettoPageModule {}

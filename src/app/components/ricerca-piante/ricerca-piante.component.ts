@@ -8,10 +8,16 @@ import { AppStateService } from 'src/app/services/appstate.service';
 })
 export class RicercaPianteComponent implements OnInit {
 
-  constructor(private appstate:AppStateService) { }
+  private array_piante =[];
 
-  ngOnInit() {
-    console.log(this.appstate.state);
+  constructor(private appstate:AppStateService) { }
+   
+   
+   ngOnInit() {
+    this.array_piante = this.appstate.piante;
+  }
+   onClick (piante) {
+    this.appstate.currentPiante = piante; 
   }
 
 }
