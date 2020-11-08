@@ -28,9 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/ricerca/ricerca.module').then( m => m.RicercaPageModule)
   },
   {
-    path: 'selezionepesce',
-    loadChildren: () => import('./pages/selezionepesce/selezionepesce.module').then( m => m.SelezionepescePageModule)
+    path: 'selezione-oggetto',
+    loadChildren: () => import('./pages/selezione-oggetto/selezione-oggetto.module').then( m => m.SelezioneOggettoPageModule)
   },
+
   
 
 
