@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SelezionepescePageRoutingModule } from './selezionepesce-routing.module';
+import { SelezioneOggettoPageRoutingModule } from './selezione-oggetto-routing.module';
 
-import { SelezionepescePage } from './selezionepesce.page';
+import { SelezioneOggettoPage } from './selezione-oggetto.page';
 import { SchedaPesceComponent } from 'src/app/components/scheda-pesce/scheda-pesce.component';
 
 @NgModule({
@@ -14,8 +14,8 @@ import { SchedaPesceComponent } from 'src/app/components/scheda-pesce/scheda-pes
     CommonModule,
     FormsModule,
     IonicModule,
-    SelezionepescePageRoutingModule
+    SelezioneOggettoPageRoutingModule
   ],
-  declarations: [SelezionepescePage,SchedaPesceComponent]
+  declarations: [SelezioneOggettoPage,SchedaPesceComponent]
 })
-export class SelezionepescePageModule {}
+export class SelezioneOggettoPageModule {}
