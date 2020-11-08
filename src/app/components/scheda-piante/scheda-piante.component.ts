@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppStateService } from 'src/app/services/appstate.service';
 
 @Component({
   selector: 'app-scheda-piante',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchedaPianteComponent implements OnInit {
 
-  constructor() { }
+  private piante = {}
+ 
+  constructor(private appstate:AppStateService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.piante = this.appstate.currentPiante;
+  }
 
 }

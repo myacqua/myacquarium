@@ -1,11 +1,16 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title class="ion-text-center">Nome Acquario</ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   
   <app-scheda-pesce *ngIf="appstate.state == 'pesci'"> </app-scheda-pesce>
-  
+  <app-scheda-piante *ngIf="appstate.state == 'piante'"> </app-scheda-piante>
 </ion-content>
+

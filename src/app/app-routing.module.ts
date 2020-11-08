@@ -22,7 +22,8 @@ const routes: Routes = [
   {
     path: 'aggiungi',
     loadChildren: () => import('./pages/aggiungi/aggiungi.module').then( m => m.AggiungiPageModule)
-  },  {
+  },
+  {
     path: 'ricerca',
     loadChildren: () => import('./pages/ricerca/ricerca.module').then( m => m.RicercaPageModule)
   },
@@ -30,7 +31,6 @@ const routes: Routes = [
     path: 'selezionepesce',
     loadChildren: () => import('./pages/selezionepesce/selezionepesce.module').then( m => m.SelezionepescePageModule)
   },
-
   
 
 

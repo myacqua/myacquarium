@@ -8,6 +8,7 @@ export class AppStateService {
   public acquarioCorrente: any = {};
   public state: string = "";
   public currentPesce: {}
+  public currentPiante:{}
 
   //  oggetti acquario
   public pesci: any[] = [];
@@ -36,7 +37,12 @@ export class AppStateService {
         ordine: "Perciformes",
         famiglia: "Ciclidae",
         genere: "Pterophyllum"
-      }
-    ];
+      }]
+      this.piante =[
+      {nome: "Ammannia gracilis"
+    },
+    {nome: "Anubias barteri var. barteri"
+  }]
+    
   }
 }

@@ -3,4 +3,12 @@
 </ion-toolbar>
  <ion-searchbar></ion-searchbar>
  
-    
+ <ion-content>
+    <ion-list>
+       
+      <ion-item  (click)="onClick(piante)" [routerLink]="['/selezionepiante']"*ngFor= "let piante of array_piante">
+        {{piante.nome}}
+      </ion-item>
+      
+    </ion-list>
+  </ion-content>

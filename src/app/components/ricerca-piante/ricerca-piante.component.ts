@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppStateService } from 'src/app/services/appstate.service';
 
 @Component({
   selector: 'app-ricerca-piante',
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RicercaPianteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appstate:AppStateService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.appstate.state);
+  }
 
 }
