@@ -1,22 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AppStateService {
-
   public acquarioCorrente: any = {};
   public state: string = "";
-  public currentPesce: {}
-  public currentPiante:{}
+  public currentPesce: {};
+  public currentPiante: {};
+  public currentAccessori: {};
 
   //  oggetti acquario
   public pesci: any[] = [];
   public piante: any[] = [];
   public accessori: any[] = [];
 
-  constructor() { 
-
+  constructor() {
     this.pesci = [
       {
         nome: "Carassio dorato o pesce rosso",
@@ -26,7 +25,7 @@ export class AppStateService {
         classe: "Actinopterygii",
         ordine: "Perciformes",
         famiglia: "Cyprinidae",
-        genere: "Carassius"
+        genere: "Carassius",
       },
       {
         nome: "Scalare",
@@ -36,15 +35,25 @@ export class AppStateService {
         classe: "Actinopterygii",
         ordine: "Perciformes",
         famiglia: "Ciclidae",
-        genere: "Pterophyllum"
-      }]
+        genere: "Pterophyllum",
+      },
+    ];
 
-      this.piante =
-      [
-      {nome: "Ammannia gracilis"
-    },
-    {nome: "Anubias barteri var. barteri"
-  }]
-    
+    this.piante = [
+      {
+        nome: "Ammannia gracilis",
+      },
+      {
+        nome: "Anubias barteri var. barteri",
+      },
+    ];
+    this.accessori = [
+      {
+        nome: "acquario",
+      },
+      {
+        nome: "filtro",
+      },
+    ];
   }
 }

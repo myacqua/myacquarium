@@ -2,3 +2,12 @@
     <ion-title class="ion-text-center"> Ricerca Accessori</ion-title>
 </ion-toolbar>
 <ion-searchbar></ion-searchbar>
+<ion-content>
+    <ion-list>
+       
+      <ion-item  (click)="onClick(accessori)" [routerLink]="['/selezione-oggetto']"*ngFor= "let accessori of array_accessori">
+        {{accessori.nome}}
+      </ion-item>
+      
+    </ion-list>
+  </ion-content>
