@@ -1,7 +1,7 @@
 <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
   <ion-row>
     <ion-col>
-      <ion-item class="ion-padding-end ion-padding-start">
+      <ion-item>
         <ion-label position="stacked" [color]="!pesce_commonname.valid && pesce_commonname.touched ? 'danger' : ''">Nome pesce</ion-label>
         <ion-input placeholder="utilizza il suo nome comune" [(ngModel)]="modelSearch.nomePesce" required="true" minlength="3" #pesce_commonname="ngModel" name="pesce_commonname"></ion-input>
       </ion-item>
@@ -32,18 +32,19 @@
 
 
   <ion-list>
-    <ion-item
-      (click)="onClick(pesce)"
-      [routerLink]="['/selezione-oggetto']"
-      *ngFor="let pesce of array_pesci"
-    >
-      {{pesce.commonname}}
+
+    <ion-item (click)="onClick(pesce)" [routerLink]="['/selezione-oggetto']" *ngFor="let pesce of array_pesci">
+      <ion-label>
+        {{pesce.commonname}}
+        <p><small>Zona di origine: <b>{{pesce.originzone}}</b></small></p>
+      </ion-label>
+    </ion-item>
+
       <!-- commonname: "Marbled headstander"
       id: 0
       origin: "Orinoco and amazon river"
       originzone: "South America"
       scientificname: "Abramites hypselonotus"
       synonimous: "Leporinus hypselonotus, Abramites hypselonotus hypselonotus, Lepor -->
-    </ion-item>
   </ion-list>
 </ion-content>
