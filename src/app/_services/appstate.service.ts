@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 })
 export class AppStateService {
   public acquarioCorrente: any = {};
-  public state: string = "";
+  public searchState: string = "";
   public currentPesce: {};
   public currentPiante: {};
   public currentAccessori: {};
@@ -16,14 +16,5 @@ export class AppStateService {
 
   constructor() {
 
-    
-    this.accessori = [
-      {
-        nome: "acquario",
-      },
-      {
-        nome: "filtro",
-      },
-    ];
   }
 }

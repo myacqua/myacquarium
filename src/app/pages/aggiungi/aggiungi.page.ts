@@ -14,7 +14,7 @@ export class AggiungiPage implements OnInit {
   }
 
   onClick(tipo: string) {
-    this.appstate.state = tipo;
+    this.appstate.searchState = tipo;
   }
 
 }

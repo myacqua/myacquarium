@@ -10,8 +10,8 @@
 
 <ion-content>
   
-  <app-scheda-pesce *ngIf="appstate.state == 'pesci'"> </app-scheda-pesce>
-  <app-scheda-piante *ngIf="appstate.state == 'piante'"> </app-scheda-piante>
-  <app-scheda-accessori *ngIf="appstate.state == 'accessori'"> </app-scheda-accessori>
+  <app-scheda-pesce *ngIf="appstate.searchState == 'pesci'"> </app-scheda-pesce>
+  <app-scheda-piante *ngIf="appstate.searchState == 'piante'"> </app-scheda-piante>
+  <app-scheda-accessori *ngIf="appstate.searchState == 'accessori'"> </app-scheda-accessori>
 </ion-content>
 

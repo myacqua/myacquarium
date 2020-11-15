@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AppStateService } from 'src/app/_services/appstate.service';
-
 @Component({
   selector: 'app-ricerca',
   templateUrl: './ricerca.page.html',
@@ -8,10 +7,11 @@ import { AppStateService } from 'src/app/_services/appstate.service';
 })
 export class RicercaPage implements OnInit {
 
-  constructor(private appstate:AppStateService) { }
+  constructor(private appstate:AppStateService) { 
+  }
 
   ngOnInit() {
-    console.log(this.appstate.state);
+    console.log(this.appstate.searchState);
   }
 
   public get appState() {

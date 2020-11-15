@@ -8,10 +8,14 @@ import { AppStateService } from 'src/app/_services/appstate.service';
 })
 export class SelezioneOggettoPage implements OnInit {
 
-  constructor(private appstate:AppStateService) { }
+  constructor(private appState:AppStateService) { }
 
   ngOnInit() {
 
+  }
+
+  public get appstate() {
+    return this.appState;
   }
 
 }

@@ -1,4 +1,3 @@
-import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AppStateService } from 'src/app/_services/appstate.service';
 import { PesciService } from 'src/app/_services/pesci.service';
@@ -20,7 +19,6 @@ export class RicercaPesceComponent implements OnInit {
   constructor(private appstate:AppStateService, private pesciService: PesciService) { }
 
   ngOnInit() { }
-
 
   /**
    * Fa una ricerca per un pesce in base ai parametri di ricerca
