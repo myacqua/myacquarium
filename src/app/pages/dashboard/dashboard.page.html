@@ -28,10 +28,6 @@
       </ion-card-header>
       <ion-card-content> Crea il tuo primo acquario </ion-card-content>
     </ion-card>
-
-    <ion-button class="ion-margin" expand="block" [routerLink]="['/nuovo-acquario']">Aggiungi
-      <ion-icon size="large"></ion-icon>
-    </ion-button>
   </div>
 
   <div class="container-center" *ngIf="array_vasche.length > 0 && !vascheservice.isLoading">
@@ -48,3 +44,10 @@
   </div>
   
 </ion-content>
+
+
+<ion-fab horizontal="end" vertical="bottom" slot="fixed">
+  <ion-fab-button color="primary" class="ion-margin" [routerLink]="['/nuovo-acquario']">
+    <ion-icon name="add-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
