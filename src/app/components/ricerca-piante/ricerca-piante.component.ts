@@ -1,3 +1,4 @@
+import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AppStateService } from 'src/app/_services/appstate.service';
 import { PianteService } from 'src/app/_services/piante.service';
