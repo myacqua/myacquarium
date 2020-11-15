@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppStateService } from 'src/app/services/appstate.service';
+import { AppStateService } from 'src/app/_services/appstate.service';
 
 @Component({
   selector: 'app-ricerca-piante',
@@ -8,14 +8,14 @@ import { AppStateService } from 'src/app/services/appstate.service';
 })
 export class RicercaPianteComponent implements OnInit {
 
-  private array_piante =[];
+  public array_piante = [];
 
   constructor(private appstate:AppStateService) { }
    
    
-   ngOnInit() {
-    this.array_piante = this.appstate.piante;
-  }
+   ngOnInit() { }
+
+
    onClick (piante) {
     this.appstate.currentPiante = piante; 
   }

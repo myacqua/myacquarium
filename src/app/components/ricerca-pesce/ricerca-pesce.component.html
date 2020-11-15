@@ -1,13 +1,36 @@
 <ion-toolbar>
   <ion-title class="ion-text-center"> Ricerca Pesci</ion-title>
 </ion-toolbar>
-  <ion-searchbar></ion-searchbar>
-  <ion-content>
-    <ion-list>
-       
-      <ion-item  (click)="onClick(pesce)" [routerLink]="['/selezione-oggetto']"*ngFor= "let pesce of array_pesci">
-        {{pesce.nome}}
-      </ion-item>
-      
-    </ion-list>
-  </ion-content>
+<ion-row>
+  <ion-col>
+    <ion-item>
+      <ion-label position="stacked">Nome pesce</ion-label>
+      <ion-input [(ngModel)]="modelSearch.nomePesce"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col>
+    <ion-item>
+      <ion-button color="success" (click)="searchPesce()">Success</ion-button>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-content>
+  <ion-list>
+    <ion-item
+      (click)="onClick(pesce)"
+      [routerLink]="['/selezione-oggetto']"
+      *ngFor="let pesce of array_pesci"
+    >
+      {{pesce.commonname}}
+      <!-- commonname: "Marbled headstander"
+      id: 0
+      origin: "Orinoco and amazon river"
+      originzone: "South America"
+      scientificname: "Abramites hypselonotus"
+      synonimous: "Leporinus hypselonotus, Abramites hypselonotus hypselonotus, Lepor -->
+    </ion-item>
+  </ion-list>
+</ion-content>
