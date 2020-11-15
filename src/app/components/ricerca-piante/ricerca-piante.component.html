@@ -1,13 +1,27 @@
 <ion-toolbar>
     <ion-title class="ion-text-center"> Ricerca Piante</ion-title>
 </ion-toolbar>
- <ion-searchbar></ion-searchbar>
+<ion-row>
+  <ion-col>
+    <ion-item>
+      <ion-label position="stacked">Nome pianta</ion-label>
+      <ion-input [(ngModel)]="modelSearch.nomePiante"></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col>
+    <ion-item>
+      <ion-button color="success" (click)="searchPiante()">Success</ion-button>
+    </ion-item>
+  </ion-col>
+</ion-row>
  
  <ion-content>
     <ion-list>
        
       <ion-item  (click)="onClick(piante)" [routerLink]="['/selezione-oggetto']"*ngFor= "let piante of array_piante">
-        {{piante.nome}}
+        {{piante.commoname}}
       </ion-item>
       
     </ion-list>

@@ -11,19 +11,12 @@ export class AppStateService {
   public currentAccessori: {};
 
   //  oggetti acquario
-  public piante: any[] = [];
+  
   public accessori: any[] = [];
 
   constructor() {
 
-    this.piante = [
-      {
-        nome: "Ammannia gracilis",
-      },
-      {
-        nome: "Anubias barteri var. barteri",
-      },
-    ];
+    
     this.accessori = [
       {
         nome: "acquario",

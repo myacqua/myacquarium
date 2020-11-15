@@ -14,12 +14,12 @@ export class PianteService {
    * 
    * @param modelSearch Ricerca di una pianta con parametri
    */
-  public ricercaPianta(modelSearch, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+  public ricercaPiante(modelSearch, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
     //  creo l'url con i parametri
-    let url = 'plants?commonname='+modelSearch.nomePianta;
+    let url = 'plants?commonname='+modelSearch.nomePiante;
 
-    this.backend.post(url, {commonname: modelSearch.nomePianta}, new HttpParams() ).subscribe(
+    this.backend.post(url, {commonname: modelSearch.nomePiante}, new HttpParams() ).subscribe(
       (success : any) => {
         if (success != null && typeof success.aaData != "undefined") 
           callbackSuccess(success.aaData);
