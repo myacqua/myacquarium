@@ -13,17 +13,38 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="container-center">
-    <ion-card color="danger" class="align-item-center">
+  <div class="container-center" *ngIf="array_vasche.length == 0 || vascheservice.isLoading">
+    <!-- Loading centrale -->
+    <ion-card class="align-item-center" *ngIf="vascheservice.isLoading">
+      <ion-card-header>
+        <ion-spinner></ion-spinner>
+      </ion-card-header>
+      <ion-card-content> Carico i tuoi acquari </ion-card-content>
+    </ion-card>
+    <!-- Messaggio che non ci sono acquari -->
+    <ion-card color="danger" class="align-item-center" *ngIf="!vascheservice.isLoading">
       <ion-card-header>
         <ion-card-subtitle>BENVENUTO IN MYAQUARIUM</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content> Crea il tuo primo acquario </ion-card-content>
     </ion-card>
+
     <ion-button class="ion-margin" expand="block" [routerLink]="['/nuovo-acquario']">Aggiungi
       <ion-icon size="large"></ion-icon>
     </ion-button>
-  
+  </div>
+
+  <div class="container-center" *ngIf="array_vasche.length > 0 && !vascheservice.isLoading">
+    <!-- Tutte le vasche dell'utente -->
+    <ion-card *ngFor="let vasca of array_vasche" (click)="vascaOnclick(vasca)">
+      <div class="ion-activatable ripple-parent">
+        <ion-card-header>
+          <ion-card-subtitle>{{vasca.nome}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content> {{vasca.descrizione}} </ion-card-content>
+        <ion-ripple-effect></ion-ripple-effect>
+      </div>
+    </ion-card>
   </div>
   
 </ion-content>

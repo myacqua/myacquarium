@@ -33,7 +33,7 @@ export class PianteService {
    * 
    * @param modelSearch Ricerca di una pianta con parametri
    */
-  public ricercaPiante(modelSearch, callbackSuccess: any = () => {}, callbackError: any = () => {}, callbackFinal = () => {}) {
+  public ricercaPiante(modelSearch, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
     this.setLoading(true);
 
@@ -41,14 +41,12 @@ export class PianteService {
       (success : any) => {
         if (success != null && typeof success.aaData != "undefined") 
           callbackSuccess(success.aaData);
+        this.setLoading(false);
       }, 
       (error) => {
         console.log(error)
         callbackError();
-      },
-      () => {
         this.setLoading(false);
-        callbackFinal()
       }
     )
   }

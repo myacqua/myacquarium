@@ -1,13 +1,12 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
 import { BackendService } from './backend.service';
 import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PesciService {
+export class VascheService {
 
   private loadingInProgress: boolean = false;
 
@@ -18,12 +17,12 @@ export class PesciService {
     return this.loadingInProgress;
   }
 
-
-  setLoading(toValue) {
+  setLoading(toValue, withLoading: boolean = true) {
 
     if (toValue == true) {
       this.loadingInProgress = true;
-      this.loading.showFullLoading();
+      if (withLoading)
+        this.loading.showFullLoading();
     } else {
       this.loadingInProgress = false;
       this.loading.hideLoading();
@@ -32,13 +31,14 @@ export class PesciService {
 
   /**
    * 
-   * @param modelSearch Ricerca di un pesce con parametri
    */
-  public ricercaPesce(modelSearch, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+  public recuperaVasche(callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
-    this.setLoading(true);
+    let userId = 1;
 
-    this.backend.post('fishs/ricerca', {commonname: modelSearch.nomePesce}, new HttpParams() ).subscribe(
+    this.setLoading(true, false);
+
+    this.backend.post('tanks/recupera?identificativo=&identificativoUtente='+userId, new HttpParams() ).subscribe(
       (success : any) => {
         if (success != null && typeof success.aaData != "undefined") 
           callbackSuccess(success.aaData);
@@ -51,4 +51,5 @@ export class PesciService {
       }
     )
   }
+
 }
