@@ -1,28 +1,46 @@
-<ion-toolbar>
-    <ion-title class="ion-text-center"> Ricerca Piante</ion-title>
-</ion-toolbar>
+<form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
 <ion-row>
   <ion-col>
     <ion-item>
-      <ion-label position="stacked">Nome pianta</ion-label>
-      <ion-input [(ngModel)]="modelSearch.nomePiante"></ion-input>
+      <ion-label position="stacked"[color]="!piante_commonname.valid && piante_commonname.touched ? 'danger' : ''">Nome pianta</ion-label>
+      <ion-input placeholder="utilizza il suo nome comune"  [(ngModel)]="modelSearch.nomePiante" required="true" minlength="3" #piante_commonname="ngModel" name="piante_commonname"></ion-input>
     </ion-item>
+    <span class="ion-padding" *ngIf="!piante_commonname.valid && piante_commonname.touched">
+      <ion-text class="helper-error" color="danger">Inserisci il nome con almeno 3 lettere</ion-text>
+    </span>
   </ion-col>
 </ion-row>
 <ion-row>
   <ion-col>
-    <ion-item>
-      <ion-button color="success" (click)="searchPiante()">Success</ion-button>
-    </ion-item>
+    <ion-button class="ion-padding-end ion-padding-start" [disabled]="!form.valid || pianteservice.isLoading" expand="block" type="submit" color="primary"><ion-icon slot="start" name="search-outline"></ion-icon>Cerca</ion-button>
   </ion-col>
 </ion-row>
- 
+<ion-progress-bar *ngIf="pianteservice.isLoading" type="indeterminate"></ion-progress-bar>
+</form>
+<ion-item-divider class="from-body"></ion-item-divider>
  <ion-content>
-    <ion-list>
-       
-      <ion-item  (click)="onClick(piante)" [routerLink]="['/selezione-oggetto']"*ngFor= "let piante of array_piante">
+    <!-- messaggio di warning senza risultati -->
+  <ion-card *ngIf="formProcessed && !pianteservice.isLoading && array_piante.length == 0" color="warning">
+    <ion-card-header>
+      <ion-card-subtitle>
+        Nessuna pianta trovato con questo nome
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <ion-list>
+
+    <ion-item (click)="onClick(piante)" [routerLink]="['/selezione-oggetto']" *ngFor="let piante of array_piante">
+      <ion-label>
         {{piante.commonname}}
-      </ion-item>
-      
-    </ion-list>
-  </ion-content>
+        <p><small>Zona di origine: <b>{{piante.originzone}}</b></small></p>
+      </ion-label>
+    </ion-item>
+
+      <!-- commonname: "Marbled headstander"
+      id: 0
+      origin: "Orinoco and amazon river"
+      originzone: "South America"
+      scientificname: "Abramites hypselonotus"
+      synonimous: "Leporinus hypselonotus, Abramites hypselonotus hypselonotus, Lepor -->
+  </ion-list>
+</ion-content>
