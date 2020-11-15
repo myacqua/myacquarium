@@ -37,10 +37,7 @@ export class PianteService {
 
     this.setLoading(true);
 
-    //  creo l'url con i parametri
-    let url = 'plants?commonname='+modelSearch.nomePiante;
-
-    this.backend.post(url, {commonname: modelSearch.nomePiante}, new HttpParams() ).subscribe(
+    this.backend.post('plants/ricerca', {commonname: modelSearch.nomePiante}, new HttpParams() ).subscribe(
       (success : any) => {
         if (success != null && typeof success.aaData != "undefined") 
           callbackSuccess(success.aaData);

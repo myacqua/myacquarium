@@ -34,25 +34,20 @@ export class PesciService {
    * 
    * @param modelSearch Ricerca di un pesce con parametri
    */
-  public ricercaPesce(modelSearch, callbackSuccess: any = () => {}, callbackError: any = () => {}, callbackFinal = () => {}) {
+  public ricercaPesce(modelSearch, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
     this.setLoading(true);
 
-    //  creo l'url con i parametri
-    let url = 'fishs?commonname='+modelSearch.nomePesce;
-
-    this.backend.post(url, {commonname: modelSearch.nomePesce}, new HttpParams() ).subscribe(
+    this.backend.post('fishs/ricerca', {commonname: modelSearch.nomePesce}, new HttpParams() ).subscribe(
       (success : any) => {
         if (success != null && typeof success.aaData != "undefined") 
           callbackSuccess(success.aaData);
+        this.setLoading(false);
       }, 
       (error) => {
         console.log(error)
-        callbackError();
-      },
-      () => {
         this.setLoading(false);
-        callbackFinal()
+        callbackError();
       }
     )
   }
