@@ -9,7 +9,9 @@ import { PesciService } from 'src/app/_services/pesci.service';
 })
 export class RicercaPesceComponent implements OnInit {
 
-  public array_pesci = [];
+  protected array_pesci = [];
+
+  protected formProcessed: boolean = false;
 
   //  Oggetto per la ricerca di un pesce
   public modelSearch = {
@@ -23,7 +25,9 @@ export class RicercaPesceComponent implements OnInit {
   /**
    * Fa una ricerca per un pesce in base ai parametri di ricerca
    */
-  searchPesce() {
+  processForm() {
+
+    this.formProcessed = true;
 
     this.pesciService.ricercaPesce(this.modelSearch, (success) => {
       this.array_pesci = success;
@@ -34,6 +38,11 @@ export class RicercaPesceComponent implements OnInit {
 
   onClick (pesce){
     this.appstate.currentPesce = pesce;
+  }
+
+
+  public get pesciservice() {
+    return this.pesciService;
   }
 
 
