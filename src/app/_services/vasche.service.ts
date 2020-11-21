@@ -88,12 +88,18 @@ export class VascheService {
 
 
 
+  /**
+   * Recupera la vasca singola
+   * @param vascaID 
+   * @param callbackSuccess 
+   * @param callbackError 
+   */
   public recuperaSingolaVasca(vascaID: string, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
     this.backend.post('tanks/recupera?identificativo='+vascaID+'&identificativoUtente='+this.userID, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 
-          callbackSuccess(response.aaData);
+          callbackSuccess(response.aaData[0]);
         else
           callbackError();
           
