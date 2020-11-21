@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'selezione-oggetto',
     loadChildren: () => import('./pages/selezione-oggetto/selezione-oggetto.module').then( m => m.SelezioneOggettoPageModule)
+  },
+  {
+    path: 'gestisci-acquario',
+    loadChildren: () => import('./pages/gestisci-acquario/gestisci-acquario.module').then( m => m.GestisciAcquarioPageModule)
   }
 
   

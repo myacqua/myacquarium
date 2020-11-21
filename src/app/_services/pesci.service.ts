@@ -39,9 +39,12 @@ export class PesciService {
     this.setLoading(true);
 
     this.backend.post('fishs/ricerca', {commonname: modelSearch.nomePesce}, new HttpParams() ).subscribe(
-      (success : any) => {
-        if (success != null && typeof success.aaData != "undefined") 
-          callbackSuccess(success.aaData);
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
+        else
+          callbackError();
+          
         this.setLoading(false);
       }, 
       (error) => {

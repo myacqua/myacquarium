@@ -33,15 +33,19 @@ export class VascheService {
 
   /**
    * Questo metodo recupera tutte le vasche per l'utente loggato
+   * @param callbackSuccess 
+   * @param callbackError 
    */
   public recuperaVasche(callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
     this.setLoading(true, false);
 
     this.backend.post('tanks/recupera?identificativo=&identificativoUtente='+this.userID, new HttpParams() ).subscribe(
-      (success : any) => {
-        if (success != null && typeof success.aaData != "undefined") 
-          callbackSuccess(success.aaData);
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
+        else
+          callbackError();
         this.setLoading(false);
       }, 
       (error) => {
@@ -53,6 +57,12 @@ export class VascheService {
   }
 
 
+  /**
+   * Salva o aggiorna una vasca
+   * @param model 
+   * @param callbackSuccess 
+   * @param callbackError 
+   */
   public saveVasca(model: any, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
     model.idUtente = this.userID;
@@ -60,9 +70,12 @@ export class VascheService {
     this.setLoading(true, true);
 
     this.backend.post('tanks/save', model ).subscribe(
-      (success : any) => {
-        if (success != null && typeof success.aaData != "undefined") 
-          callbackSuccess(success.aaData);
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
+        else
+          callbackError();
+
         this.setLoading(false);
       }, 
       (error) => {
@@ -73,4 +86,25 @@ export class VascheService {
     )
   }
 
+
+
+  public recuperaSingolaVasca(vascaID: string, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+
+    this.backend.post('tanks/recupera?identificativo='+vascaID+'&identificativoUtente='+this.userID, new HttpParams() ).subscribe(
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
+        else
+          callbackError();
+          
+        this.setLoading(false);
+      }, 
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+      }
+    )
+
+  }
 }

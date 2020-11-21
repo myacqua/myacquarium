@@ -38,12 +38,15 @@
         <ion-list>
           <ion-item>
             <ion-label position="floating">Tipologia</ion-label>
-            <ion-select interface="popover">
+            <ion-select interface="popover" [(ngModel)]="model.aquariumType" name="aquariumType" #aquariumType="ngModel" required>
               <ion-select-option value="dolce">Acqua Dolce</ion-select-option>
               <ion-select-option value="salata">Acqua Salata</ion-select-option>
             </ion-select>
             <ion-icon name="water-outline" slot="end" size="small" class="ion-align-self-end"></ion-icon>
           </ion-item>
+          <ion-list *ngIf="aquariumType.dirty && aquariumType.errors" lines="none">
+            <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
+          </ion-list>
         </ion-list>
         <ion-list>
           <ion-item>

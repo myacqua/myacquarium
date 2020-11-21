@@ -38,9 +38,12 @@ export class PianteService {
     this.setLoading(true);
 
     this.backend.post('plants/ricerca', {commonname: modelSearch.nomePiante}, new HttpParams() ).subscribe(
-      (success : any) => {
-        if (success != null && typeof success.aaData != "undefined") 
-          callbackSuccess(success.aaData);
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
+        else
+          callbackError();
+          
         this.setLoading(false);
       }, 
       (error) => {

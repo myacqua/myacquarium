@@ -52,10 +52,13 @@ export class AppComponent implements OnInit {
     });
   }
 
+  firstActivatRoute: string = 'dashboard';
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.router.navigate([this.firstActivatRoute], { replaceUrl: true });
     });
   }
 
