@@ -9,6 +9,7 @@ export class AppStateService {
   public currentPesce: {};
   public currentPiante: {};
   public currentAccessori: {};
+  public currenVasca: null;
 
   //  oggetti acquario
   

@@ -8,11 +8,10 @@
       Dashboard
     </ion-title>
    </ion-toolbar>
-   <ion-card><img src="assets/img/dashboard1.jpg" /></ion-card>
-   
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <img src="assets/img/dashboard1.jpg" />
   <div class="container-center" *ngIf="array_vasche.length == 0 || vascheservice.isLoading">
     <!-- Loading centrale -->
     <ion-card class="align-item-center" *ngIf="vascheservice.isLoading">
