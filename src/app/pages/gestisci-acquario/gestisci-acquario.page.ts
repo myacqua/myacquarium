@@ -15,7 +15,10 @@ export class GestisciAcquarioPage implements OnInit {
   constructor(private appState: AppStateService, private vascheService: VascheService, private notify: AlertService) { }
 
   ngOnInit() {
+        
+  }
 
+  ionViewWillEnter() {
     if (this.appState.currenVasca) {
       this.acquario = this.appState.currenVasca;
       this.vascheService.recuperaSingolaVasca(this.acquario.id, (response) => {

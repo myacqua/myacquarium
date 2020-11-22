@@ -96,6 +96,8 @@ export class VascheService {
    */
   public recuperaSingolaVasca(vascaID: string, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
+    this.setLoading(true, true);
+
     this.backend.post('tanks/recupera?identificativo='+vascaID+'&identificativoUtente='+this.userID, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 
@@ -111,6 +113,33 @@ export class VascheService {
         this.setLoading(false);
       }
     )
+  }
 
+
+  /**
+   * Cancella una vasca
+   * @param vascaID 
+   * @param callbackSuccess 
+   * @param callbackError 
+   */
+  public cancellaVasca(vascaID: string, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+
+    this.setLoading(true, true);
+
+    this.backend.post('tanks/delete?idTank='+vascaID, {idTank: vascaID} ).subscribe(
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData[0]);
+        else
+          callbackError();
+          
+        this.setLoading(false);
+      }, 
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+      }
+    )
   }
 }
