@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'gestisci-acquario',
     loadChildren: () => import('./pages/gestisci-acquario/gestisci-acquario.module').then( m => m.GestisciAcquarioPageModule)
+  },
+  {
+    path: 'misure-acquario',
+    loadChildren: () => import('./pages/misure-acquario/misure-acquario.module').then( m => m.MisureAcquarioPageModule)
   }
 
   
