@@ -18,7 +18,7 @@
       </ion-list-header>
         <ion-list>
           <ion-item>
-            <ion-label position="floating">Nome</ion-label>
+            <ion-label position="floating" >Nome</ion-label>
             <ion-input [(ngModel)]="model.nome" maxlength="64" name="nome" #nome="ngModel" required></ion-input>
           </ion-item>
           <ion-list *ngIf="nome.dirty && nome.errors" lines="none">
@@ -37,21 +37,8 @@
         </ion-list>
         <ion-list>
           <ion-item>
-            <ion-label position="floating">Tipologia</ion-label>
-            <ion-select interface="popover" [(ngModel)]="model.aquariumType" name="aquariumType" #aquariumType="ngModel" required>
-              <ion-select-option value="dolce">Acqua Dolce</ion-select-option>
-              <ion-select-option value="salata">Acqua Salata</ion-select-option>
-            </ion-select>
-            <ion-icon name="water-outline" slot="end" size="small" class="ion-align-self-end"></ion-icon>
-          </ion-item>
-          <ion-list *ngIf="aquariumType.dirty && aquariumType.errors" lines="none">
-            <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
-          </ion-list>
-        </ion-list>
-        <ion-list>
-          <ion-item>
             <ion-label position="floating">Costo</ion-label>
-            <ion-input type="number" nin="0" step="any" name="costo"></ion-input>
+            <ion-input type="number" [(ngModel)]="model.costo" nin="0" step="any" name="costo"></ion-input>
             <ion-icon name="logo-euro" slot="end" size="small" class="ion-align-self-end"></ion-icon>
           </ion-item>
         </ion-list>
@@ -68,10 +55,23 @@
 
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-row>
+    <ion-row *ngIf="!editMode">
       <ion-col size="12" class="ion-text-center">
-        <ion-button expand="full" (click)="processForm(form)"
-          >Salva il tuo acquario e vai avanti
+        <ion-button expand="block" (click)="processForm(form)"
+          > 
+          Salva il tuo acquario e vai avanti
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="editMode">
+      <ion-col size="10" class="ion-text-center">
+        <ion-button expand="block" (click)="processForm(form)"
+          > Aggiorna il tuo acquario
+        </ion-button>
+      </ion-col>
+      <ion-col size="2" class="ion-text-center">
+        <ion-button fill="clear" (click)="cancellaAcquario()" color="danger"> 
+          <ion-icon size="normal" slot="icon-only" name="trash"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>

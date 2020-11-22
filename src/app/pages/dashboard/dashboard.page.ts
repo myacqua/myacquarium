@@ -17,13 +17,18 @@ export class DashboardPage implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  ionViewWillEnter() {
+
+    this.appState.clearState();
+
     this.vascheService.recuperaVasche((response) => {
       this.array_vasche = response;
     }, () => {
       this.notify.showNetworkError("Impossibile recuperare le vasche", '');
     });
   }
-
 
   vascaOnclick (vascaPremuta) {
     this.appState.currenVasca = vascaPremuta;

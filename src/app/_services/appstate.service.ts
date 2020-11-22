@@ -11,10 +11,19 @@ export class AppStateService {
   public currenVasca: null;
 
   //  oggetti acquario
-  
   public accessori: any[] = [];
 
   constructor() {
+  }
+
+  public clearState() {
+    this.searchState = "";
+    this.currentPesce = {};
+    this.currentPiante = {};
+    this.currentAccessori = {};
+    this.currenVasca = null;
+    
+    this.accessori = [];
 
   }
 }
