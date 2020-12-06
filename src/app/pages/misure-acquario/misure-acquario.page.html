@@ -5,9 +5,9 @@
     </ion-buttons>
     <ion-title>Misure acquario</ion-title>
     <ion-buttons slot="end">
-      <ion-button>
+      <!--ion-button>
         <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
-      </ion-button>
+      </ion-button-->
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -15,72 +15,84 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>Volume: {{acquario.volume}}</ion-card-subtitle>
-      <ion-card-title>{{acquario.nome}}</ion-card-title>
+      <ion-item>
+        <ion-label>Temperature</ion-label>
+        <ion-checkbox color="primary" checked slot="end"></ion-checkbox>
+      </ion-item>
     </ion-card-header>
-  
     <ion-card-content>
-      {{acquario.descrizione}}
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Decimal account</ion-label>
+              <ion-input placeholder="placeholder"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Unit name</ion-label>
+              <ion-select placeholder="Seleziona">
+                <ion-select-option value="f">Female</ion-select-option>
+                <ion-select-option value="m">Male</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-checkbox slot="end"></ion-checkbox>
+              <ion-label>Value range</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-label position="floating">Min</ion-label>
+            <ion-input></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-label position="floating">Max</ion-label>
+            <ion-input></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-checkbox slot="end"></ion-checkbox>
+              <ion-label>Optimal value range</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-label position="floating">Min</ion-label>
+            <ion-input></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-label position="floating">Max</ion-label>
+            <ion-input></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-checkbox slot="end"></ion-checkbox>
+              <ion-label>Show warning</ion-label>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-checkbox slot="end"></ion-checkbox>
+              <ion-label>Negative values</ion-label>
+            </ion-item>
+          </ion-col>
+        </ion-row> 
+      </ion-grid>
     </ion-card-content>
   </ion-card>
-
-  <!-- Segmenti per selezionare la tipologia di oggetti visibili -->
-  <ion-segment #segment scrollable value="pesci">
-    <ion-segment-button value="pesci" layout="icon-start">
-      <ion-label>Pesci</ion-label>
-      <ion-icon name="fish"></ion-icon>
-    </ion-segment-button>
-    <ion-segment-button value="piante" layout="icon-start">
-      <ion-label>Piante</ion-label>
-      <ion-icon name="leaf"></ion-icon>
-    </ion-segment-button>
-  </ion-segment>
-
-  <!-- Lista dei pesci disponibili per l'acquario -->
-  <ion-list *ngIf="segment.value == 'pesci'" >
-    <ion-item>
-      <ion-label>Pesce 1</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pesce 2</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pesce 3</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pesce 4</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pesce 5</ion-label>
-    </ion-item>
-  </ion-list>
-
-    <!-- Lista delle piante disponibili per l'acquario -->
-  <ion-list *ngIf="segment.value == 'piante'" >
-    <ion-item>
-      <ion-label>Pianta 1</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pianta 2</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pianta 3</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pianta 4</ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pianta 5</ion-label>
-    </ion-item>
-  </ion-list>
-  
   
 </ion-content>
 
 <ion-row>
   <ion-col size="12" class="ion-text-center">
-    <ion-button expand="full" (click)="processForm(form)"
-      >Salva il tuo acquario 
+    <ion-button expand="full" (click)="processForm(form)">
+      Salva misurazione
     </ion-button>
   </ion-col>
 </ion-row>

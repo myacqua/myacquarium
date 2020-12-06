@@ -24,6 +24,11 @@
     </ion-card-content>
   </ion-card>
 
+  <ion-button [routerLink]="['/misure-acquario']" expand="block">
+    <ion-icon slot="start" name="flask-outline"></ion-icon>
+    Aggiungi Misurazioni
+  </ion-button>
+
   <!-- Segmenti per selezionare la tipologia di oggetti visibili -->
   <ion-segment #segment scrollable value="pesci" class="ion-margin-start ion-margin-end">
     <ion-segment-button value="pesci" layout="icon-start">

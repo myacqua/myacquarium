@@ -12,6 +12,8 @@ export class MisureAcquarioPage implements OnInit {
 
   acquario: any = {};
 
+  protected showTemperature = true;
+
   constructor(private appState: AppStateService, private vascheService: VascheService, private notify: AlertService) { }
 
   ngOnInit() {
@@ -24,6 +26,6 @@ export class MisureAcquarioPage implements OnInit {
         this.notify.showNotification("Vasca non presente", 'danger');
       });
     }
+    
   }
-
 }
