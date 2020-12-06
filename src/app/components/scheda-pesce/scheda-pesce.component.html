@@ -1,12 +1,14 @@
 <ion-header color="secondary"></ion-header>
 <p>
   
+  <!-- SLIDER IMMAGINI DEL PESCE -->
   <ion-slides *ngIf="pesce.fishImages.length>0">
     <ion-slide-page *ngFor="let fImage of pesce.fishImages" style="width: 100%;padding: 15px;">
           <img src="{{fImage.url}}" style="border-radius: 10px;">
     </ion-slide-page>
   </ion-slides>
 
+  <!-- DETTAGLIO DEL PESCE -->
   <ion-card>
     <ion-list>
       <ion-list-header>
