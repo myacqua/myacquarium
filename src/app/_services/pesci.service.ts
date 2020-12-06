@@ -38,7 +38,32 @@ export class PesciService {
 
     this.setLoading(true);
 
-    this.backend.post('fishs/ricerca', {commonname: modelSearch.nomePesce}, new HttpParams() ).subscribe(
+    var obj = {"id":null,
+      "commonName":modelSearch.nomePesce,
+      "scientificName":null,
+      "synonymous":null,
+      "originZone":null,
+      "origin":null,
+      "familyId":null,
+      "maxLength":null,
+      "tankMinLength":null,
+      "tankMinVolume":null,
+      "temperatureMin":null,
+      "temperatureMax":null,
+      "phMin":null,
+      "phMax":null,
+      "ghMin":null,
+      "ghMax":null,
+      "waterFlow":null,
+      "tankLevel":null,
+      "description":null,
+      "temperament":null,
+      "careLevel":null,
+      "aquariumType":null,
+      "diet":null,
+      "minNumber":null
+    };
+    this.backend.post('fishs/ricerca', obj, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 
           callbackSuccess(response.aaData);

@@ -1,66 +1,117 @@
 <ion-header color="secondary"></ion-header>
 <p>
   
-  <!-- SLIDER IMMAGINI DEL PESCE -->
-  <ion-slides *ngIf="pesce.fishImages.length>0">
-    <ion-slide-page *ngFor="let fImage of pesce.fishImages" style="width: 100%;padding: 15px;">
-          <img src="{{fImage.url}}" style="border-radius: 10px;">
-    </ion-slide-page>
-  </ion-slides>
-
-  <!-- DETTAGLIO DEL PESCE -->
   <ion-card>
     <ion-list>
-      <ion-list-header>
-        <ion-label class="ion-text-center">{{pesce.commonName}}</ion-label>
-      </ion-list-header>
+      <!--NOME PESCE-->
+      <ion-list-header style="padding-left: 0px;"><ion-label style="margin-top: 7px;" class="ion-text-center">{{pesce.commonName}}</ion-label></ion-list-header>
+      <!-- SLIDER IMMAGINI DEL PESCE -->
+      <ion-slides *ngIf="pesce.fishImages.length>0">
+        <ion-slide-page *ngFor="let fImage of pesce.fishImages" style="width: 100%;padding: 0px 15px 10px 15px;">
+              <img src="{{fImage.url}}" style="border-radius: 10px;">
+        </ion-slide-page>
+      </ion-slides>
+    </ion-list>
+  </ion-card>
 
-      <ion-list-header><ion-label class="ion-text-center">Classificazione scientifica</ion-label>
-      </ion-list-header>
-      
+  <!-- INFORMAZIONI DEL PESCE -->
+  <ion-card>
+    <ion-list>
+      <ion-list-header><ion-label class="ion-text-center">Informazioni</ion-label></ion-list-header>
       <ion-item>
-        <ion-label>Dominio:	{{pesce.dominio}}</ion-label>
+        <ion-label position="stacked">Nome scientifico</ion-label>
+        <ion-input type="text">{{pesce.scientificName}}</ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Regno:	{{pesce.regno}}</ion-label>
+        <ion-label position="stacked">Descrizione</ion-label>
+        <ion-input>{{pesce.description}}</ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="stacked">Zona di origine</ion-label>
+        <ion-input>{{pesce.originZone}}</ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Phylum:{{pesce.phylum}}</ion-label>
+        <ion-label position="stacked">Flusso acqua</ion-label>
+        <ion-input>{{pesce.waterFlow}}</ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Classe	{{pesce.classe}}</ion-label>
+        <ion-label position="stacked">Livello vasca</ion-label>
+        <ion-input>{{pesce.tankLevel}}</ion-input>
+      </ion-item>
+	    <ion-item>
+        <ion-label position="stacked">Temperamento</ion-label>
+        <ion-input>{{pesce.temperament}}</ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Ordine	{{pesce.ordine}}</ion-label>
+        <ion-label position="stacked">Livello di cura</ion-label>
+        <ion-input>{{pesce.careLevel}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Alimentazione</ion-label>
+        <ion-input>{{pesce.diet}}</ion-input>
       </ion-item>
     </ion-list>
-    <ion-list-header>
-      <ion-label class="ion-text-center">Nomenclatura trinomiale</ion-label>
-</ion-list-header>
-<ion-item>
-  <ion-label class="ion-text-center">Carassius auratus auratus</ion-label>
-</ion-item>
-<ion-item>
-  <ion-label class="ion-text-center">Linnaeus, 1758</ion-label>
-</ion-item>
-<ion-list-header>
-  <ion-label class="ion-text-center">Nomi comuni</ion-label>
-</ion-list-header>
-<ion-item>
-<ion-label class="ion-text-center">Carassio rosso</ion-label>
-</ion-item>
-<ion-item>
-  <ion-label class="ion-text-center">Ciprino dorato</ion-label>
-</ion-item>
-<ion-row>
-  <ion-col size="12" class="ion-text-center">
-    <ion-button [routerLink]="['/aggiungi']"
-      >Aggiungi
-      </ion-button>
-  </ion-col>
-</ion-row>
-
-    
   </ion-card>
-  
+
+  <!--PARAMETRI PESCE-->
+  <ion-card>
+    <ion-list>
+      <ion-list-header><ion-label class="ion-text-center">Parametri</ion-label></ion-list-header>
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked">Lunghezza Min Vasca</ion-label>
+            <ion-input>{{pesce.tankMinLength}}</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-label position="stacked">Volume Min Vasca</ion-label>
+            <ion-input>{{pesce.tankMinVolume}}</ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked">Ph Min</ion-label>
+            <ion-input>{{pesce.phMin}}</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-label position="stacked">Ph Max</ion-label>
+            <ion-input>{{pesce.phMax}}</ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked">Gh Min</ion-label>
+            <ion-input>{{pesce.ghMin}}</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-label position="stacked">Gh Max</ion-label>
+            <ion-input>{{pesce.ghMax}}</ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked">Temperatura Min</ion-label>
+            <ion-input>{{pesce.temperatureMin}}°</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-label position="stacked">Temperatura Max</ion-label>
+            <ion-input>{{pesce.temperatureMax}}°</ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <ion-button [routerLink]="['/aggiungi']">Aggiungi</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
 </p>
