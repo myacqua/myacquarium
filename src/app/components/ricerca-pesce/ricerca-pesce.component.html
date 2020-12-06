@@ -34,8 +34,17 @@
 
     <ion-item (click)="onClick(pesce)" [routerLink]="['/selezione-oggetto']" *ngFor="let pesce of array_pesci">
       <ion-label>
-        {{pesce.commonname}}
-        <p><small>Zona di origine: <b>{{pesce.originzone}}</b></small></p>
+        <div *ngIf="pesce.fishImages.length != 0" style="width: 20%;float:left;">
+          <img src="{{pesce.fishImages[0].thumbUrl}}" style="width:100%">
+        </div>
+        <div *ngIf="pesce.fishImages.length == 0" style="width: 20%;float:left;">
+          <img src="assets/img/icon-fish.png/" style="width:100%">
+        </div>
+        <div style="width: 80%;padding:0px 5px;float:right">
+          <p><small>Nome comune: <b>{{pesce.commonName}}</b></small></p>
+          <p><small>Nome scientifico: <b>{{pesce.scientificName}}</b></small></p>
+          <p><small>Zona di origine: <b>{{pesce.originZone}}</b></small></p>
+        </div>
       </ion-label>
     </ion-item>
 
