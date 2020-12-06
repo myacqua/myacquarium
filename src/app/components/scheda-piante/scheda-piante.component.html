@@ -1,5 +1,14 @@
+<ion-header color="secondary"></ion-header>
 <p>
-  <img src="assets/img/aggiungi-piante1.jpg"/>
+  <!-- SLIDER IMMAGINI DEL PIANTE -->
+  <ion-slides *ngIf="piante.plantImages.length>0">
+    <ion-slide-page *ngFor="let fImage of piante.plantImages" style="width: 100%;padding: 15px;">
+          <img src="{{fImage.url}}" style="border-radius: 10px;">
+    </ion-slide-page>
+  </ion-slides>
+
+<!-- DETTAGLIO DELLA PIANTE -->
+
   <ion-card>
     <ion-list>
       <ion-list-header>

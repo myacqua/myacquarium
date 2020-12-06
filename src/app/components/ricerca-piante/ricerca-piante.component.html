@@ -1,4 +1,7 @@
 <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
+
+   <!--CAMPI UTILI PER LA RICERCA-->
+
 <ion-row>
   <ion-col>
     <ion-item>
@@ -10,16 +13,23 @@
     </span>
   </ion-col>
 </ion-row>
+
+<!--BUTTON PER AVVIARE LA RICERCA-->
+
 <ion-row>
   <ion-col>
     <ion-button class="ion-padding-end ion-padding-start" [disabled]="!form.valid || pianteservice.isLoading" expand="block" type="submit" color="primary"><ion-icon slot="start" name="search-outline"></ion-icon>Cerca</ion-button>
   </ion-col>
 </ion-row>
+
+<!--IMMAGINE DEL CARICAMENTO-->
 <ion-progress-bar *ngIf="pianteservice.isLoading" type="indeterminate"></ion-progress-bar>
 </form>
 <ion-item-divider class="from-body"></ion-item-divider>
  <ion-content>
+
     <!-- messaggio di warning senza risultati -->
+
   <ion-card *ngIf="formProcessed && !pianteservice.isLoading && array_piante.length == 0" color="warning">
     <ion-card-header>
       <ion-card-subtitle>
@@ -27,12 +37,25 @@
       </ion-card-subtitle>
     </ion-card-header>
   </ion-card>
+
+  <!-- LISTA DEI RISULTATI DELLA RICERCA DI UNA PIANTA-->
   <ion-list>
 
     <ion-item (click)="onClick(piante)" [routerLink]="['/selezione-oggetto']" *ngFor="let piante of array_piante">
       <ion-label>
-        {{piante.commonname}}
-        <p><small>Zona di origine: <b>{{piante.originzone}}</b></small></p>
+         <!-- PARTE IMMAGINE -->
+         <div *ngIf="piante.plantImages.length != 0" style="width: 20%;float:left;">
+          <img src="{{piante.plantImages[0].thumbUrl}}" style="width:100%">
+        </div>
+        <div *ngIf="piante.plantImages.length == 0" style="width: 20%;float:left;">
+          <img src="assets/img/icon-plant.png/" style="width:100%">
+        </div>
+        <!-- PARTE TESTO -->
+        <div style="width: 80%;padding:0px 5px;float:right">
+          <p><small>Nome comune: <b>{{piante.commonName}}</b></small></p>
+          <p><small>Nome scientifico: <b>{{piante.scientificName}}</b></small></p>
+          <p><small>Zona di origine: <b>{{piante.originZone}}</b></small></p>
+        </div>
       </ion-label>
     </ion-item>
 
