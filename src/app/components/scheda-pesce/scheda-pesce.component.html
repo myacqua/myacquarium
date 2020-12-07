@@ -24,11 +24,19 @@
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Descrizione</ion-label>
-        <ion-input>{{pesce.description}}</ion-input>
+        <ion-input style="word-break:break-word;">{{pesce.description}}</ion-input>
       </ion-item> 
       <ion-item>
         <ion-label position="stacked">Zona di origine</ion-label>
         <ion-input>{{pesce.originZone}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Temperamento</ion-label>
+        <ion-input>{{pesce.temperament}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Lunghezza massima</ion-label>
+        <ion-input>{{pesce.maxLength}} cm</ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Flusso acqua</ion-label>
@@ -37,10 +45,6 @@
       <ion-item>
         <ion-label position="stacked">Livello vasca</ion-label>
         <ion-input>{{pesce.tankLevel}}</ion-input>
-      </ion-item>
-	    <ion-item>
-        <ion-label position="stacked">Temperamento</ion-label>
-        <ion-input>{{pesce.temperament}}</ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="stacked">Livello di cura</ion-label>
@@ -61,11 +65,11 @@
         <ion-row>
           <ion-col>
             <ion-label position="stacked">Lunghezza Min Vasca</ion-label>
-            <ion-input>{{pesce.tankMinLength}}</ion-input>
+            <ion-input>{{pesce.tankMinLength}} cm</ion-input>
           </ion-col>
           <ion-col>
             <ion-label position="stacked">Volume Min Vasca</ion-label>
-            <ion-input>{{pesce.tankMinVolume}}</ion-input>
+            <ion-input>{{pesce.tankMinVolume}} litri</ion-input>
           </ion-col>
         </ion-row>
       </ion-item>
@@ -97,11 +101,11 @@
         <ion-row>
           <ion-col>
             <ion-label position="stacked">Temperatura Min</ion-label>
-            <ion-input>{{pesce.temperatureMin}}°</ion-input>
+            <ion-input>{{pesce.temperatureMin}}°C</ion-input>
           </ion-col>
           <ion-col>
             <ion-label position="stacked">Temperatura Max</ion-label>
-            <ion-input>{{pesce.temperatureMax}}°</ion-input>
+            <ion-input>{{pesce.temperatureMax}}°C</ion-input>
           </ion-col>
         </ion-row>
       </ion-item>
