@@ -15,7 +15,6 @@
 </ion-row>
 
 <!--BUTTON PER AVVIARE LA RICERCA-->
-
 <ion-row>
   <ion-col>
     <ion-button class="ion-padding-end ion-padding-start" [disabled]="!form.valid || pianteservice.isLoading" expand="block" type="submit" color="primary"><ion-icon slot="start" name="search-outline"></ion-icon>Cerca</ion-button>
@@ -28,8 +27,7 @@
 <ion-item-divider class="from-body"></ion-item-divider>
  <ion-content>
 
-    <!-- messaggio di warning senza risultati -->
-
+  <!-- messaggio di warning senza risultati -->
   <ion-card *ngIf="formProcessed && !pianteservice.isLoading && array_piante.length == 0" color="warning">
     <ion-card-header>
       <ion-card-subtitle>
@@ -52,7 +50,7 @@
         </div>
         <!-- PARTE TESTO -->
         <div style="width: 80%;padding:0px 5px;float:right">
-          <p><small>Nome comune: <b>{{piante.commonName}}</b></small></p>
+          <!--p><small>Nome comune: <b>{{piante.commonName}}</b></small></p-->
           <p><small>Nome scientifico: <b>{{piante.scientificName}}</b></small></p>
           <p><small>Zona di origine: <b>{{piante.originZone}}</b></small></p>
         </div>

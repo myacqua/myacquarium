@@ -37,7 +37,32 @@ export class PianteService {
 
     this.setLoading(true);
 
-    this.backend.post('plants/ricerca', {commonname: modelSearch.nomePiante}, new HttpParams() ).subscribe(
+    
+    var obj = {"id":null,
+                "commonName":null,
+                "scientificName":modelSearch.nomePiante,
+                "originZone":null,
+                "origin":null,
+                "familyId":null,
+                "minHeight":null,
+                "maxHeight":null,
+                "temperatureMin":null,
+                "temperatureMax":null,
+                "phMin":null,
+                "phMax":null,
+                "ghMin":null,
+                "ghMax":null,
+                "khMin":null,
+                "khMax":null,
+                "lighting":null,
+                "co2":null,
+                "description":null,
+                "growThrate":null,
+                "careLevel":null,
+                "type":null
+    }; 
+
+    this.backend.post('plants/ricerca', obj, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 
           callbackSuccess(response.aaData);
