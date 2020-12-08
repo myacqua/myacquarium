@@ -41,6 +41,17 @@
     </ion-segment-button>
   </ion-segment>
 
+  <ion-fab horizontal="start">
+    <ion-fab-button color="secondary" class="ion-margin" [routerLink]="['/nuovo-acquario']">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab horizontal="end">
+    <ion-fab-button color="success" class="ion-margin" [routerLink]="['/nuovo-acquario']">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
   <!-- Lista dei pesci disponibili per l'acquario -->
   <ion-list *ngIf="segment.value == 'pesci'">
     <ion-item *ngFor="let pesce of acquario.fishs">

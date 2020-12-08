@@ -14,117 +14,118 @@
     </ion-list>
   </ion-card>
 
- <!-- INFORMAZIONI DEL PIANTA -->
- <ion-card>
-  <ion-list>
-    <ion-list-header><ion-label class="ion-text-center">Informazioni</ion-label></ion-list-header>
-    <ion-item>
-      <ion-label position="stacked">Descrizione</ion-label>
-      <ion-input style="word-break:break-word;">{{piante.description}}</ion-input>
-    </ion-item> 
-    <ion-item>
-      <ion-label position="stacked">Zona di origine</ion-label>
-      <ion-input>{{piante.originZone}}</ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Illuminazione</ion-label>
-      <ion-input>{{piante.lighting}}</ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Co2</ion-label>
-      <ion-input>{{piante.co2}}</ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Tasso di crescita</ion-label>
-      <ion-input>{{piante.growThrate}}</ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Livello di cura</ion-label>
-      <ion-input>{{piante.careLevel}}</ion-input>
-    </ion-item>
-  </ion-list>
-</ion-card>
+  <!-- INFORMAZIONI DEL PIANTA -->
+  <ion-card>
+    <ion-list>
+      <ion-list-header><ion-label class="ion-text-center">Informazioni</ion-label></ion-list-header>
+      <ion-item>
+        <ion-label position="stacked">Descrizione</ion-label>
+        <ion-input style="word-break:break-word;">{{piante.description}}</ion-input>
+      </ion-item> 
+      <ion-item>
+        <ion-label position="stacked">Zona di origine</ion-label>
+        <ion-input>{{piante.originZone}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Illuminazione</ion-label>
+        <ion-input>{{piante.lighting}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Co2</ion-label>
+        <ion-input>{{piante.co2}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Tasso di crescita</ion-label>
+        <ion-input>{{piante.growThrate}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Livello di cura</ion-label>
+        <ion-input>{{piante.careLevel}}</ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 
-<!--PARAMETRI PIANTA-->
-<ion-card>
-  <ion-list>
-    <ion-list-header><ion-label class="ion-text-center">Parametri</ion-label></ion-list-header>
+  <!--PARAMETRI PIANTA-->
+  <ion-card>
+    <ion-list>
+      <ion-list-header><ion-label class="ion-text-center">Parametri</ion-label></ion-list-header>
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked">Altezza Minima</ion-label>
+            <ion-input *ngIf="piante.minHeight!=-1">{{piante.minHeight}} cm</ion-input>
+            <ion-input *ngIf="piante.minHeight==-1">n.d.</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-label position="stacked">Altezza Massima</ion-label>
+            <ion-input *ngIf="piante.maxHeight!=-1">{{piante.maxHeight}} cm</ion-input>
+            <ion-input *ngIf="piante.maxHeight==-1">n.d.</ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked">Ph Min</ion-label>
+            <ion-input *ngIf="piante.phMin!=-1">{{piante.phMin}}</ion-input>
+            <ion-input *ngIf="piante.phMin==-1">n.d.</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-label position="stacked">Ph Max</ion-label>
+            <ion-input *ngIf="piante.phMax!=-1">{{piante.phMax}}</ion-input>
+            <ion-input *ngIf="piante.phMax==-1">n.d.</ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked">Gh Min</ion-label>
+            <ion-input *ngIf="piante.ghMin!=-1">{{piante.ghMin}}</ion-input>
+            <ion-input *ngIf="piante.ghMin==-1">n.d.</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-label position="stacked">Gh Max</ion-label>
+            <ion-input *ngIf="piante.ghMax!=-1">{{piante.ghMax}}</ion-input>
+            <ion-input *ngIf="piante.ghMax==-1">n.d.</ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-item>
     <ion-item>
-      <ion-row>
-        <ion-col>
-          <ion-label position="stacked">Altezza Minima</ion-label>
-          <ion-input *ngIf="piante.minHeight!=-1">{{piante.minHeight}} cm</ion-input>
-          <ion-input *ngIf="piante.minHeight==-1">n.d.</ion-input>
-        </ion-col>
-        <ion-col>
-          <ion-label position="stacked">Altezza Massima</ion-label>
-          <ion-input *ngIf="piante.maxHeight!=-1">{{piante.maxHeight}} cm</ion-input>
-          <ion-input *ngIf="piante.maxHeight==-1">n.d.</ion-input>
-        </ion-col>
-      </ion-row>
-    </ion-item>
-    <ion-item>
-      <ion-row>
-        <ion-col>
-          <ion-label position="stacked">Ph Min</ion-label>
-          <ion-input *ngIf="piante.phMin!=-1">{{piante.phMin}}</ion-input>
-          <ion-input *ngIf="piante.phMin==-1">n.d.</ion-input>
-        </ion-col>
-        <ion-col>
-          <ion-label position="stacked">Ph Max</ion-label>
-          <ion-input *ngIf="piante.phMax!=-1">{{piante.phMax}}</ion-input>
-          <ion-input *ngIf="piante.phMax==-1">n.d.</ion-input>
-        </ion-col>
-      </ion-row>
-    </ion-item>
-    <ion-item>
-      <ion-row>
-        <ion-col>
-          <ion-label position="stacked">Gh Min</ion-label>
-          <ion-input *ngIf="piante.ghMin!=-1">{{piante.ghMin}}</ion-input>
-          <ion-input *ngIf="piante.ghMin==-1">n.d.</ion-input>
-        </ion-col>
-        <ion-col>
-          <ion-label position="stacked">Gh Max</ion-label>
-          <ion-input *ngIf="piante.ghMax!=-1">{{piante.ghMax}}</ion-input>
-          <ion-input *ngIf="piante.ghMax==-1">n.d.</ion-input>
-        </ion-col>
-      </ion-row>
-    </ion-item>
-	<ion-item>
-      <ion-row>
-        <ion-col>
-          <ion-label position="stacked">Kh Min</ion-label>
-          <ion-input *ngIf="piante.khMin!=-1">{{piante.khMin}}</ion-input>
-          <ion-input *ngIf="piante.khMin==-1">n.d.</ion-input>
-        </ion-col>
-        <ion-col>
-          <ion-label position="stacked">Kh Max</ion-label>
-          <ion-input *ngIf="piante.khMax!=-1">{{piante.khMax}}</ion-input>
-          <ion-input *ngIf="piante.khMax==-1">n.d.</ion-input>
-        </ion-col>
-      </ion-row>
-    </ion-item>
-    <ion-item>
-      <ion-row>
-        <ion-col>
-          <ion-label position="stacked">Temperatura Min</ion-label>
-          <ion-input *ngIf="piante.temperatureMin!=-1">{{piante.temperatureMin}}°C</ion-input>
-          <ion-input *ngIf="piante.temperatureMin==-1">n.d.</ion-input>
-        </ion-col>
-        <ion-col>
-          <ion-label position="stacked">Temperatura Max</ion-label>
-          <ion-input *ngIf="piante.temperatureMax!=-1">{{piante.temperatureMax}}°C</ion-input>
-          <ion-input *ngIf="piante.temperatureMax==-1">n.d.</ion-input>
-        </ion-col>
-      </ion-row>
-    </ion-item>
-  </ion-list>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked">Kh Min</ion-label>
+            <ion-input *ngIf="piante.khMin!=-1">{{piante.khMin}}</ion-input>
+            <ion-input *ngIf="piante.khMin==-1">n.d.</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-label position="stacked">Kh Max</ion-label>
+            <ion-input *ngIf="piante.khMax!=-1">{{piante.khMax}}</ion-input>
+            <ion-input *ngIf="piante.khMax==-1">n.d.</ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      <ion-item>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked">Temperatura Min</ion-label>
+            <ion-input *ngIf="piante.temperatureMin!=-1">{{piante.temperatureMin}}°C</ion-input>
+            <ion-input *ngIf="piante.temperatureMin==-1">n.d.</ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-label position="stacked">Temperatura Max</ion-label>
+            <ion-input *ngIf="piante.temperatureMax!=-1">{{piante.temperatureMax}}°C</ion-input>
+            <ion-input *ngIf="piante.temperatureMax==-1">n.d.</ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
   <ion-row>
     <ion-col size="12" class="ion-text-center">
       <ion-button [routerLink]="['/aggiungi']">Aggiungi</ion-button>
     </ion-col>
   </ion-row>
 
-</ion-card>
 </p>
