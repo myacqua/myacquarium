@@ -12,6 +12,13 @@ export class SchedaPesceComponent implements OnInit {
 
   ngOnInit() {
     this.pesce = this.appstate.currentPesce;
+
+    console.log(this.appstate.currenVasca);
+    
+  }
+
+  getAppState() {
+    return this.appstate;
   }
 
 }
