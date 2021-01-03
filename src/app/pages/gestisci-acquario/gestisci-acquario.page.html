@@ -24,48 +24,76 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-button [routerLink]="['/misure-acquario']" expand="block" style="padding: 0px 15px;margin: 7px 0px 20px 0px;">
+  <ion-button [routerLink]="['/misure-acquario']" expand="block" style="padding: 0px 15px;margin: 7px 0px 0px 0px;">
     <ion-icon slot="start" name="flask-outline"></ion-icon>
     Aggiungi Misurazioni
   </ion-button>
 
-  <!-- Segmenti per selezionare la tipologia di oggetti visibili -->
-  <ion-segment #segment scrollable value="pesci" class="ion-margin-start ion-margin-end">
-    <ion-segment-button value="pesci" layout="icon-start">
-      <ion-label>Pesci</ion-label>
-      <ion-icon name="fish"></ion-icon>
-    </ion-segment-button>
-    <ion-segment-button value="piante" layout="icon-start">
-      <ion-label>Piante</ion-label>
-      <ion-icon name="leaf"></ion-icon>
-    </ion-segment-button>
-  </ion-segment>
+  <ion-button (click)="onClickAdd('pesci')" [routerLink]="['/ricerca']" expand="block" color="secondary" style="padding: 0px 15px;margin: 7px 0px 0px 0px;">
+    <ion-icon slot="start" name="fish"></ion-icon>
+    Aggiungi Pesce
+  </ion-button>
 
-  <ion-fab horizontal="start">
-    <ion-fab-button color="secondary" class="ion-margin" [routerLink]="['/nuovo-acquario']">
-      <ion-icon name="add-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-fab horizontal="end">
-    <ion-fab-button color="success" class="ion-margin" [routerLink]="['/nuovo-acquario']">
-      <ion-icon name="add-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <ion-button (click)="onClickAdd('piante')" [routerLink]="['/ricerca']" expand="block" color="success" style="padding: 0px 15px;margin: 7px 0px 0px 0px;">
+    <ion-icon slot="start" name="leaf"></ion-icon>
+    Aggiungi Pianta
+  </ion-button>
 
-  <!-- Lista dei pesci disponibili per l'acquario -->
-  <ion-list *ngIf="segment.value == 'pesci'">
-    <ion-item *ngFor="let pesce of acquario.fishs">
-      <ion-label>Pesce</ion-label>
-    </ion-item>
-  </ion-list>
 
-    <!-- Lista delle piante disponibili per l'acquario -->
-  <ion-list *ngIf="segment.value == 'piante'" >
-    <ion-item *ngFor="let pianta of acquario.plants">
-      <ion-label>Pianta</ion-label>
-    </ion-item>
-  </ion-list>
+    <!-- Segmenti per selezionare la tipologia di oggetti visibili -->
+    <ion-segment #segment scrollable value="pesci" class="ion-margin-start ion-margin-end" style="margin-top: 20px;">
+      <ion-segment-button value="pesci" layout="icon-start">
+        <ion-label>Pesci</ion-label>
+        <ion-icon name="fish"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="piante" layout="icon-start">
+        <ion-label>Piante</ion-label>
+        <ion-icon name="leaf"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+
+    <!-- Lista dei pesci presenti nell'acquario -->
+    <ion-list *ngIf="segment.value == 'pesci'">
+      <ion-item (click)="onClickPesce(pesce)" [routerLink]="['/selezione-oggetto']" *ngFor="let pesce of acquario.fishs">
+        <ion-label>
+          <!-- PARTE IMMAGINE -->
+          <div *ngIf="pesce.fishImages.length != 0" style="width: 20%;float:left;">
+            <img src="{{pesce.fishImages[0].thumbUrl}}" style="width:100%;border-radius: 5px;">
+          </div>
+          <div *ngIf="pesce.fishImages.length == 0" style="width: 20%;float:left;">
+            <img src="assets/img/icon-fish.png/" style="width:100%;border-radius: 5px;">
+          </div>
+          <!-- PARTE TESTO -->
+          <div style="width: 80%;padding:0px 5px;float:right">
+            <p><small>Nome comune: <b>{{pesce.commonName}}</b></small></p>
+            <p><small>Nome scientifico: <b>{{pesce.scientificName}}</b></small></p>
+            <p><small>Zona di origine: <b>{{pesce.originZone}}</b></small></p>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
   
+    <!-- Lista delle piante presenti nell'acquario -->
+    <ion-list *ngIf="segment.value == 'piante'" >
+      <ion-item (click)="onClickPianta(pianta)" [routerLink]="['/selezione-oggetto']" *ngFor="let pianta of acquario.plants">
+        <ion-label>
+          <!-- PARTE IMMAGINE -->
+          <div *ngIf="pianta.plantImages.length != 0" style="width: 20%;float:left;">
+            <img src="{{pianta.plantImages[0].thumbUrl}}" style="width:100%">
+          </div>
+          <div *ngIf="pianta.plantImages.length == 0" style="width: 20%;float:left;">
+            <img src="assets/img/icon-plant.png/" style="width:100%">
+          </div>
+          <!-- PARTE TESTO -->
+          <div style="width: 80%;padding:0px 5px;float:right">
+            <!--p><small>Nome comune: <b>{{pianta.commonName}}</b></small></p-->
+            <p><small>Nome scientifico: <b>{{pianta.scientificName}}</b></small></p>
+            <p><small>Zona di origine: <b>{{pianta.originZone}}</b></small></p>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
   
 </ion-content>
 

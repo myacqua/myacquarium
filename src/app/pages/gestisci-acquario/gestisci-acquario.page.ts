@@ -29,4 +29,19 @@ export class GestisciAcquarioPage implements OnInit {
     }
   }
 
+  onClickPesce (pesce){
+    this.appState.currentPesce = pesce;
+    this.appState.searchState = 'pesci';
+  }
+
+  onClickPianta (pianta) {
+    this.appState.currentPiante = piante; 
+    this.appState.searchState = 'piante';
+  }
+
+  onClickAdd (typeAdd) {
+    console.log("#### onClickAdd "+typeAdd);
+    this.appState.searchState = typeAdd;
+  }
+
 }
