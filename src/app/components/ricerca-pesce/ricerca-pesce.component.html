@@ -53,6 +53,19 @@
           <p><small>Nome scientifico: <b>{{pesce.scientificName}}</b></small></p>
           <p><small>Zona di origine: <b>{{pesce.originZone}}</b></small></p>
         </div>
+        <div style="width: 100%;padding:5px 5px 0px 0px;float:left">
+          <!--BADGE PH -->
+          <ion-badge *ngIf="!pesce.phAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+          <ion-badge *ngIf="pesce.phAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+
+          <!--BADGE GH -->
+          <ion-badge *ngIf="!pesce.ghAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+          <ion-badge *ngIf="pesce.ghAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+
+          <!--BADGE TEMPERATURE -->
+          <ion-badge *ngIf="!pesce.temperatureAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
+          <ion-badge *ngIf="pesce.temperatureAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
+        </div>
       </ion-label>
     </ion-item>
   </ion-list>

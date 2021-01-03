@@ -54,6 +54,28 @@
           <p><small>Nome scientifico: <b>{{piante.scientificName}}</b></small></p>
           <p><small>Zona di origine: <b>{{piante.originZone}}</b></small></p>
         </div>
+
+        <div style="width: 100%;padding:5px 5px 0px 0px;float:left">
+          <!--BADGE PH -->
+          <ion-badge *ngIf="!piante.phAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+          <ion-badge *ngIf="piante.phAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+
+          <!--BADGE GH -->
+          <ion-badge *ngIf="!piante.ghAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+          <ion-badge *ngIf="piante.ghAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+          
+          <!--BADGE KH -->
+          <ion-badge *ngIf="!piante.khAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">KH</ion-badge>
+          <ion-badge *ngIf="piante.khAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">KH</ion-badge>
+          
+          <!--BADGE HEIGHT -->
+          <ion-badge *ngIf="!piante.heightAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Altezza</ion-badge>
+          <ion-badge *ngIf="piante.heightAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Altezza</ion-badge>
+
+          <!--BADGE TEMPERATURE -->
+          <ion-badge *ngIf="!piante.temperatureAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Temperatura</ion-badge>
+          <ion-badge *ngIf="piante.temperatureAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Temperatura</ion-badge>
+        </div>
       </ion-label>
     </ion-item>
 
