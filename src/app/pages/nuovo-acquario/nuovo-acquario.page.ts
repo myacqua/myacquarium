@@ -20,8 +20,8 @@ export class NuovoAcquarioPage implements OnInit {
 
   ngOnInit() {
 
-    if (this.appState.currenVasca) {
-      this.model = this.appState.currenVasca;
+    if (this.appState.currentVasca) {
+      this.model = this.appState.currentVasca;
       this.editMode = true;
     }
   }
@@ -36,7 +36,7 @@ export class NuovoAcquarioPage implements OnInit {
     if (form.form.valid)
     {
       this.vascheService.saveVasca(this.model, (response) => {
-        this.appState.currenVasca = response;
+        this.appState.currentVasca = response;
 
         if (this.editMode) {
           this.notify.showNotification("Vasca Aggiornata", 'success');

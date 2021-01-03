@@ -55,7 +55,9 @@
     <!-- Lista dei pesci presenti nell'acquario -->
     <ion-list *ngIf="segment.value == 'pesci'">
       <ion-item (click)="onClickPesce(pesce)" [routerLink]="['/selezione-oggetto']" *ngFor="let pesce of acquario.fishs">
+
         <ion-label>
+
           <!-- PARTE IMMAGINE -->
           <div *ngIf="pesce.fishImages.length != 0" style="width: 20%;float:left;">
             <img src="{{pesce.fishImages[0].thumbUrl}}" style="width:100%;border-radius: 5px;">
@@ -63,20 +65,39 @@
           <div *ngIf="pesce.fishImages.length == 0" style="width: 20%;float:left;">
             <img src="assets/img/icon-fish.png/" style="width:100%;border-radius: 5px;">
           </div>
+
           <!-- PARTE TESTO -->
           <div style="width: 80%;padding:0px 5px;float:right">
             <p><small>Nome comune: <b>{{pesce.commonName}}</b></small></p>
             <p><small>Nome scientifico: <b>{{pesce.scientificName}}</b></small></p>
             <p><small>Zona di origine: <b>{{pesce.originZone}}</b></small></p>
           </div>
+
+          <!--PARAMETRI PESCE-->
+          <div style="width: 100%;padding:5px 5px 0px 0px;float:left">
+            <!--BADGE PH -->
+            <ion-badge *ngIf="!pesce.phAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+            <ion-badge *ngIf="pesce.phAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+  
+            <!--BADGE GH -->
+            <ion-badge *ngIf="!pesce.ghAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+            <ion-badge *ngIf="pesce.ghAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+  
+            <!--BADGE TEMPERATURE -->
+            <ion-badge *ngIf="!pesce.temperatureAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
+            <ion-badge *ngIf="pesce.temperatureAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
+          </div>
         </ion-label>
+        
       </ion-item>
     </ion-list>
   
     <!-- Lista delle piante presenti nell'acquario -->
     <ion-list *ngIf="segment.value == 'piante'" >
       <ion-item (click)="onClickPianta(pianta)" [routerLink]="['/selezione-oggetto']" *ngFor="let pianta of acquario.plants">
+        
         <ion-label>
+
           <!-- PARTE IMMAGINE -->
           <div *ngIf="pianta.plantImages.length != 0" style="width: 20%;float:left;">
             <img src="{{pianta.plantImages[0].thumbUrl}}" style="width:100%">
@@ -84,13 +105,38 @@
           <div *ngIf="pianta.plantImages.length == 0" style="width: 20%;float:left;">
             <img src="assets/img/icon-plant.png/" style="width:100%">
           </div>
+
           <!-- PARTE TESTO -->
           <div style="width: 80%;padding:0px 5px;float:right">
             <!--p><small>Nome comune: <b>{{pianta.commonName}}</b></small></p-->
             <p><small>Nome scientifico: <b>{{pianta.scientificName}}</b></small></p>
             <p><small>Zona di origine: <b>{{pianta.originZone}}</b></small></p>
           </div>
+
+          <!--PARAMETRI PIANTA-->
+          <div style="width: 100%;padding:5px 5px 0px 0px;float:left">
+            <!--BADGE PH -->
+            <ion-badge *ngIf="!pianta.phAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+            <ion-badge *ngIf="pianta.phAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+  
+            <!--BADGE GH -->
+            <ion-badge *ngIf="!pianta.ghAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+            <ion-badge *ngIf="pianta.ghAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+            
+            <!--BADGE KH -->
+            <ion-badge *ngIf="!pianta.khAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">KH</ion-badge>
+            <ion-badge *ngIf="pianta.khAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">KH</ion-badge>
+            
+            <!--BADGE HEIGHT -->
+            <ion-badge *ngIf="!pianta.heightAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Altezza</ion-badge>
+            <ion-badge *ngIf="pianta.heightAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Altezza</ion-badge>
+  
+            <!--BADGE TEMPERATURE -->
+            <ion-badge *ngIf="!pianta.temperatureAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Temperatura</ion-badge>
+            <ion-badge *ngIf="pianta.temperatureAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Temperatura</ion-badge>
+          </div>
         </ion-label>
+
       </ion-item>
     </ion-list>
 

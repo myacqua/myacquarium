@@ -11,12 +11,11 @@ export class SelezioneOggettoPage implements OnInit {
   constructor(private appState:AppStateService) { }
 
   ngOnInit() {
-    
   
-
   }
 
-  public get appstate() {
+  getAppstate() {
+    
     return this.appState;
   }
 

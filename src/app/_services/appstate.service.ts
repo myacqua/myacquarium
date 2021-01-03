@@ -8,7 +8,9 @@ export class AppStateService {
   public currentPesce: {};
   public currentPiante: {};
   public currentAccessori: {};
-  public currenVasca: null;
+  public currentVasca: null;
+  public canDelete : boolean = false;
+  public canAdd : boolean = false;
 
   //  oggetti acquario
   public accessori: any[] = [];
@@ -21,8 +23,9 @@ export class AppStateService {
     this.currentPesce = {};
     this.currentPiante = {};
     this.currentAccessori = {};
-    this.currenVasca = null;
-    
+    this.currentVasca = null;
+    this.canDelete = false;
+    this.canAdd = false;
     this.accessori = [];
 
   }

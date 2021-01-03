@@ -19,8 +19,8 @@ export class GestisciAcquarioPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    if (this.appState.currenVasca) {
-      this.acquario = this.appState.currenVasca;
+    if (this.appState.currentVasca) {
+      this.acquario = this.appState.currentVasca;
       this.vascheService.recuperaSingolaVasca(this.acquario.id, (response) => {
         this.acquario = response;
       }, () => {
@@ -30,17 +30,25 @@ export class GestisciAcquarioPage implements OnInit {
   }
 
   onClickPesce (pesce){
+
+    this.appState.canAdd = false;
+    this.appState.canDelete = true;
     this.appState.currentPesce = pesce;
     this.appState.searchState = 'pesci';
   }
 
   onClickPianta (pianta) {
+
+    this.appState.canAdd = false;
+    this.appState.canDelete = true;
     this.appState.currentPiante = pianta; 
     this.appState.searchState = 'piante';
   }
 
   onClickAdd (typeAdd) {
-    console.log("#### onClickAdd "+typeAdd);
+
+    this.appState.canAdd = true;
+    this.appState.canDelete = false;
     this.appState.searchState = typeAdd;
   }
 

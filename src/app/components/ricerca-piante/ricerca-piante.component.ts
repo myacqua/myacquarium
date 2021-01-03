@@ -23,27 +23,35 @@ export class RicercaPianteComponent implements OnInit {
 
   constructor(private appstate:AppStateService, private pianteService: PianteService) { }
    
-   
-   ngOnInit() { }
-/**
+  ngOnInit() {
+
+  }
+
+  /**
    * Fa una ricerca per una pianta in base ai parametri di ricerca
    */
   processForm() {
 
     this.formProcessed = true;
 
-    this.pianteService.ricercaPiante(this.modelSearch, this.appstate.currenVasca, (success) => {
+    this.pianteService.ricercaPiante(this.modelSearch, this.appstate.currentVasca, (success) => {
       this.array_piante = success;
     });
-    
   }
 
-   onClick (piante) {
+  /**
+   * Va nel dettaglio della pianta selezionata
+   * @param piante 
+   */
+  onClick (piante) {
+
+    console.log("# ricerca pianta");
     this.appstate.currentPiante = piante; 
+    this.appstate.canAdd = this.appstate.currentVasca!= null? true : false;
   }
 
   public get pianteservice() {
+    
     return this.pianteService;
-
-}
+  }
 }

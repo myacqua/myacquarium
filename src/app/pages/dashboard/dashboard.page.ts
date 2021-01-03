@@ -31,7 +31,7 @@ export class DashboardPage implements OnInit {
   }
 
   vascaOnclick (vascaPremuta) {
-    this.appState.currenVasca = vascaPremuta;
+    this.appState.currentVasca = vascaPremuta;
     this.router.navigate(['gestisci-acquario']);
   }
 

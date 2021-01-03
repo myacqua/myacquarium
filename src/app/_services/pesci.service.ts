@@ -37,8 +37,8 @@ export class PesciService {
   public ricercaPesce(modelSearch, currentVasca ,callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
     this.setLoading(true);
-    var identificativo = currentVasca!=null ? currentVasca.id : "";
 
+    var identificativo = currentVasca!=null ? currentVasca.id : "";
     this.backend.post('fishs/ricerca?identificativo='+identificativo+'&commonName='+modelSearch.nomePesce, null, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 

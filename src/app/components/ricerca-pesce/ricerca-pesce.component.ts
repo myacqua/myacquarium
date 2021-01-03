@@ -20,7 +20,9 @@ export class RicercaPesceComponent implements OnInit {
 
   constructor(private appstate:AppStateService, private pesciService: PesciService) { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+
+  }
 
   /**
    * Fa una ricerca per un pesce in base ai parametri di ricerca
@@ -29,23 +31,25 @@ export class RicercaPesceComponent implements OnInit {
 
     this.formProcessed = true;
 
-    this.pesciService.ricercaPesce(this.modelSearch, this.appstate.currenVasca, (success) => {
+    this.pesciService.ricercaPesce(this.modelSearch, this.appstate.currentVasca, (success) => {
 
       this.array_pesci = success;
     });
     
   }
 
-
+  /**
+   * Va nel dettaglio del pesce selezionato
+   * @param pesce 
+   */
   onClick (pesce){
-    this.appstate.currentPesce = pesce;
-  }
 
+    this.appstate.currentPesce = pesce;
+    this.appstate.canAdd = this.appstate.currentVasca!= null? true : false;
+  }
 
   public get pesciservice() {
+
     return this.pesciService;
   }
-
-
-
 }

@@ -13,11 +13,11 @@ export class SchedaPianteComponent implements OnInit {
   constructor(private appstate:AppStateService) { }
 
   ngOnInit() {
-    this.piante = this.appstate.currentPiante;
 
-    console.log(this.appstate.currenVasca)
+    this.piante = this.appstate.currentPiante;
   }
   getAppState() {
+    
     return this.appstate;
-}
+  }
 }

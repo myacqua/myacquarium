@@ -36,8 +36,8 @@ export class PianteService {
   public ricercaPiante(modelSearch, currentVasca, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
     this.setLoading(true);
+    
     var identificativo = currentVasca!=null ? currentVasca.id : "";
-console.log("###########");
     this.backend.post('plants/ricerca?identificativo='+identificativo+'&scientificName='+modelSearch.nomePiante, null, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 

@@ -18,8 +18,8 @@ export class MisureAcquarioPage implements OnInit {
 
   ngOnInit() {
 
-    if (this.appState.currenVasca) {
-      this.acquario = this.appState.currenVasca;
+    if (this.appState.currentVasca) {
+      this.acquario = this.appState.currentVasca;
       this.vascheService.recuperaSingolaVasca(this.acquario.id, (response) => {
         this.acquario = response;
       }, () => {
