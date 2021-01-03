@@ -34,36 +34,12 @@ export class PesciService {
    * 
    * @param modelSearch Ricerca di un pesce con parametri
    */
-  public ricercaPesce(modelSearch, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+  public ricercaPesce(modelSearch, currentVasca ,callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
     this.setLoading(true);
+    var identificativo = currentVasca!=null ? currentVasca.id : "";
 
-    var obj = {"id":null,
-      "commonName":modelSearch.nomePesce,
-      "scientificName":null,
-      "synonymous":null,
-      "originZone":null,
-      "origin":null,
-      "familyId":null,
-      "maxLength":null,
-      "tankMinLength":null,
-      "tankMinVolume":null,
-      "temperatureMin":null,
-      "temperatureMax":null,
-      "phMin":null,
-      "phMax":null,
-      "ghMin":null,
-      "ghMax":null,
-      "waterFlow":null,
-      "tankLevel":null,
-      "description":null,
-      "temperament":null,
-      "careLevel":null,
-      "aquariumType":null,
-      "diet":null,
-      "minNumber":null
-    };
-    this.backend.post('fishs/ricerca', obj, new HttpParams() ).subscribe(
+    this.backend.post('fishs/ricerca?identificativo='+identificativo+'&commonName='+modelSearch.nomePesce, null, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 
           callbackSuccess(response.aaData);

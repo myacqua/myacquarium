@@ -29,7 +29,8 @@ export class RicercaPesceComponent implements OnInit {
 
     this.formProcessed = true;
 
-    this.pesciService.ricercaPesce(this.modelSearch, (success) => {
+    this.pesciService.ricercaPesce(this.modelSearch, this.appstate.currenVasca, (success) => {
+
       this.array_pesci = success;
     });
     

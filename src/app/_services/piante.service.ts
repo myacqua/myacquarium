@@ -33,36 +33,12 @@ export class PianteService {
    * 
    * @param modelSearch Ricerca di una pianta con parametri
    */
-  public ricercaPiante(modelSearch, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+  public ricercaPiante(modelSearch, currentVasca, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
     this.setLoading(true);
-
-    
-    var obj = {"id":null,
-                "commonName":null,
-                "scientificName":modelSearch.nomePiante,
-                "originZone":null,
-                "origin":null,
-                "familyId":null,
-                "minHeight":null,
-                "maxHeight":null,
-                "temperatureMin":null,
-                "temperatureMax":null,
-                "phMin":null,
-                "phMax":null,
-                "ghMin":null,
-                "ghMax":null,
-                "khMin":null,
-                "khMax":null,
-                "lighting":null,
-                "co2":null,
-                "description":null,
-                "growThrate":null,
-                "careLevel":null,
-                "type":null
-    }; 
-
-    this.backend.post('plants/ricerca', obj, new HttpParams() ).subscribe(
+    var identificativo = currentVasca!=null ? currentVasca.id : "";
+console.log("###########");
+    this.backend.post('plants/ricerca?identificativo='+identificativo+'&scientificName='+modelSearch.nomePiante, null, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 
           callbackSuccess(response.aaData);

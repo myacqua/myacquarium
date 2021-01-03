@@ -35,7 +35,7 @@ export class GestisciAcquarioPage implements OnInit {
   }
 
   onClickPianta (pianta) {
-    this.appState.currentPiante = piante; 
+    this.appState.currentPiante = pianta; 
     this.appState.searchState = 'piante';
   }
 

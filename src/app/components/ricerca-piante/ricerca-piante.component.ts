@@ -32,7 +32,7 @@ export class RicercaPianteComponent implements OnInit {
 
     this.formProcessed = true;
 
-    this.pianteService.ricercaPiante(this.modelSearch, (success) => {
+    this.pianteService.ricercaPiante(this.modelSearch, this.appstate.currenVasca, (success) => {
       this.array_piante = success;
     });
     
