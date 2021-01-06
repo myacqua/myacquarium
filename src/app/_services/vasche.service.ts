@@ -95,7 +95,7 @@ export class VascheService {
    * @param callbackError 
    */
   public recuperaSingolaVasca(vascaID: string, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
-
+    console.log("#### recuperaSingolaVasca");
     this.setLoading(true, true);
 
     this.backend.post('tanks/recupera?identificativo='+vascaID+'&identificativoUtente='+this.userID, new HttpParams() ).subscribe(
@@ -130,6 +130,118 @@ export class VascheService {
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 
           callbackSuccess(response.aaData[0]);
+        else
+          callbackError();
+          
+        this.setLoading(false);
+      }, 
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+      }
+    )
+  }
+
+  /**
+   * 
+   * @param currentVasca vasca per il quale aggiungere un pesce
+   * @param currentPesce pesce da aggiungere alla vasca
+   */
+  public aggiungiPesce(currentVasca, currentPesce, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+
+    this.setLoading(true);
+
+    var identificativoVasca = currentVasca!=null ? currentVasca.id : "";
+    var identificativoPesce = currentPesce!=null ? currentPesce.id : "";
+    this.backend.post('tanks/addFish?identificativoVasca='+identificativoVasca+'&identificativoPesce='+identificativoPesce, null, new HttpParams() ).subscribe(
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
+        else
+          callbackError();
+          
+        this.setLoading(false);
+      }, 
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+      }
+    )
+  }
+
+  /**
+   * 
+   * @param currentVasca vasca per il quale eliminare un pesce
+   * @param currentPesce pesce da eliminare alla vasca
+   */
+  public eliminaPesce(currentVasca, currentPesce, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+
+    this.setLoading(true);
+
+    var identificativoVasca = currentVasca!=null ? currentVasca.id : "";
+    var identificativoPesce = currentPesce!=null ? currentPesce.id : "";
+    this.backend.post('tanks/removeFish?identificativoVasca='+identificativoVasca+'&identificativoPesce='+identificativoPesce, null, new HttpParams() ).subscribe(
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
+        else
+          callbackError();
+          
+        this.setLoading(false);
+      }, 
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+      }
+    )
+  }
+
+  /**
+   * 
+   * @param currentVasca vasca per il quale aggiungere una pianta
+   * @param currentPesce pianta da aggiungere alla vasca
+   */
+  public aggiungiPianta(currentVasca, currentPianta, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+
+    this.setLoading(true);
+
+    var identificativoVasca = currentVasca!=null ? currentVasca.id : "";
+    var identificativoPianta = currentPianta!=null ? currentPianta.id : "";
+    this.backend.post('tanks/addPlant?identificativoVasca='+identificativoVasca+'&identificativoPianta='+identificativoPianta, null, new HttpParams() ).subscribe(
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
+        else
+          callbackError();
+          
+        this.setLoading(false);
+      }, 
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+      }
+    )
+  }
+
+  /**
+   * 
+   * @param currentVasca vasca per il quale eliminare una pianta
+   * @param currentPesce pianta da eliminare alla vasca
+   */
+  public eliminaPianta(currentVasca, currentPianta, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+
+    this.setLoading(true);
+
+    var identificativoVasca = currentVasca!=null ? currentVasca.id : "";
+    var identificativoPianta = currentPianta!=null ? currentPianta.id : "";
+    this.backend.post('tanks/removePlant?identificativoVasca='+identificativoVasca+'&identificativoPianta='+identificativoPianta, null, new HttpParams() ).subscribe(
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
         else
           callbackError();
           

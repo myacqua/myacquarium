@@ -20,7 +20,35 @@
     </ion-card-header>
   
     <ion-card-content>
-      {{acquario.descrizione}}
+      <ion-card-subtitle>{{acquario.descrizione}}</ion-card-subtitle>
+      
+      <!--h3 *ngIf="acquario.parameter!=null && acquario.parameter.phMax!=-1 && acquario.parameter.phMin!=-1" class="parameterTitle" style="">Parametri</h3-->
+      <div style="margin-top:10px;font-size: 15px;">
+        <div *ngIf="acquario.parameter!=null && acquario.parameter.phMax!=-1 && acquario.parameter.phMin!=-1" style="width:18%;" class="parameterContainer">
+          <span class="parameterBadge" style="">PH</span>
+          <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.phMax}}</span>
+          <span class="parameter" style="line-height: 26px;">n.v.</span>
+          <span class="parameterMin" style="">{{acquario.parameter.phMin}}<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
+        </div>
+        <div *ngIf="acquario.parameter!=null && acquario.parameter.ghMax!=-1 && acquario.parameter.ghMin!=-1" style="width:18%" class="parameterContainer">
+          <span class="parameterBadge" style="">GH</span>
+          <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.ghMax}}</span>
+          <span class="parameter" style="line-height: 26px;">n.v.</span>
+          <span class="parameterMin" style="">{{acquario.parameter.ghMin}}<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
+        </div>
+        <div *ngIf="acquario.parameter!=null && acquario.parameter.khMax!=-1 && acquario.parameter.khMin!=-1" style="width:18%" class="parameterContainer">
+          <span class="parameterBadge" style="">KH</span>
+          <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.khMax}}</span>
+          <span class="parameter" style="line-height: 26px;">n.v.</span>
+          <span class="parameterMin" style="">{{acquario.parameter.khMin}}<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
+        </div>
+        <div *ngIf="acquario.parameter!=null && acquario.parameter.temperatureMax!=-1 && acquario.parameter.temperatureMin!=-1" style="width:38%" class="parameterContainer">
+          <span class="parameterBadge" style="">Temperature</span>
+          <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.temperatureMax}}°</span>
+          <span class="parameter" style="line-height: 26px;">n.v.</span>
+          <span class="parameterMin" style="">{{acquario.parameter.temperatureMin}}°<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
+        </div>
+      </div>
     </ion-card-content>
   </ion-card>
 

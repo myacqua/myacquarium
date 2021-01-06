@@ -15,7 +15,7 @@ export class GestisciAcquarioPage implements OnInit {
   constructor(private appState: AppStateService, private vascheService: VascheService, private notify: AlertService) { }
 
   ngOnInit() {
-        
+    
   }
 
   ionViewWillEnter() {
@@ -34,6 +34,7 @@ export class GestisciAcquarioPage implements OnInit {
     this.appState.canAdd = false;
     this.appState.canDelete = true;
     this.appState.currentPesce = pesce;
+    this.appState.currentPiante = null;
     this.appState.searchState = 'pesci';
   }
 
@@ -41,6 +42,7 @@ export class GestisciAcquarioPage implements OnInit {
 
     this.appState.canAdd = false;
     this.appState.canDelete = true;
+    this.appState.currentPesce = null;
     this.appState.currentPiante = pianta; 
     this.appState.searchState = 'piante';
   }
@@ -49,6 +51,8 @@ export class GestisciAcquarioPage implements OnInit {
 
     this.appState.canAdd = true;
     this.appState.canDelete = false;
+    this.appState.currentPesce = null;
+    this.appState.currentPiante = null;
     this.appState.searchState = typeAdd;
   }
 
