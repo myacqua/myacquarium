@@ -45,7 +45,6 @@ export class RicercaPianteComponent implements OnInit {
    */
   onClick (piante) {
 
-    console.log("# ricerca pianta");
     this.appstate.currentPiante = piante; 
     this.appstate.canAdd = this.appstate.currentVasca!= null? true : false;
   }

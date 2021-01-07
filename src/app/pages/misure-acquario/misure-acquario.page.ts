@@ -41,31 +41,15 @@ export class MisureAcquarioPage implements OnInit {
     
   }
 
-  /**
-   * Fa una ricerca per una pianta in base ai parametri di ricerca
-   
-  processForm( tipo ) {
-
-    this.formProcessed = true;
-    this.modelMisura.tipo = tipo;
-    console.log("######### SALVO");
-    this.vascheService.aggiungiMisurazione(this.appState.currentVasca, this.modelMisura, (response) => {
-      this.notify.showNotification("Misura Aggiornata", 'success');
-      this.router.navigate(['gestisci-acquario']);
-    }, () => {
-      this.notify.showNotification("Salvataggio misura non andata a buon fine", 'danger');
-    });
-  }
-  */
-
   processForm(form) {
 
     if (form.form.valid)
     {
       this.vascheService.aggiungiMisurazione(this.appState.currentVasca, this.modelMisura, (response) => {
-        this.appState.currentVasca = response;
-          this.notify.showNotification("Vasca Aggiornata", 'success');
-          this.location.back();
+        //this.appState.currentVasca = response;
+        this.notify.showNotification("Vasca Aggiornata", 'success');
+        //this.location.back();
+        this.router.navigate(['gestisci-acquario']);
       }, () => {
         this.notify.showNotification("Errore nell'aggiornamento della vasca", 'danger');
       });

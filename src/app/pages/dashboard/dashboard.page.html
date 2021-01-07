@@ -36,7 +36,15 @@
         <ion-card-header>
           <ion-card-subtitle>{{vasca.nome}}</ion-card-subtitle>
         </ion-card-header>
-        <ion-card-content> {{vasca.descrizione}} </ion-card-content>
+        <ion-card-content> 
+          {{vasca.descrizione}} <br>
+          <ion-grid>
+            <ion-row>
+              <ion-col><ion-label color="secondary" stacked><ion-icon name="fish"></ion-icon>{{vasca.fishs.length}} Pesci</ion-label></ion-col>
+              <ion-col><ion-label color="success" stacked><ion-icon name="leaf"></ion-icon>{{vasca.plants.length}} Piante</ion-label></ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
         <ion-ripple-effect></ion-ripple-effect>
       </div>
     </ion-card>

@@ -95,7 +95,6 @@ export class VascheService {
    * @param callbackError 
    */
   public recuperaSingolaVasca(vascaID: string, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
-    console.log("#### recuperaSingolaVasca");
     this.setLoading(true, true);
 
     this.backend.post('tanks/recupera?identificativo='+vascaID+'&identificativoUtente='+this.userID, new HttpParams() ).subscribe(

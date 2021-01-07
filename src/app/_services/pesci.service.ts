@@ -49,7 +49,7 @@ export class PesciService {
         this.setLoading(false);
       }, 
       (error) => {
-        console.log(error)
+        console.log(error);
         callbackError();
         this.setLoading(false);
       }

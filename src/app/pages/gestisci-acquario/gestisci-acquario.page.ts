@@ -24,6 +24,7 @@ export class GestisciAcquarioPage implements OnInit {
   }
 
   ionViewWillEnter() {
+
     if (this.appState.currentVasca) {
       this.acquario = this.appState.currentVasca;
       this.vascheService.recuperaSingolaVasca(this.acquario.id, (response) => {
