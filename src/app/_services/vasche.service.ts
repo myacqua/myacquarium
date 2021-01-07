@@ -115,6 +115,31 @@ export class VascheService {
     )
   }
 
+  /**
+   * Recupera le ultime misure della vasca
+   * @param vascaID 
+   * @param callbackSuccess 
+   * @param callbackError 
+   */
+  public recuperaUltimeMisureVasca(vascaID: string, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+    this.setLoading(true, true);
+
+    this.backend.post('tanks/getLastMisura?identificativoVasca='+vascaID, new HttpParams() ).subscribe(
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
+        else
+          callbackError();
+          
+        this.setLoading(false);
+      }, 
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+      }
+    )
+  }
 
   /**
    * Cancella una vasca
@@ -239,6 +264,36 @@ export class VascheService {
     var identificativoVasca = currentVasca!=null ? currentVasca.id : "";
     var identificativoPianta = currentPianta!=null ? currentPianta.id : "";
     this.backend.post('tanks/removePlant?identificativoVasca='+identificativoVasca+'&identificativoPianta='+identificativoPianta, null, new HttpParams() ).subscribe(
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
+        else
+          callbackError();
+          
+        this.setLoading(false);
+      }, 
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+      }
+    )
+  }
+
+  /**
+   * 
+   * @param currentVasca vasca per il quale aggiungere una misura
+   * @param modelMisura misura per la vasca
+   */
+  public aggiungiMisurazione(currentVasca, modelMisura, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+
+    this.setLoading(true);
+
+    var identificativoVasca = currentVasca!=null ? currentVasca.id : "";
+    var tipo = modelMisura.tipo;
+    var valore = modelMisura.valore;
+    var unita = modelMisura.unita;
+    this.backend.post('tanks/addMeasure?identificativoVasca='+identificativoVasca+'&tipo='+tipo+'&valore='+valore+'&unita='+unita, null, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 
           callbackSuccess(response.aaData);

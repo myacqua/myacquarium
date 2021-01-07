@@ -11,6 +11,11 @@ import { VascheService } from 'src/app/_services/vasche.service';
 export class GestisciAcquarioPage implements OnInit {
 
   acquario: any = {};
+  misure: any = {};
+  misuraPh : any = "";
+  misuraGh : any = "";
+  misuraKh : any = "";
+  misuraTemperatura : any = "";
 
   constructor(private appState: AppStateService, private vascheService: VascheService, private notify: AlertService) { }
 
@@ -23,6 +28,24 @@ export class GestisciAcquarioPage implements OnInit {
       this.acquario = this.appState.currentVasca;
       this.vascheService.recuperaSingolaVasca(this.acquario.id, (response) => {
         this.acquario = response;
+
+        /**Recupero le misure della vasca**/
+        this.vascheService.recuperaUltimeMisureVasca(this.acquario.id, (response) => {
+          this.misure = response;
+          
+          for (let i=0;i<this.misure.length;i++) {
+
+            var misura = this.misure[i];
+            if (misura.tipo=='PH') this.misuraPh = misura.valore;
+            else if (misura.tipo=='GH') this.misuraGh = misura.valore;
+            else if (misura.tipo=='KH') this.misuraKh = misura.valore;
+            else if (misura.tipo=='TEMPERATURA') this.misuraTemperatura = misura.valore;
+          };
+
+        }, () => {
+          this.notify.showNotification("Misure vasca non presenti", 'danger');
+        });
+
       }, () => {
         this.notify.showNotification("Vasca non presente", 'danger');
       });
