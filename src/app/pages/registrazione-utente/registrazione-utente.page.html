@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title classclass="ion-text-center"> Registrazione utente</ion-title>
+    <ion-title classclass="ion-text-center"> Creare account</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,17 +11,18 @@
   <div class="ion-margin">
     <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
     <ion-list-header>
-      <ion-label>Inserisci i tuoi dati </ion-label>
+      <ion-label classclass="ion-text-center">Il tuo account </ion-label>
       </ion-list-header>
         <ion-list>
           <ion-item>
-            <ion-label position="floating" >Nome</ion-label>
+            <ion-label position="floating" > Nome</ion-label>
             <ion-input [(ngModel)]="model.nome" maxlength="64" name="nome" #nome="ngModel" required></ion-input>
           </ion-item>
           <ion-list *ngIf="nome.dirty && nome.errors" lines="none">
             <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
           </ion-list>
         </ion-list>
+        <!--
         <ion-list>
           <ion-item>
             <ion-label position="floating" >Cognome</ion-label>
@@ -40,6 +41,7 @@
           </ion-select>
           </ion-item>
           </ion-list>
+          -->
         <ion-list>
           <ion-item>
             <ion-label position="floating" >Email</ion-label>
@@ -49,6 +51,7 @@
             <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
           </ion-list>
         </ion-list>
+        <!--
         <ion-list>
           <ion-item>
             <ion-label position="floating" >Conferma Email</ion-label>
@@ -62,6 +65,7 @@
             <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
           </ion-list>
         </ion-list>
+        -->
         <ion-list>
           <ion-item>
             <ion-label position="floating" >Password</ion-label>
@@ -86,26 +90,26 @@
         </ion-list>
       </form>
     </div>
-        
+    <ion-footer class="ion-no-border">
+      <ion-toolbar>
+        <ion-row *ngIf="!editMode">
+          <ion-col size="12" class="ion-text-center">
+            <ion-button expand="block" (click)="processForm(form)"
+              > 
+              Crea il tuo profilo MyAcquarium
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="editMode">
+          <ion-col class="ion-text-center">
+            <ion-button expand="block" (click)="processForm(form)"
+              > Aggiorna il tuo profilo
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-toolbar>
+    </ion-footer>    
         
 
 </ion-content>
-<ion-footer class="ion-no-border">
-  <ion-toolbar>
-    <ion-row *ngIf="!editMode">
-      <ion-col size="12" class="ion-text-center">
-        <ion-button expand="block" (click)="processForm(form)"
-          > 
-          Salva il tuo profilo
-        </ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row *ngIf="editMode">
-      <ion-col class="ion-text-center">
-        <ion-button expand="block" (click)="processForm(form)"
-          > Aggiorna il tuo profilo
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
-</ion-footer>
+
