@@ -308,4 +308,31 @@ export class VascheService {
       }
     )
   }
+
+  /**
+   * 
+   * @param currentVasca vasca per il quale aggiungere una misura
+   * @param idMisura identificativo della misura da eliminare
+   */
+  public rimuoviMisurazione(currentVasca, idMisura, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+
+    this.setLoading(true);
+
+    var identificativoVasca = currentVasca!=null ? currentVasca.id : "";
+    this.backend.post('tanks/removeMisura?identificativoVasca='+identificativoVasca+'&identificativoMisura='+idMisura, null, new HttpParams() ).subscribe(
+      (response : any) => {
+        if (response.success && typeof response.aaData != "undefined") 
+          callbackSuccess(response.aaData);
+        else
+          callbackError();
+          
+        this.setLoading(false);
+      }, 
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+      }
+    )
+  }
 }

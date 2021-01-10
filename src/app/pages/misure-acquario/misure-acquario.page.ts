@@ -57,4 +57,16 @@ export class MisureAcquarioPage implements OnInit {
       this.notify.showNotification("Alcuni parametri non sono stai inseriti", 'danger');
     }
   }     
+
+  deleteMeasure(idMisura) {
+
+    this.vascheService.rimuoviMisurazione(this.appState.currentVasca, idMisura, (response) => {
+      //this.appState.currentVasca = response;
+      this.notify.showNotification("Vasca Aggiornata", 'success');
+      //this.location.back();
+      this.router.navigate(['gestisci-acquario']);
+    }, () => {
+      this.notify.showNotification("Errore nell'aggiornamento della vasca", 'danger');
+    });
+  }  
 }
