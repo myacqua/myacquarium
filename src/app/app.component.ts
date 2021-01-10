@@ -35,9 +35,15 @@ export class AppComponent implements OnInit {
       icon: 'leaf'
     },
     {
-      title: 'registrazione utente',
+      title: 'Registrazione utente',
       slug: 'registrazione utente',
       url: '/registrazione-utente',
+      icon: 'leaf'
+    },
+    {
+      title: 'Login',
+      slug: 'login',
+      url: '/login',
       icon: 'leaf'
     }
   ];
