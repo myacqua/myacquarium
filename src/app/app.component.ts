@@ -33,6 +33,12 @@ export class AppComponent implements OnInit {
       slug: 'piante',
       url: '/ricerca',
       icon: 'leaf'
+    },
+    {
+      title: 'registrazione utente',
+      slug: 'registrazione utente',
+      url: '/registrazione-utente',
+      icon: 'leaf'
     }
   ];
   public labels = ['Family'];

@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'misure-acquario',
     loadChildren: () => import('./pages/misure-acquario/misure-acquario.module').then( m => m.MisureAcquarioPageModule)
+  },  {
+    path: 'registrazione-utente',
+    loadChildren: () => import('./pages/registrazione-utente/registrazione-utente.module').then( m => m.RegistrazioneUtentePageModule)
   }
+
 
   
 
