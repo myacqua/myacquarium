@@ -45,6 +45,12 @@ export class AppComponent implements OnInit {
       slug: 'login',
       url: '/login',
       icon: 'leaf'
+    },
+    {
+    title: 'Recupero password',
+      slug: 'recupero password',
+      url: '/recupero-password',
+      icon: 'leaf'
     }
   ];
   public labels = ['Family'];
