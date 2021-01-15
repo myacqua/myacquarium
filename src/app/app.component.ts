@@ -34,25 +34,16 @@ export class AppComponent implements OnInit {
       url: '/ricerca',
       icon: 'leaf'
     },
-    {
-      title: 'Registrazione utente',
-      slug: 'registrazione utente',
-      url: '/registrazione-utente',
-      icon: 'leaf'
-    },
+  
     {
       title: 'Login',
       slug: 'login',
       url: '/login',
-      icon: 'leaf'
-    },
-    {
-    title: 'Recupero password',
-      slug: 'recupero password',
-      url: '/recupero-password',
-      icon: 'leaf'
+      icon: 'log-in'
     }
-  ];
+    
+  
+    ];
   public labels = ['Family'];
 
   constructor(

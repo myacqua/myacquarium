@@ -90,12 +90,26 @@
         </ion-list>
       </form>
     </div>
+    <ion-checkbox></ion-checkbox>
+    <ion-label classclass="ion-text-center">Accetta i termini  </ion-label>
+    <ion-view view-title="Privacy policy">
+     
+        <ion-text>
+        <h5>
+        Welcome to the Google Privacy Policy
+    
+        When you use Google services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. This is important; we hope you will take time to read it carefully. And remember, you can find controls to manage your information and protect your privacy and security at My Account.
+    
+        Privacy Policy
+      </h5>
+      </ion-text>
+    
+    </ion-view>
     <ion-footer class="ion-no-border">
       <ion-toolbar>
         <ion-row *ngIf="!editMode">
           <ion-col size="12" class="ion-text-center">
-            <ion-button expand="block" (click)="processForm(form)"
-              > 
+            <ion-button expand="block" (click)="processForm(form)" > 
               Crea il tuo profilo MyAcquarium
             </ion-button>
           </ion-col>
@@ -109,7 +123,9 @@
         </ion-row>
       </ion-toolbar>
     </ion-footer>    
-        
-
+     
+    
+    
+  
 </ion-content>
 
