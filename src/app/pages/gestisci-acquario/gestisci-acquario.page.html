@@ -17,176 +17,187 @@
     <ion-card-header>
       <ion-card-subtitle>Capacità: {{acquario.volume}} litri</ion-card-subtitle>
       <ion-card-title>{{acquario.nome}}</ion-card-title>
+      <ion-card-subtitle style="padding-top: 10px;">{{acquario.descrizione}}</ion-card-subtitle>
     </ion-card-header>
-  
-    <ion-card-content>
-      <!--DESCRIZIONE-->
-      <ion-card-subtitle>{{acquario.descrizione}}</ion-card-subtitle>
-      <!--PARAMETRI-->
-      <div *ngIf="acquario.parameter!=null" style="margin-top:10px;font-size: 15px;">
-        
-        <div *ngIf="acquario.parameter.phMax!=-1 && acquario.parameter.phMin!=-1" style="width:18%;" 
-            class="parameterContainer" [class]="(misuraPh=='') ? 'warning' : (misuraPh>acquario.parameter.phMax || misuraPh<acquario.parameter.phMin) ? 'danger' : ''">
-          <span class="parameterBadge" style="">PH</span>
-          <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.phMax}}</span>
-          <span class="parameter" style="line-height: 26px;min-height: 28px;">
-            <ion-label *ngIf="misuraPh!=''">{{misuraPh}}</ion-label>
-            <ion-label *ngIf="misuraPh==''">n.v.</ion-label>
-          </span>
-          <span class="parameterMin" style="">{{acquario.parameter.phMin}}<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
-        </div>
-
-        <div *ngIf="acquario.parameter.ghMax!=-1 && acquario.parameter.ghMin!=-1" style="width:18%" 
-            class="parameterContainer" [class]="(misuraGh=='') ? 'warning' : (misuraGh>acquario.parameter.ghMax || misuraGh<acquario.parameter.ghMin) ? 'danger' : ''">
-          <span class="parameterBadge" style="">GH</span>
-          <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.ghMax}}</span>
-          <span class="parameter" style="line-height: 26px;min-height: 28px;">
-            <ion-label *ngIf="misuraGh!=''">{{misuraGh}}</ion-label>
-            <ion-label *ngIf="misuraGh==''">n.v.</ion-label>
-          </span>
-          <span class="parameterMin" style="">{{acquario.parameter.ghMin}}<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
-        </div>
-
-        <div *ngIf="acquario.parameter.khMax!=-1 && acquario.parameter.khMin!=-1" style="width:18%" 
-            class="parameterContainer" [class]="(misuraKh=='') ? 'warning' : (misuraKh>acquario.parameter.khMax || misuraKh<acquario.parameter.khMin) ? 'danger' : ''">
-          <span class="parameterBadge" style="">KH</span>
-          <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.khMax}}</span>
-          <span class="parameter" style="line-height: 26px;min-height: 28px;">
-            <ion-label *ngIf="misuraKh!=''">{{misuraKh}}</ion-label>
-            <ion-label *ngIf="misuraKh==''">n.v.</ion-label>
-          </span>
-          <span class="parameterMin" style="">{{acquario.parameter.khMin}}<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
-        </div>
-
-        <div *ngIf="acquario.parameter.temperatureMax!=-1 && acquario.parameter.temperatureMin!=-1" style="width:38%" 
-            class="parameterContainer" [class]="(misuraTemperatura=='') ? 'warning' : (misuraTemperatura>acquario.parameter.temperatureMax || misuraTemperatura<acquario.parameter.temperatureMin) ? 'danger' : ''">
-          <span class="parameterBadge" style="">Temperature</span>
-          <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.temperatureMax}}°</span>
-          <span class="parameter" style="line-height: 26px;min-height: 28px;">
-            <ion-label *ngIf="misuraTemperatura!=''">{{misuraTemperatura}}°</ion-label>
-            <ion-label *ngIf="misuraTemperatura==''">n.v.</ion-label>
-          </span>
-          <span class="parameterMin" style="">{{acquario.parameter.temperatureMin}}°<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
-        </div>
-      </div>
-    </ion-card-content>
   </ion-card>
 
-  <!--AGGIUNGI MISURA-->
-  <ion-button [routerLink]="['/misure-acquario']" expand="block" style="padding: 0px 15px;margin: 7px 0px 0px 0px;">
-    <ion-icon slot="start" name="flask-outline"></ion-icon>
-    Misurazioni
-  </ion-button>
-
-  <ion-card style="padding-bottom: 10px;">
-    <!-- Segmenti per selezionare la tipologia di oggetti visibili -->
-    <ion-segment #segment scrollable value="pesci" class="ion-margin-start ion-margin-end" style="margin-top: 20px;">
-      <ion-segment-button value="pesci" layout="icon-start">
-        <ion-label>Pesci</ion-label>
-        <ion-icon name="fish"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="piante" layout="icon-start">
-        <ion-label>Piante</ion-label>
-        <ion-icon name="leaf"></ion-icon>
-      </ion-segment-button>
-    </ion-segment>
-
-    <!-- Lista dei pesci presenti nell'acquario -->
-    <ion-list *ngIf="segment.value == 'pesci'">
-      <ion-item (click)="onClickPesce(pesce)" [routerLink]="['/selezione-oggetto']" *ngFor="let pesce of acquario.fishs">
-
-        <ion-label>
-          <!-- PARTE IMMAGINE -->
-          <div *ngIf="pesce.fishImages.length != 0" style="width: 20%;float:left;">
-            <img src="{{pesce.fishImages[0].thumbUrl}}" style="width:100%;border-radius: 5px;">
-          </div>
-          <div *ngIf="pesce.fishImages.length == 0" style="width: 20%;float:left;">
-            <img src="assets/img/icon-fish.png/" style="width:100%;border-radius: 5px;">
-          </div>
-
-          <!-- PARTE TESTO -->
-          <div style="width: 80%;padding:0px 5px;float:right">
-            <p><small>Nome comune: <b>{{pesce.commonName}}</b></small></p>
-            <p><small>Nome scientifico: <b>{{pesce.scientificName}}</b></small></p>
-            <p><small>Zona di origine: <b>{{pesce.originZone}}</b></small></p>
-          </div>
-
-          <!--PARAMETRI PESCE-->
-          <div style="width: 100%;padding:5px 5px 0px 0px;float:left">
-            <!--BADGE PH -->
-            <ion-badge *ngIf="!pesce.phAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
-            <ion-badge *ngIf="pesce.phAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
-
-            <!--BADGE GH -->
-            <ion-badge *ngIf="!pesce.ghAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
-            <ion-badge *ngIf="pesce.ghAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
-
-            <!--BADGE TEMPERATURE -->
-            <ion-badge *ngIf="!pesce.temperatureAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
-            <ion-badge *ngIf="pesce.temperatureAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
-          </div>
-        </ion-label>
-        
-      </ion-item>
-    </ion-list>
-    <ion-button *ngIf="segment.value == 'pesci'" 
-        (click)="onClickAdd('pesci')" [routerLink]="['/ricerca']" expand="block" color="secondary" style="padding: 0px 15px;margin: 7px 0px 0px 0px;">
-      <ion-icon slot="start" name="fish"></ion-icon>
-      Aggiungi Pesce
+  <ion-card style="padding-bottom:10px;">
+    <ion-card-header style="padding-bottom: 0px;">
+      <ion-card-subtitle><ion-label>Misurazioni</ion-label></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <!--PARAMETRI-->
+      <div *ngIf="acquario.parameter!=null">
+        <!-- SLIDER DEI PARAMETRI -->
+        <ion-slides pager="true">
+          <ion-slide *ngIf="acquario.parameter.phMax!=-1 && acquario.parameter.phMin!=-1" style="width: 100%;">
+            <div class="parameterContainer" [class]="(misuraPh=='') ? 'warning' : (misuraPh>acquario.parameter.phMax || misuraPh<acquario.parameter.phMin) ? 'danger' : ''">
+              <span class="parameterBadge" style="">PH</span>
+              <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.phMax}}</span>
+              <span class="parameter" style="line-height: 26px;min-height: 28px;">
+                <ion-label *ngIf="misuraPh!=''">{{misuraPh}}</ion-label>
+                <ion-label *ngIf="misuraPh==''">n.v.</ion-label>
+              </span>
+              <span class="parameterMin" style="">{{acquario.parameter.phMin}}<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
+            </div>
+          </ion-slide>
+          <ion-slide *ngIf="acquario.parameter.ghMax!=-1 && acquario.parameter.ghMin!=-1" style="width: 100%;">
+            <div class="parameterContainer" [class]="(misuraGh=='') ? 'warning' : (misuraGh>acquario.parameter.ghMax || misuraGh<acquario.parameter.ghMin) ? 'danger' : ''">
+              <span class="parameterBadge" style="">GH</span>
+              <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.ghMax}}</span>
+              <span class="parameter" style="line-height: 26px;min-height: 28px;">
+                <ion-label *ngIf="misuraGh!=''">{{misuraGh}}</ion-label>
+                <ion-label *ngIf="misuraGh==''">n.v.</ion-label>
+              </span>
+              <span class="parameterMin" style="">{{acquario.parameter.ghMin}}<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
+            </div>
+          </ion-slide>
+          <ion-slide *ngIf="acquario.parameter.khMax!=-1 && acquario.parameter.khMin!=-1" style="width: 100%;">
+            <div class="parameterContainer" [class]="(misuraKh=='') ? 'warning' : (misuraKh>acquario.parameter.khMax || misuraKh<acquario.parameter.khMin) ? 'danger' : ''">
+              <span class="parameterBadge" style="">KH</span>
+              <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.khMax}}</span>
+              <span class="parameter" style="line-height: 26px;min-height: 28px;">
+                <ion-label *ngIf="misuraKh!=''">{{misuraKh}}</ion-label>
+                <ion-label *ngIf="misuraKh==''">n.v.</ion-label>
+              </span>
+              <span class="parameterMin" style="">{{acquario.parameter.khMin}}<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
+            </div>
+          </ion-slide>
+          <ion-slide *ngIf="acquario.parameter.temperatureMax!=-1 && acquario.parameter.temperatureMin!=-1" style="width: 100%;">
+            <div class="parameterContainer" [class]="(misuraTemperatura=='') ? 'warning' : (misuraTemperatura>acquario.parameter.temperatureMax || misuraTemperatura<acquario.parameter.temperatureMin) ? 'danger' : ''">
+              <span class="parameterBadge" style="">Temperature</span>
+              <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.temperatureMax}}°</span>
+              <span class="parameter" style="line-height: 26px;min-height: 28px;">
+                <ion-label *ngIf="misuraTemperatura!=''">{{misuraTemperatura}}°</ion-label>
+                <ion-label *ngIf="misuraTemperatura==''">n.v.</ion-label>
+              </span>
+              <span class="parameterMin" style="">{{acquario.parameter.temperatureMin}}°<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </div>
+    </ion-card-content>
+    <!--AGGIUNGI MISURA-->
+    <ion-button [routerLink]="['/misure-acquario']" expand="block" style="padding: 0px 15px;margin: 7px 0px 0px 0px;">
+      <ion-icon slot="start" name="flask-outline"></ion-icon>
+      Misurazioni
     </ion-button>
-    
-    <!-- Lista delle piante presenti nell'acquario -->
-    <ion-list *ngIf="segment.value == 'piante'" >
-      <ion-item (click)="onClickPianta(pianta)" [routerLink]="['/selezione-oggetto']" *ngFor="let pianta of acquario.plants">
-        
-        <ion-label>
+  </ion-card>
 
-          <!-- PARTE IMMAGINE -->
-          <div *ngIf="pianta.plantImages.length != 0" style="width: 20%;float:left;">
-            <img src="{{pianta.plantImages[0].thumbUrl}}" style="width:100%">
-          </div>
-          <div *ngIf="pianta.plantImages.length == 0" style="width: 20%;float:left;">
-            <img src="assets/img/icon-plant.png/" style="width:100%">
-          </div>
+ <ion-card style="padding-bottom:10px;">
+    <ion-card-header style="padding-bottom: 0px;">
+       <ion-card-subtitle><ion-label>Vivo</ion-label></ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content style="padding: 0px 0px 10px 0px;">
+      <!-- Segmenti per selezionare la tipologia di oggetti visibili -->
+      <ion-segment #segment scrollable value="pesci" class="ion-margin-start ion-margin-end" style="margin-top: 20px;">
+        <ion-segment-button value="pesci" layout="icon-start">
+          <ion-label>Pesci</ion-label>
+          <ion-icon name="fish"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="piante" layout="icon-start">
+          <ion-label>Piante</ion-label>
+          <ion-icon name="leaf"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
 
-          <!-- PARTE TESTO -->
-          <div style="width: 80%;padding:0px 5px;float:right">
-            <!--p><small>Nome comune: <b>{{pianta.commonName}}</b></small></p-->
-            <p><small>Nome scientifico: <b>{{pianta.scientificName}}</b></small></p>
-            <p><small>Zona di origine: <b>{{pianta.originZone}}</b></small></p>
-          </div>
+      <!-- Lista dei pesci presenti nell'acquario -->
+      <ion-list *ngIf="segment.value == 'pesci'">
+        <ion-item (click)="onClickPesce(pesce)" [routerLink]="['/selezione-oggetto']" *ngFor="let pesce of acquario.fishs">
 
-          <!--PARAMETRI PIANTA-->
-          <div style="width: 100%;padding:5px 5px 0px 0px;float:left">
-            <!--BADGE PH -->
-            <ion-badge *ngIf="!pianta.phAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
-            <ion-badge *ngIf="pianta.phAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+          <ion-label>
+            <!-- PARTE IMMAGINE -->
+            <div *ngIf="pesce.fishImages.length != 0" style="width: 20%;float:left;">
+              <img src="{{pesce.fishImages[0].thumbUrl}}" style="width:100%;border-radius: 5px;">
+            </div>
+            <div *ngIf="pesce.fishImages.length == 0" style="width: 20%;float:left;">
+              <img src="assets/img/icon-fish.png/" style="width:100%;border-radius: 5px;">
+            </div>
 
-            <!--BADGE GH -->
-            <ion-badge *ngIf="!pianta.ghAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
-            <ion-badge *ngIf="pianta.ghAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
-            
-            <!--BADGE KH -->
-            <ion-badge *ngIf="!pianta.khAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">KH</ion-badge>
-            <ion-badge *ngIf="pianta.khAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">KH</ion-badge>
-            
-            <!--BADGE HEIGHT -->
-            <ion-badge *ngIf="!pianta.heightAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Altezza</ion-badge>
-            <ion-badge *ngIf="pianta.heightAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Altezza</ion-badge>
+            <!-- PARTE TESTO -->
+            <div style="width: 80%;padding:0px 5px;float:right">
+              <p><small>Nome comune: <b>{{pesce.commonName}}</b></small></p>
+              <p><small>Nome scientifico: <b>{{pesce.scientificName}}</b></small></p>
+              <p><small>Zona di origine: <b>{{pesce.originZone}}</b></small></p>
+            </div>
 
-            <!--BADGE TEMPERATURE -->
-            <ion-badge *ngIf="!pianta.temperatureAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Temperatura</ion-badge>
-            <ion-badge *ngIf="pianta.temperatureAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Temperatura</ion-badge>
-          </div>
-        </ion-label>
+            <!--PARAMETRI PESCE-->
+            <div style="width: 100%;padding:5px 5px 0px 0px;float:left">
+              <!--BADGE PH -->
+              <ion-badge *ngIf="!pesce.phAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+              <ion-badge *ngIf="pesce.phAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
 
-      </ion-item>
-    </ion-list>
-    <ion-button *ngIf="segment.value == 'piante'"
-        (click)="onClickAdd('piante')" [routerLink]="['/ricerca']" expand="block" color="success" style="padding: 0px 15px;margin: 7px 0px 0px 0px;">
-      <ion-icon slot="start" name="leaf"></ion-icon>
-      Aggiungi Pianta
-    </ion-button>
+              <!--BADGE GH -->
+              <ion-badge *ngIf="!pesce.ghAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+              <ion-badge *ngIf="pesce.ghAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+
+              <!--BADGE TEMPERATURE -->
+              <ion-badge *ngIf="!pesce.temperatureAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
+              <ion-badge *ngIf="pesce.temperatureAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
+            </div>
+          </ion-label>
+          
+        </ion-item>
+      </ion-list>
+      <ion-button *ngIf="segment.value == 'pesci'" 
+          (click)="onClickAdd('pesci')" [routerLink]="['/ricerca']" expand="block" color="secondary" style="padding: 0px 15px;margin: 7px 0px 0px 0px;">
+        <ion-icon slot="start" name="fish"></ion-icon>
+        Aggiungi Pesce
+      </ion-button>
+      
+      <!-- Lista delle piante presenti nell'acquario -->
+      <ion-list *ngIf="segment.value == 'piante'" >
+        <ion-item (click)="onClickPianta(pianta)" [routerLink]="['/selezione-oggetto']" *ngFor="let pianta of acquario.plants">
+          
+          <ion-label>
+
+            <!-- PARTE IMMAGINE -->
+            <div *ngIf="pianta.plantImages.length != 0" style="width: 20%;float:left;">
+              <img src="{{pianta.plantImages[0].thumbUrl}}" style="width:100%">
+            </div>
+            <div *ngIf="pianta.plantImages.length == 0" style="width: 20%;float:left;">
+              <img src="assets/img/icon-plant.png/" style="width:100%">
+            </div>
+
+            <!-- PARTE TESTO -->
+            <div style="width: 80%;padding:0px 5px;float:right">
+              <!--p><small>Nome comune: <b>{{pianta.commonName}}</b></small></p-->
+              <p><small>Nome scientifico: <b>{{pianta.scientificName}}</b></small></p>
+              <p><small>Zona di origine: <b>{{pianta.originZone}}</b></small></p>
+            </div>
+
+            <!--PARAMETRI PIANTA-->
+            <div style="width: 100%;padding:5px 5px 0px 0px;float:left">
+              <!--BADGE PH -->
+              <ion-badge *ngIf="!pianta.phAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+              <ion-badge *ngIf="pianta.phAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">PH</ion-badge>
+
+              <!--BADGE GH -->
+              <ion-badge *ngIf="!pianta.ghAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+              <ion-badge *ngIf="pianta.ghAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">GH</ion-badge>
+              
+              <!--BADGE KH -->
+              <ion-badge *ngIf="!pianta.khAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">KH</ion-badge>
+              <ion-badge *ngIf="pianta.khAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">KH</ion-badge>
+              
+              <!--BADGE HEIGHT -->
+              <ion-badge *ngIf="!pianta.heightAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Altezza</ion-badge>
+              <ion-badge *ngIf="pianta.heightAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Altezza</ion-badge>
+
+              <!--BADGE TEMPERATURE -->
+              <ion-badge *ngIf="!pianta.temperatureAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Temperatura</ion-badge>
+              <ion-badge *ngIf="pianta.temperatureAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Temperatura</ion-badge>
+            </div>
+          </ion-label>
+
+        </ion-item>
+      </ion-list>
+      <ion-button *ngIf="segment.value == 'piante'"
+          (click)="onClickAdd('piante')" [routerLink]="['/ricerca']" expand="block" color="success" style="padding: 0px 15px;margin: 7px 0px 0px 0px;">
+        <ion-icon slot="start" name="leaf"></ion-icon>
+        Aggiungi Pianta
+      </ion-button>
+    </ion-card-content>
 </ion-card>
   
 </ion-content>
