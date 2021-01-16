@@ -3,6 +3,7 @@ import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { AlertService } from "./alert.service";
 import { Router } from "@angular/router";
+import { Storage } from '@ionic/storage';
 
 import { Plugins } from '@capacitor/core';
 const { Network } = Plugins;
@@ -11,11 +12,13 @@ const { Network } = Plugins;
 export class BackendService {
 
   networkHandler: any = null;
+  token = '';
 
   constructor(
     private http: HttpClient,
     private alertService: AlertService,
-    private router: Router
+    private router: Router,
+    private storage: Storage
   ) {
     this.getNetworkStatus();
     this.networkHandler = Network.addListener('networkStatusChange', (status) => { });
@@ -36,7 +39,8 @@ export class BackendService {
   setupParams(searchParams: HttpParams) {
 
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    // headers = headers.set("Authorization", "Bearer " + localStorage.getItem('access_token'));
+    if (this.token)
+      headers = headers.set("Authorization", "Bearer " + this.token);
     let options: any = { headers: headers, responseType: 'json', observe: 'body', params: searchParams };
 
     return options;
@@ -49,9 +53,19 @@ export class BackendService {
   }
 
   post(resource: string, body: any, searchParams: HttpParams = new HttpParams()) {
+    console.log("###POST");
     let options = this.setupParams(searchParams);
     return this.http.post(
       environment.apiUrl + resource,
+      JSON.stringify(body),
+      options
+    );
+  }
+
+  postAuth(resource: string, body: any, searchParams: HttpParams = new HttpParams()) {
+    let options = this.setupParams(searchParams);
+    return this.http.post(
+      environment.apiAuthUrl + resource,
       JSON.stringify(body),
       options
     );
@@ -81,7 +95,19 @@ export class BackendService {
       this.alertService.showNetworkError("ERRORE IMPREVISTO", "Contatta il supporto");
   }
 
+  public getToken(){
+    return this.token;
+  }
+  setProp(key: any,value: any ) {
+    this.storage.set('${key',value);
+  }
+  getProp(key: any) {
 
+    this.storage.get('${key').then((val) => {
+      console.log('Your '+key+' is', val);
+      return val;
+    });
+  }
 }
 
 
