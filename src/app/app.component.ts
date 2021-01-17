@@ -82,6 +82,16 @@ export class AppComponent implements OnInit {
     }
   }
 
+
+  //  TODO_MICHELE: da settare una volta completato il login
+  public setLoggedIn() {
+
+  }
+
+  public setLoggedOut() {
+
+  }
+
   public get appstate() {
     return this.appState;
   }
