@@ -51,8 +51,9 @@ export class VascheService {
       }, 
       (error) => {
         console.log(error)
-        callbackError();
+        callbackError(error);
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }
@@ -83,6 +84,7 @@ export class VascheService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }
@@ -111,6 +113,7 @@ export class VascheService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }
@@ -137,6 +140,7 @@ export class VascheService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }
@@ -164,6 +168,7 @@ export class VascheService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }
@@ -192,6 +197,7 @@ export class VascheService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }
@@ -220,6 +226,7 @@ export class VascheService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }
@@ -248,6 +255,7 @@ export class VascheService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }
@@ -276,6 +284,7 @@ export class VascheService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }
@@ -306,6 +315,7 @@ export class VascheService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }
@@ -333,6 +343,7 @@ export class VascheService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }

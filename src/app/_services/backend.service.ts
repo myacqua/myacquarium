@@ -12,7 +12,6 @@ const { Network } = Plugins;
 export class BackendService {
 
   networkHandler: any = null;
-  token = '';
 
   constructor(
     private http: HttpClient,
@@ -39,8 +38,8 @@ export class BackendService {
   setupParams(searchParams: HttpParams) {
 
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    if (this.token)
-      headers = headers.set("Authorization", "Bearer " + this.token);
+    if (this.getToken())
+      headers = headers.set("Authorization", "Bearer " + this.getToken());
     let options: any = { headers: headers, responseType: 'json', observe: 'body', params: searchParams };
 
     return options;
@@ -96,8 +95,12 @@ export class BackendService {
   }
 
   public getToken(){
-    return this.token;
+    return localStorage.getItem('access_token');
   }
+  public setToken(token: any) {
+    localStorage.setItem('access_token', token);
+  }
+
   setProp(key: any,value: any ) {
     this.storage.set('${key',value);
   }

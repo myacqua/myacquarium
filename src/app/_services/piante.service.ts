@@ -51,6 +51,7 @@ export class PianteService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }

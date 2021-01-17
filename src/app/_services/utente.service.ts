@@ -1,8 +1,8 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AlertService } from './alert.service';
 import { BackendService } from './backend.service';
 import { LoadingService } from './loading.service';
-import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class UtenteService {
   protected userID = 1;
   protected token = '';
   
-  constructor(private backend: BackendService, private loading: LoadingService,private storage: Storage) { }
+  constructor(private backend: BackendService, private loading: LoadingService,private notify: AlertService) { }
 
   //  restituisce se ci sono chiamate in corso in questo service
   public get isLoading(): boolean {
@@ -44,8 +44,7 @@ export class UtenteService {
     this.backend.postAuth('authenticate', model, new HttpParams() ).subscribe(
       (response : any) => {
         if (typeof response != "undefined") {
-          this.backend.setProp('access_token', response.token);
-          this.backend.token = response.token;
+          this.backend.setToken(response.token);
           callbackSuccess(response);
         } else
           callbackError();
@@ -56,6 +55,8 @@ export class UtenteService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.notify.showNetworkError("Attenzione", "Nome utente o password errate");
+        this.backend.showErrors(error);
       }
     )
   }
@@ -81,6 +82,7 @@ export class UtenteService {
         console.log(error)
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }
