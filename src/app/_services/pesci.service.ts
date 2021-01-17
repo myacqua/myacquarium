@@ -1,6 +1,5 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
 import { BackendService } from './backend.service';
 import { LoadingService } from './loading.service';
 
@@ -52,6 +51,7 @@ export class PesciService {
         console.log(error);
         callbackError();
         this.setLoading(false);
+        this.backend.showErrors(error, true);
       }
     )
   }

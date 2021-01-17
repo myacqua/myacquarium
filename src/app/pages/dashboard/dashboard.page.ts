@@ -25,8 +25,9 @@ export class DashboardPage implements OnInit {
 
     this.vascheService.recuperaVasche((response) => {
       this.array_vasche = response;
-    }, () => {
-      this.notify.showNetworkError("Impossibile recuperare le vasche", '');
+    }, (error) => {
+      if (error.status != 401)
+        this.notify.showNetworkError("Impossibile recuperare le vasche", '');
     });
   }
 
