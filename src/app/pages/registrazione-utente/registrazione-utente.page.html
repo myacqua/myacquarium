@@ -10,19 +10,27 @@
 <ion-content>
   <div class="ion-margin">
     <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
-    <ion-list-header>
-      <ion-label classclass="ion-text-center">Il tuo account </ion-label>
+      <ion-list-header>
+        <ion-label classclass="ion-text-center">Il tuo account </ion-label>
       </ion-list-header>
-        <ion-list>
-          <ion-item>
-            <ion-label position="floating" > Nome</ion-label>
-            <ion-input [(ngModel)]="model.nome" maxlength="64" name="nome" #nome="ngModel" required></ion-input>
-          </ion-item>
-          <ion-list *ngIf="nome.dirty && nome.errors" lines="none">
-            <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
-          </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating"> Nome</ion-label>
+          <ion-input
+            [(ngModel)]="model.nome"
+            maxlength="64"
+            name="nome"
+            #nome="ngModel"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-list *ngIf="nome.dirty && nome.errors" lines="none">
+          <ion-text color="danger" class="ion-margin-start ion-margin-end"
+            >Questo campo è obbligatorio</ion-text
+          >
         </ion-list>
-        <!--
+      </ion-list>
+      <!--
         <ion-list>
           <ion-item>
             <ion-label position="floating" >Cognome</ion-label>
@@ -42,16 +50,26 @@
           </ion-item>
           </ion-list>
           -->
-        <ion-list>
-          <ion-item>
-            <ion-label position="floating" >Email</ion-label>
-            <ion-input type="email" [(ngModel)]="model.email"  pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})" maxlength="64" name="email" #email="ngModel" required></ion-input>
-          </ion-item>
-          <ion-list *ngIf="email.dirty && email.errors" lines="none">
-            <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
-          </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input
+            type="email"
+            [(ngModel)]="model.email"
+            pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+            maxlength="64"
+            name="email"
+            #email="ngModel"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-list *ngIf="email.dirty && email.errors" lines="none">
+          <ion-text color="danger" class="ion-margin-start ion-margin-end"
+            >Questo campo è obbligatorio</ion-text
+          >
         </ion-list>
-        <!--
+      </ion-list>
+      <!--
         <ion-list>
           <ion-item>
             <ion-label position="floating" >Conferma Email</ion-label>
@@ -66,66 +84,81 @@
           </ion-list>
         </ion-list>
         -->
-        <ion-list>
-          <ion-item>
-            <ion-label position="floating" >Password</ion-label>
-            <ion-input type="password" [(ngModel)]="model.password" maxlength="64" name="password" #password="ngModel" required></ion-input>
-          </ion-item>
-          <ion-list *ngIf="password.dirty && password.errors" lines="none">
-            <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
-          </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input
+            type="password"
+            [(ngModel)]="model.password"
+            maxlength="64"
+            name="password"
+            #password="ngModel"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-list *ngIf="password.dirty && password.errors" lines="none">
+          <ion-text color="danger" class="ion-margin-start ion-margin-end"
+            >Questo campo è obbligatorio</ion-text
+          >
         </ion-list>
-        <ion-list>
-          <ion-item>
-            <ion-label position="floating" >Conferma Password</ion-label>
-            <ion-input type="password" [(ngModel)]="model.confermapassword" maxlength="64" name="confermapassword" #confermapassword="ngModel" required></ion-input>
-          </ion-item>
-          <ion-list *ngIf="model.confermapassword!=model.password" lines="none">
-            <ion-text color="danger" class="ion-margin-start ion-margin-end">le password non coincidono</ion-text>
-          </ion-list>
-          
-          <ion-list *ngIf="confermapassword.dirty && confermapassword.errors" lines="none">
-            <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
-          </ion-list>
+      </ion-list>
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Conferma Password</ion-label>
+          <ion-input
+            type="password"
+            maxlength="64"
+            name="confermapassword"
+            [(ngModel)]="model.confermapassword"
+            #confermapassword="ngModel"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-list *ngIf="model.confermapassword!=model.password" lines="none">
+          <ion-text color="danger" class="ion-margin-start ion-margin-end"
+            >le password non coincidono</ion-text
+          >
         </ion-list>
-      </form>
-    </div>
-    <ion-checkbox></ion-checkbox>
-    <ion-label classclass="ion-text-center">Accetta i termini  </ion-label>
-    <ion-view view-title="Privacy policy">
-     
-        <ion-text>
-        <h5>
-        Welcome to the Google Privacy Policy
-    
-        When you use Google services, you trust us with your information. This Privacy Policy is meant to help you understand what data we collect, why we collect it, and what we do with it. This is important; we hope you will take time to read it carefully. And remember, you can find controls to manage your information and protect your privacy and security at My Account.
-    
-        Privacy Policy
-      </h5>
-      </ion-text>
-    
-    </ion-view>
-    <ion-footer class="ion-no-border">
-      <ion-toolbar>
-        <ion-row *ngIf="!editMode">
-          <ion-col size="12" class="ion-text-center">
-            <ion-button expand="block" (click)="processForm(form)" > 
-              Crea il tuo profilo MyAcquarium
-            </ion-button>
-          </ion-col>
-        </ion-row>
-        <ion-row *ngIf="editMode">
-          <ion-col class="ion-text-center">
-            <ion-button expand="block" (click)="processForm(form)"
-              > Aggiorna il tuo profilo
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-toolbar>
-    </ion-footer>    
-     
-    
-    
-  
-</ion-content>
 
+        <ion-list
+          *ngIf="confermapassword.dirty && confermapassword.errors"
+          lines="none"
+        >
+          <ion-text color="danger" class="ion-margin-start ion-margin-end"
+            >Questo campo è obbligatorio</ion-text
+          >
+        </ion-list>
+      </ion-list>
+
+      <ion-checkbox
+        [(ngModel)]="model.privacy"
+        name="privacy"
+        #privacy="ngModel"
+        required
+      ></ion-checkbox>
+      <ion-label classclass="ion-text-center">Accetta i termini </ion-label>
+      <ion-text>
+        <h5>
+          Welcome to the Google Privacy Policy When you use Google services,
+          you trust us with your information. This Privacy Policy is meant to
+          help you understand what data we collect, why we collect it, and
+          what we do with it. This is important; we hope you will take time to
+          read it carefully. And remember, you can find controls to manage
+          your information and protect your privacy and security at My
+          Account. Privacy Policy
+        </h5>
+      </ion-text>
+      <ion-footer class="ion-no-border">
+        <ion-toolbar>
+          <ion-row >
+            <ion-col size="12" class="ion-text-center">
+              <ion-button type="submit" expand="block" [disabled]="!form.valid" >
+                Crea il tuo profilo MyAcquarium
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-toolbar>
+      </ion-footer>
+    </form>
+  </div>
+</ion-content>
