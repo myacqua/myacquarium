@@ -38,7 +38,8 @@ const routes: Routes = [
   {
     path: 'misure-acquario',
     loadChildren: () => import('./pages/misure-acquario/misure-acquario.module').then( m => m.MisureAcquarioPageModule)
-  },  {
+  },
+  {
     path: 'registrazione-utente',
     loadChildren: () => import('./pages/registrazione-utente/registrazione-utente.module').then( m => m.RegistrazioneUtentePageModule)
   },
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path: 'recupero-password',
     loadChildren: () => import('./pages/recupero-password/recupero-password.module').then( m => m.RecuperoPasswordPageModule)
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./pages/splash/splash.module').then( m => m.SplashPageModule)
   }
 
 

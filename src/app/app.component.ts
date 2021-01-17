@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  firstActivatRoute: string = 'dashboard';
+  firstActivatRoute: string = 'splash';
 
   initializeApp() {
     this.platform.ready().then(() => {
