@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AlertService } from 'src/app/_services/alert.service';
 import { AppStateService } from 'src/app/_services/appstate.service';
 import { VascheService } from 'src/app/_services/vasche.service';
+import { LoadingService } from 'src/app/_services/loading.service';
 
 @Component({
   selector: 'app-selezione-oggetto',
@@ -11,10 +12,28 @@ import { VascheService } from 'src/app/_services/vasche.service';
 })
 export class SelezioneOggettoPage implements OnInit {
 
-  constructor(private notify: AlertService, private appState:AppStateService,private vascheService:VascheService, private router: Router) { }
+  private loadingInProgress: boolean = false;
+
+  constructor(private notify: AlertService, private appState:AppStateService,private vascheService:VascheService, private router: Router,
+                private loading: LoadingService) { }
 
   ngOnInit() {
   
+  }
+
+  //  restituisce se ci sono chiamate in corso in questo service
+  public get isLoading(): boolean {
+    return this.loadingInProgress;
+  }
+  setLoading(toValue) {
+
+    if (toValue == true) {
+      this.loadingInProgress = true;
+      this.loading.showFullLoading();
+    } else {
+      this.loadingInProgress = false;
+      this.loading.hideLoading();
+    }
   }
 
   addVivo (){
@@ -32,6 +51,11 @@ export class SelezioneOggettoPage implements OnInit {
         this.vascheService.aggiungiPianta(this.appState.currentVasca, this.appState.currentPiante, (success) => {
           this.notify.showNotification("Pianta aggiunta alla vasca");
           this.router.navigate(['gestisci-acquario']);
+        }, 
+        (error) => {
+          console.log(error.message);
+          this.setLoading(false);
+          this.notify.showNotification(error.message);
         });
       }
     }

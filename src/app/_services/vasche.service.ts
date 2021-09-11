@@ -247,7 +247,7 @@ export class VascheService {
         if (response.success && typeof response.aaData != "undefined") 
           callbackSuccess(response.aaData);
         else
-          callbackError();
+          callbackError(response);
           
         this.setLoading(false);
       }, 
