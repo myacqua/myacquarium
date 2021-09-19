@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { VascheService } from '../../_services/vasche.service';
 @Component({
   selector: 'app-splash',
   templateUrl: './splash.page.html',
@@ -8,12 +8,22 @@ import { Router } from '@angular/router';
 })
 export class SplashPage implements OnInit {
 
-  constructor(private router:Router) { }
+  array_vasche: any = [];
+
+  constructor(private router:Router, private vascheService: VascheService) { }
 
   ngOnInit() {
     this.router.navigate(['/dashboard'], { replaceUrl: true });
   }
 
   ionViewWillEnter() {
+  }
+
+  vascaOnclick(vasca: any) {
+    
+  }
+
+  getVascheService() {
+    return this.vascheService;
   }
 }
