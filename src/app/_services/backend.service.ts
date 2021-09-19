@@ -4,9 +4,8 @@ import { environment } from "src/environments/environment";
 import { AlertService } from "./alert.service";
 import { Router } from "@angular/router";
 import { Storage } from '@ionic/storage';
+import { Network } from '@capacitor/network';
 
-import { Plugins } from '@capacitor/core';
-const { Network } = Plugins;
 
 @Injectable({ providedIn: "root" })
 export class BackendService {
