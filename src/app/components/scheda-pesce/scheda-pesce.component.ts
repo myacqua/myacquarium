@@ -7,7 +7,8 @@ import { AppStateService } from 'src/app/_services/appstate.service';
   styleUrls: ['./scheda-pesce.component.scss'],
 })
 export class SchedaPesceComponent implements OnInit {
-  private pesce = {}
+  
+  pesce: any = {}
   constructor(private appstate:AppStateService) { }
 
   ngOnInit() {

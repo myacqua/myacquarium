@@ -15,6 +15,10 @@ export class RicercaPage implements OnInit {
     this.appstate.canDelete = false;
   }
 
+  loadData(event) {
+    
+  }
+
   public get appState() {
 
     return this.appstate;

@@ -8,7 +8,7 @@ import { AppStateService } from 'src/app/_services/appstate.service';
 })
 export class SchedaAccessoriComponent implements OnInit {
 
-private accessori ={}
+  accessori: any = {}
 
   constructor(private appstate:AppStateService) { }
 

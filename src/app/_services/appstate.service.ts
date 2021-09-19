@@ -5,9 +5,9 @@ import { Injectable } from "@angular/core";
 })
 export class AppStateService {
   public searchState: string = "";
-  public currentPesce: {};
-  public currentPiante: {};
-  public currentAccessori: {};
+  public currentPesce: any = {}
+  public currentPiante: any = {};
+  public currentAccessori: any = {};
   public currentVasca: null;
   public canDelete : boolean = false;
   public canAdd : boolean = false;

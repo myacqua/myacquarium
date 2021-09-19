@@ -11,7 +11,7 @@ import { VascheService } from 'src/app/_services/vasche.service';
 })
 export class DashboardPage implements OnInit {
 
-  protected array_vasche = [];
+  array_vasche: any = [];
 
   constructor(private vascheService: VascheService, private appState: AppStateService, private router:Router, private notify: AlertService) { }
 

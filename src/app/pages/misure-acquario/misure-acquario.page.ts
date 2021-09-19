@@ -69,4 +69,9 @@ export class MisureAcquarioPage implements OnInit {
       this.notify.showNotification("Errore nell'aggiornamento della vasca", 'danger');
     });
   }  
+
+
+  pianificaMisurazione() {
+    
+  }
 }

@@ -61,6 +61,10 @@ export class SelezioneOggettoPage implements OnInit {
     }
   }
 
+  loadData(event) {
+
+  }
+
   deleteVivo (){
 
     if (this.appState.canDelete) {

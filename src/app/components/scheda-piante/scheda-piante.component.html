@@ -7,9 +7,9 @@
       <ion-list-header style="padding-left: 0px;"><ion-label style="margin-top: 7px;" class="ion-text-center">{{piante.scientificName}}</ion-label></ion-list-header>
       <!-- SLIDER IMMAGINI DEL PIANTA -->
       <ion-slides *ngIf="piante.plantImages.length>0">
-        <ion-slide-page *ngFor="let pImage of piante.plantImages" style="width: 100%;padding: 0px 15px 10px 15px;">
+        <ion-slide *ngFor="let pImage of piante.plantImages" style="width: 100%;padding: 0px 15px 10px 15px;">
               <img src="{{pImage.url}}" style="border-radius: 10px;">
-        </ion-slide-page>
+        </ion-slide>
       </ion-slides>
     </ion-list>
   </ion-card>

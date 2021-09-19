@@ -7,9 +7,9 @@
       <ion-list-header style="padding-left: 0px;"><ion-label style="margin-top: 7px;" class="ion-text-center">{{pesce.commonName}}</ion-label></ion-list-header>
       <!-- SLIDER IMMAGINI DEL PESCE -->
       <ion-slides *ngIf="pesce.fishImages.length>0">
-        <ion-slide-page *ngFor="let fImage of pesce.fishImages" style="width: 100%;padding: 0px 15px 10px 15px;">
+        <ion-slide *ngFor="let fImage of pesce.fishImages" style="width: 100%;padding: 0px 15px 10px 15px;">
               <img src="{{fImage.url}}" style="border-radius: 10px;">
-        </ion-slide-page>
+        </ion-slide>
       </ion-slides>
     </ion-list>
   </ion-card>
