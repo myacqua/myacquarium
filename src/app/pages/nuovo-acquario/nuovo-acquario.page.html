@@ -1,21 +1,21 @@
 <ion-header>
-  <ion-toolbar color="secondary">
+  <!--ion-toolbar color="secondary"-->
+  <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-
-    <ion-title class="ion-text-center"
+    <ion-title class="ion-text-center">Definisci vasca</ion-title>
+    <!--ion-title class="ion-text-center"
       ><img src="assets/img/nuovo-acquario1.png"
-    /></ion-title>
+    /></ion-title-->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="ion-margin">
-    <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
-    <ion-list-header>
-      <ion-label>Inserisci i dati del tuo acquario</ion-label>
-      </ion-list-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Inserisci i dati del tuo acquario</ion-card-subtitle>
+      <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
         <ion-list>
           <ion-item>
             <ion-label position="floating" >Nome</ion-label>
@@ -50,7 +50,8 @@
           </ion-item>
         </ion-list>
       </form>
-    </div>
+    </ion-card-header>
+  </ion-card>
 </ion-content>
 
 <ion-footer class="ion-no-border">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppStateService } from 'src/app/_services/appstate.service';
 import { PianteService } from 'src/app/_services/piante.service';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -10,9 +11,9 @@ import { PianteService } from 'src/app/_services/piante.service';
 })
 export class RicercaPianteComponent implements OnInit {
 
-  protected array_piante = [];
+  array_piante: any = [];
 
-  protected formProcessed: boolean = false;
+  formProcessed: boolean = false;
 
 
   
@@ -30,7 +31,7 @@ export class RicercaPianteComponent implements OnInit {
   /**
    * Fa una ricerca per una pianta in base ai parametri di ricerca
    */
-  processForm() {
+  processForm(form: NgForm) {
 
     this.formProcessed = true;
 

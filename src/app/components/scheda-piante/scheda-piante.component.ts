@@ -8,7 +8,7 @@ import { AppStateService } from 'src/app/_services/appstate.service';
 })
 export class SchedaPianteComponent implements OnInit {
 
-  private piante = {}
+  piante: any = {}
  
   constructor(private appstate:AppStateService) { }
 

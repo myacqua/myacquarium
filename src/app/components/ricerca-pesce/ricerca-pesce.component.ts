@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AppStateService } from 'src/app/_services/appstate.service';
 import { PesciService } from 'src/app/_services/pesci.service';
 
@@ -9,9 +10,9 @@ import { PesciService } from 'src/app/_services/pesci.service';
 })
 export class RicercaPesceComponent implements OnInit {
 
-  protected array_pesci = [];
+  array_pesci: any = [];
 
-  protected formProcessed: boolean = false;
+  formProcessed: boolean = false;
 
   //  Oggetto per la ricerca di un pesce
   public modelSearch = {
@@ -27,7 +28,7 @@ export class RicercaPesceComponent implements OnInit {
   /**
    * Fa una ricerca per un pesce in base ai parametri di ricerca
    */
-  processForm() {
+  processForm(form: NgForm) {
 
     this.formProcessed = true;
 
