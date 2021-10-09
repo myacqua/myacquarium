@@ -8,11 +8,13 @@
 </ion-header>
 
 <ion-content color="secondary">
+  
+  <div class="logo">
+    <ion-img src="assets/img/logo-aquarium-clear.png"></ion-img>
+  </div>
+
   <div class="ion-margin">
     <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
-      <ion-list-header>
-        <ion-label classclass="ion-text-center">Il tuo account </ion-label>
-      </ion-list-header>
 
       <!--Nome-->
       <ion-list>
@@ -123,7 +125,7 @@
 
       
       <ion-footer class="ion-no-border">
-        <ion-toolbar color="secondary">
+        <ion-toolbar color="secondary" style="margin-top: 40px;">
           <ion-row>
             <ion-col size="12" class="ion-text-center">
               <ion-button color="light" type="submit" expand="block" [disabled]="!form.valid" >
