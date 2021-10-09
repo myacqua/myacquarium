@@ -99,7 +99,9 @@ export class BackendService {
   public setToken(token: any) {
     localStorage.setItem('access_token', token);
   }
-
+  public removeToken() {
+    localStorage.removeItem('access_token');
+  }
   setProp(key: any,value: any ) {
     this.storage.set('${key',value);
   }
