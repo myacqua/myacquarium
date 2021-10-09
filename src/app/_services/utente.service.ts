@@ -1,6 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AlertService } from './alert.service';
+import { AppStateService } from './appstate.service';
 import { BackendService } from './backend.service';
 import { LoadingService } from './loading.service';
 
@@ -11,10 +12,11 @@ export class UtenteService {
 
   private loadingInProgress: boolean = false;
 
+  private user : any = {};
   protected userID = 1;
   protected token = '';
   
-  constructor(private backend: BackendService, private loading: LoadingService,private notify: AlertService) { }
+  constructor(private backend: BackendService, private loading: LoadingService,private notify: AlertService, private appState: AppStateService) { }
 
   //  restituisce se ci sono chiamate in corso in questo service
   public get isLoading(): boolean {
@@ -33,7 +35,7 @@ export class UtenteService {
     }
   }
 
-   /**
+  /**
    * Autentica l'utente
    * @param model utente per l'autenticazione
    */
@@ -44,6 +46,8 @@ export class UtenteService {
     this.backend.postAuth('authenticate', model, new HttpParams() ).subscribe(
       (response : any) => {
         if (typeof response != "undefined") {
+          this.user = response;
+          this.appState.saveUser(response);
           this.backend.setToken(response.token);
           callbackSuccess(response);
         } else
@@ -60,6 +64,15 @@ export class UtenteService {
       }
     )
   }
+
+  /**
+   * Non autentica l'utente
+   */
+  public logout() {
+    this.appState.clearAndDelete()
+    this.backend.removeToken();
+  }
+
 
   /**
    * Registra l'utente

@@ -32,13 +32,13 @@
         <ion-slides pager="true">
           <ion-slide *ngIf="acquario.parameter.phMax!=-1 && acquario.parameter.phMin!=-1" style="width: 100%;">
             <div class="parameterContainer" [class]="(misuraPh=='') ? 'warning' : (misuraPh>acquario.parameter.phMax || misuraPh<acquario.parameter.phMin) ? 'danger' : ''">
-              <span class="parameterBadge" style="">PH</span>
-              <span class="parameterMax" style=""><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.phMax}}</span>
+              <span class="parameterBadge">PH</span>
+              <span class="parameterMax"><p style="font-size: 10px;margin-bottom: -5px;margin-top: 2px;">MAX</p>{{acquario.parameter.phMax}}</span>
               <span class="parameter" style="line-height: 26px;min-height: 28px;">
                 <ion-label *ngIf="misuraPh!=''">{{misuraPh}}</ion-label>
                 <ion-label *ngIf="misuraPh==''">n.v.</ion-label>
               </span>
-              <span class="parameterMin" style="">{{acquario.parameter.phMin}}<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
+              <span class="parameterMin" style="margin-bottom:20px">{{acquario.parameter.phMin}}<p style="font-size: 10px;margin-bottom: 2px;margin-top: -5px;">MIN</p></span>
             </div>
           </ion-slide>
           <ion-slide *ngIf="acquario.parameter.ghMax!=-1 && acquario.parameter.ghMin!=-1" style="width: 100%;">
