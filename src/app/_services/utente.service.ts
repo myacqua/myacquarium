@@ -95,7 +95,7 @@ export class UtenteService {
         console.log(error)
         callbackError();
         this.setLoading(false);
-        this.backend.showErrors(error, true);
+        this.backend.showErrors(error);
       }
     )
   }

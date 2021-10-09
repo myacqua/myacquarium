@@ -12,24 +12,27 @@
 
 <ion-content [fullscreen]="true">
   <img src="assets/img/dashboard1.jpg" />
-  <div class="container-center" *ngIf="array_vasche.length == 0 || vascheservice.isLoading">
-    <!-- Loading centrale -->
-    <ion-card class="align-item-center" *ngIf="vascheservice.isLoading">
-      <ion-card-header>
-        <ion-spinner></ion-spinner>
-      </ion-card-header>
-      <ion-card-content> Carico i tuoi acquari </ion-card-content>
-    </ion-card>
-    <!-- Messaggio che non ci sono acquari -->
-    <ion-card color="danger" class="align-item-center" *ngIf="!vascheservice.isLoading">
-      <ion-card-header>
-        <ion-card-subtitle>BENVENUTO IN MYAQUARIUM</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content> Crea il tuo primo acquario </ion-card-content>
-    </ion-card>
-  </div>
+  <ion-card *ngIf="array_vasche.length == 0 || vascheservice.isLoading">
+    <!--div class="container-center" *ngIf="array_vasche.length == 0 || vascheservice.isLoading"-->
+      <!-- Loading centrale -->
+      <ion-card class="align-item-center" *ngIf="vascheservice.isLoading">
+        <ion-card-header>
+          <ion-spinner></ion-spinner>
+        </ion-card-header>
+        <ion-card-content> Carico i tuoi acquari </ion-card-content>
+      </ion-card>
+      <!-- Messaggio che non ci sono acquari -->
+      <ion-card color="danger" class="align-item-center" *ngIf="!vascheservice.isLoading">
+        <ion-card-header>
+          <ion-card-subtitle>BENVENUTO IN MYAQUARIUM</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content> Crea il tuo primo acquario </ion-card-content>
+      </ion-card>
+    <!--/div-->
+  </ion-card>
 
-  <div class="container-center" *ngIf="array_vasche.length > 0 && !vascheservice.isLoading">
+  <ion-list *ngIf="array_vasche.length > 0 && !vascheservice.isLoading">
+    <!--div class="container-center" *ngIf="array_vasche.length > 0 && !vascheservice.isLoading"-->
     <!-- Tutte le vasche dell'utente -->
     <ion-card *ngFor="let vasca of array_vasche" (click)="vascaOnclick(vasca)">
       <div class="ion-activatable ripple-parent">
@@ -48,8 +51,8 @@
         <ion-ripple-effect></ion-ripple-effect>
       </div>
     </ion-card>
-  </div>
-  
+  <!--/div-->
+  </ion-list>
 </ion-content>
 
 

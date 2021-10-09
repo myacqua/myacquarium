@@ -19,7 +19,7 @@
         <ion-list>
           <ion-item>
             <ion-label position="floating" >Nome</ion-label>
-            <ion-input [(ngModel)]="model.nome" maxlength="64" name="nome" #nome="ngModel" required></ion-input>
+            <ion-input [(ngModel)]="model.nome" minlength="5" maxlength="64" name="nome" #nome="ngModel" required></ion-input>
           </ion-item>
           <ion-list *ngIf="nome.dirty && nome.errors" lines="none">
             <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
