@@ -16,6 +16,7 @@
   <div class="ion-margin">
     <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
 
+      
       <!--Nome-->
       <ion-list>
         <ion-item color="secondary">
@@ -125,13 +126,8 @@
 
       
       <ion-footer class="ion-no-border">
-<<<<<<< HEAD
-        <ion-toolbar color="primary">
-          <ion-row >
-=======
         <ion-toolbar color="secondary" style="margin-top: 40px;">
           <ion-row>
->>>>>>> 143ddefa34c9263144dd3a6e0a5c431795b420e9
             <ion-col size="12" class="ion-text-center">
               <ion-button color="light" type="submit" expand="block" [disabled]="!form.valid" >
                 Crea il tuo profilo MyAcquarium
