@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -17,15 +17,17 @@
     <ion-card-header>
       <ion-card-subtitle>Capacità: {{acquario.volume}} litri</ion-card-subtitle>
       <ion-card-title>{{acquario.nome}}</ion-card-title>
-      <ion-card-subtitle style="padding-top: 10px;">{{acquario.descrizione}}</ion-card-subtitle>
     </ion-card-header>
+    <ion-card-content>
+      <ion-card-subtitle style="padding-top: 10px;">{{acquario.descrizione}}</ion-card-subtitle>
+    </ion-card-content>
   </ion-card>
 
   <ion-card style="padding-bottom:10px;">
-    <ion-card-header style="padding-bottom: 0px;">
+    <ion-card-header style="padding-left: 10px;padding-right: 10px;padding-bottom: 5px;" color="tertiary">
       <ion-card-subtitle><ion-label>Misurazioni</ion-label></ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content style="padding-bottom:0px;">
       <!--PARAMETRI-->
       <div *ngIf="acquario.parameter!=null">
         <!-- SLIDER DEI PARAMETRI -->
@@ -78,16 +80,23 @@
       </div>
     </ion-card-content>
     <!--AGGIUNGI MISURA-->
-    <ion-button [routerLink]="['/misure-acquario']" expand="block" style="padding: 0px 15px;margin: 7px 0px 0px 0px;">
+    <ion-button [routerLink]="['/misure-acquario']" color="tertiary" expand="block" style="padding: 0px 15px;margin: 0px 0px 0px 0px;">
       <ion-icon slot="start" name="flask-outline"></ion-icon>
       Misurazioni
     </ion-button>
   </ion-card>
 
  <ion-card style="padding-bottom:10px;">
-    <ion-card-header style="padding-bottom: 0px;">
+    
+    <ion-card-header style="padding-left: 10px;padding-right: 10px;padding-bottom: 5px;" *ngIf="segment.value == 'pesci'" 
+        color="secondary">
        <ion-card-subtitle><ion-label>Vivo</ion-label></ion-card-subtitle>
     </ion-card-header>
+    <ion-card-header style="padding-left: 10px;padding-right: 10px;padding-bottom: 5px;" *ngIf="segment.value == 'piante'" 
+        color="success">
+       <ion-card-subtitle><ion-label>Vivo</ion-label></ion-card-subtitle>
+    </ion-card-header>
+
     <ion-card-content style="padding: 0px 0px 10px 0px;">
       <!-- Segmenti per selezionare la tipologia di oggetti visibili -->
       <ion-segment #segment scrollable value="pesci" class="ion-margin-start ion-margin-end" style="margin-top: 20px;">

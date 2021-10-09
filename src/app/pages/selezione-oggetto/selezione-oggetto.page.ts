@@ -43,7 +43,7 @@ export class SelezioneOggettoPage implements OnInit {
       if (this.appState.currentPesce != null) {
         /**INSERISCO PESCE**/
         this.vascheService.aggiungiPesce(this.appState.currentVasca, this.appState.currentPesce, (success) => {
-          this.notify.showNotification("Pesce aggiunto alla vasca");
+          this.notify.showNotification("Pesce aggiunto alla vasca","success");
           this.router.navigate(['gestisci-acquario']);
         }, (error) => {
           //  TODO aggiungere il messaggio di errore che arriva dal backend
@@ -54,7 +54,7 @@ export class SelezioneOggettoPage implements OnInit {
       } else if (this.appState.currentPiante != null) {
         /**INSERISCO PIANTA**/
         this.vascheService.aggiungiPianta(this.appState.currentVasca, this.appState.currentPiante, (success) => {
-          this.notify.showNotification("Pianta aggiunta alla vasca");
+          this.notify.showNotification("Pianta aggiunta alla vasca", "success");
           this.router.navigate(['gestisci-acquario']);
         }, 
         (error) => {
@@ -77,13 +77,13 @@ export class SelezioneOggettoPage implements OnInit {
       if (this.appState.currentPesce!=null) {
         /**ELIMINO PESCE**/
         this.vascheService.eliminaPesce(this.appState.currentVasca, this.appState.currentPesce, (success) => {
-          this.notify.showNotification("Pesce eliminato alla vasca");
+          this.notify.showNotification("Pesce eliminato dalla vasca", "success");
           this.router.navigate(['gestisci-acquario']);
         });
       } else if (this.appState.currentPiante!=null) {
         /**ELIMINO PIANTA**/
         this.vascheService.eliminaPianta(this.appState.currentVasca, this.appState.currentPiante, (success) => {
-          this.notify.showNotification("Pianta eliminata dalla vasca");
+          this.notify.showNotification("Pianta eliminata dalla vasca", "success");
           this.router.navigate(['gestisci-acquario']);
         });
       }
