@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="secondary">
   <div class="ion-margin">
     <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
       <ion-list-header>
@@ -16,7 +16,7 @@
 
       <!--Nome-->
       <ion-list>
-        <ion-item>
+        <ion-item color="secondary">
           <ion-label position="floating">Nome</ion-label>
           <ion-input [(ngModel)]="model.nome" maxlength="64" name="nome" #nome="ngModel" required></ion-input>
         </ion-item>
@@ -49,7 +49,7 @@
       
       <!--Email-->
       <ion-list>
-        <ion-item>
+        <ion-item color="secondary">
           <ion-label position="floating">Email</ion-label>
           <ion-input type="email" [(ngModel)]="model.email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
               maxlength="64" name="email" #email="ngModel" required></ion-input>
@@ -76,7 +76,7 @@
 
       <!--Password-->
       <ion-list>
-        <ion-item>
+        <ion-item color="secondary">
           <ion-label position="floating">Password</ion-label>
           <ion-input type="password" [(ngModel)]="model.password" maxlength="64" name="password" #password="ngModel" required></ion-input>
         </ion-item>
@@ -87,7 +87,7 @@
 
       <!--Conferma Password-->
       <ion-list>
-        <ion-item>
+        <ion-item color="secondary">
           <ion-label position="floating">Conferma Password</ion-label>
           <ion-input type="password" maxlength="64" name="confermapassword" [(ngModel)]="model.confermapassword" #confermapassword="ngModel" required></ion-input>
         </ion-item>
@@ -102,7 +102,7 @@
       <!--Check Accetta Termini-->
       
       <ion-list class="ion-margin-top">
-        <ion-item>
+        <ion-item color="secondary">
           <ion-checkbox [(ngModel)]="model.privacy" name="privacy" #privacy="ngModel" required></ion-checkbox>
           <ion-label classclass="ion-text-center">Accetta i termini </ion-label>
         </ion-item>
@@ -123,10 +123,10 @@
 
       
       <ion-footer class="ion-no-border">
-        <ion-toolbar>
-          <ion-row >
+        <ion-toolbar color="secondary">
+          <ion-row>
             <ion-col size="12" class="ion-text-center">
-              <ion-button type="submit" expand="block" [disabled]="!form.valid" >
+              <ion-button color="light" type="submit" expand="block" [disabled]="!form.valid" >
                 Crea il tuo profilo MyAcquarium
               </ion-button>
             </ion-col>
