@@ -43,8 +43,14 @@ export class SelezioneOggettoPage implements OnInit {
       if (this.appState.currentPesce!=null) {
         /**INSERISCO PESCE**/
         this.vascheService.aggiungiPesce(this.appState.currentVasca, this.appState.currentPesce, (success) => {
-          this.notify.showNotification("Pesce aggiunto alla vasca");
-          this.router.navigate(['gestisci-acquario']);
+          if (success){
+            this.notify.showNotification("Pesce aggiunto alla vasca");
+            this.router.navigate(['gestisci-acquario']);
+          } else {
+            this.notify.showNotification("Il pesce non rispetta i parametri"); 
+          }
+
+
         });
       } else if (this.appState.currentPiante!=null) {
         /**INSERISCO PIANTA**/
