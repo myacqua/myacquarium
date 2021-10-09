@@ -15,7 +15,7 @@ export class SelezioneOggettoPage implements OnInit {
   private loadingInProgress: boolean = false;
 
   constructor(private notify: AlertService, private appState:AppStateService,private vascheService:VascheService, private router: Router,
-                private loading: LoadingService) { }
+                private loading: LoadingService, private alert: AlertService) { }
 
   ngOnInit() {
   
@@ -40,19 +40,18 @@ export class SelezioneOggettoPage implements OnInit {
     
     if ( this.appState.canAdd ) {
       /**INSERISCO**/
-      if (this.appState.currentPesce!=null) {
+      if (this.appState.currentPesce != null) {
         /**INSERISCO PESCE**/
         this.vascheService.aggiungiPesce(this.appState.currentVasca, this.appState.currentPesce, (success) => {
-          if (success){
-            this.notify.showNotification("Pesce aggiunto alla vasca");
-            this.router.navigate(['gestisci-acquario']);
-          } else {
-            this.notify.showNotification("Il pesce non rispetta i parametri"); 
-          }
-
-
+          this.notify.showNotification("Pesce aggiunto alla vasca");
+          this.router.navigate(['gestisci-acquario']);
+        }, (error) => {
+          //  TODO aggiungere il messaggio di errore che arriva dal backend
+          console.log(error);
+          this.setLoading(false);
+          this.alert.showError("Impossibile aggiungere il pesce", "");
         });
-      } else if (this.appState.currentPiante!=null) {
+      } else if (this.appState.currentPiante != null) {
         /**INSERISCO PIANTA**/
         this.vascheService.aggiungiPianta(this.appState.currentVasca, this.appState.currentPiante, (success) => {
           this.notify.showNotification("Pianta aggiunta alla vasca");
@@ -61,7 +60,7 @@ export class SelezioneOggettoPage implements OnInit {
         (error) => {
           console.log(error.message);
           this.setLoading(false);
-          this.notify.showNotification(error.message);
+          this.alert.showError("Impossibile aggiungere la pianta", error.message);
         });
       }
     }

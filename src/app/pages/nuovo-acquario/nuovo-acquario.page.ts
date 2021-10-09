@@ -43,8 +43,8 @@ export class NuovoAcquarioPage implements OnInit {
           this.location.back();
         } 
         else {
-          this.notify.showNotification("Vasca Creata");
-          this.router.navigate(['aggiungi']);
+          this.notify.showNotification("Vasca Creata", 'success');
+          this.router.navigate(['dashboard']);
         }
       }, () => {
         if (this.editMode)

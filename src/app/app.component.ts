@@ -7,6 +7,7 @@ import { AppStateService } from './_services/appstate.service';
 import { NavigationEnd, Router } from '@angular/router';
 
 import { filter } from 'rxjs/operators';
+import { UtenteService } from './_services/utente.service';
 
 @Component({
   selector: 'app-root',
@@ -33,13 +34,6 @@ export class AppComponent implements OnInit {
       slug: 'piante',
       url: '/ricerca',
       icon: 'leaf'
-    },
-  
-    {
-      title: 'Login',
-      slug: 'login',
-      url: '/login',
-      icon: 'log-in'
     }
     
   
@@ -51,7 +45,8 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private appState: AppStateService,
-    private router: Router
+    private router: Router,
+    private utente: UtenteService
   ) {
     this.initializeApp();
 
@@ -82,14 +77,9 @@ export class AppComponent implements OnInit {
     }
   }
 
-
-  //  TODO_MICHELE: da settare una volta completato il login
-  public setLoggedIn() {
-
-  }
-
-  public setLoggedOut() {
-
+  logout() {
+    this.utente.logout();
+    this.router.navigate(['login'], { replaceUrl: true });
   }
 
   public get appstate() {

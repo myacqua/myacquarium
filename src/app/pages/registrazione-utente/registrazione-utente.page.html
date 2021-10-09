@@ -13,16 +13,12 @@
       <ion-list-header>
         <ion-label classclass="ion-text-center">Il tuo account </ion-label>
       </ion-list-header>
+
+      <!--Nome-->
       <ion-list>
         <ion-item>
-          <ion-label position="floating"> Nome</ion-label>
-          <ion-input
-            [(ngModel)]="model.nome"
-            maxlength="64"
-            name="nome"
-            #nome="ngModel"
-            required
-          ></ion-input>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input [(ngModel)]="model.nome" maxlength="64" name="nome" #nome="ngModel" required></ion-input>
         </ion-item>
         <ion-list *ngIf="nome.dirty && nome.errors" lines="none">
           <ion-text color="danger" class="ion-margin-start ion-margin-end"
@@ -50,23 +46,16 @@
           </ion-item>
           </ion-list>
           -->
+      
+      <!--Email-->
       <ion-list>
         <ion-item>
           <ion-label position="floating">Email</ion-label>
-          <ion-input
-            type="email"
-            [(ngModel)]="model.email"
-            pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
-            maxlength="64"
-            name="email"
-            #email="ngModel"
-            required
-          ></ion-input>
+          <ion-input type="email" [(ngModel)]="model.email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+              maxlength="64" name="email" #email="ngModel" required></ion-input>
         </ion-item>
         <ion-list *ngIf="email.dirty && email.errors" lines="none">
-          <ion-text color="danger" class="ion-margin-start ion-margin-end"
-            >Questo campo è obbligatorio</ion-text
-          >
+          <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
         </ion-list>
       </ion-list>
       <!--
@@ -84,70 +73,55 @@
           </ion-list>
         </ion-list>
         -->
+
+      <!--Password-->
       <ion-list>
         <ion-item>
           <ion-label position="floating">Password</ion-label>
-          <ion-input
-            type="password"
-            [(ngModel)]="model.password"
-            maxlength="64"
-            name="password"
-            #password="ngModel"
-            required
-          ></ion-input>
+          <ion-input type="password" [(ngModel)]="model.password" maxlength="64" name="password" #password="ngModel" required></ion-input>
         </ion-item>
         <ion-list *ngIf="password.dirty && password.errors" lines="none">
-          <ion-text color="danger" class="ion-margin-start ion-margin-end"
-            >Questo campo è obbligatorio</ion-text
-          >
+          <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
         </ion-list>
       </ion-list>
+
+      <!--Conferma Password-->
       <ion-list>
         <ion-item>
           <ion-label position="floating">Conferma Password</ion-label>
-          <ion-input
-            type="password"
-            maxlength="64"
-            name="confermapassword"
-            [(ngModel)]="model.confermapassword"
-            #confermapassword="ngModel"
-            required
-          ></ion-input>
+          <ion-input type="password" maxlength="64" name="confermapassword" [(ngModel)]="model.confermapassword" #confermapassword="ngModel" required></ion-input>
         </ion-item>
         <ion-list *ngIf="model.confermapassword!=model.password" lines="none">
-          <ion-text color="danger" class="ion-margin-start ion-margin-end"
-            >le password non coincidono</ion-text
-          >
+          <ion-text color="danger" class="ion-margin-start ion-margin-end">le password non coincidono</ion-text>
         </ion-list>
-
-        <ion-list
-          *ngIf="confermapassword.dirty && confermapassword.errors"
-          lines="none"
-        >
-          <ion-text color="danger" class="ion-margin-start ion-margin-end"
-            >Questo campo è obbligatorio</ion-text
-          >
+        <ion-list *ngIf="confermapassword.dirty && confermapassword.errors" lines="none">
+          <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
         </ion-list>
       </ion-list>
 
-      <ion-checkbox
-        [(ngModel)]="model.privacy"
-        name="privacy"
-        #privacy="ngModel"
-        required
-      ></ion-checkbox>
-      <ion-label classclass="ion-text-center">Accetta i termini </ion-label>
-      <ion-text>
-        <h5>
-          Welcome to the Google Privacy Policy When you use Google services,
-          you trust us with your information. This Privacy Policy is meant to
-          help you understand what data we collect, why we collect it, and
-          what we do with it. This is important; we hope you will take time to
-          read it carefully. And remember, you can find controls to manage
-          your information and protect your privacy and security at My
-          Account. Privacy Policy
-        </h5>
-      </ion-text>
+      <!--Check Accetta Termini-->
+      
+      <ion-list class="ion-margin-top">
+        <ion-item>
+          <ion-checkbox [(ngModel)]="model.privacy" name="privacy" #privacy="ngModel" required></ion-checkbox>
+          <ion-label classclass="ion-text-center">Accetta i termini </ion-label>
+        </ion-item>
+        <!--ion-item>
+          <ion-label>
+            <p class="item-paragraph-full">
+              Welcome to the Google Privacy Policy When you use Google services,
+              you trust us with your information. This Privacy Policy is meant to
+              help you understand what data we collect, why we collect it, and
+              what we do with it. This is important; we hope you will take time to
+              read it carefully. And remember, you can find controls to manage
+              your information and protect your privacy and security at My
+              Account. Privacy Policy
+            </p>
+          </ion-label>
+        </ion-item--> 
+      </ion-list>
+
+      
       <ion-footer class="ion-no-border">
         <ion-toolbar>
           <ion-row >
