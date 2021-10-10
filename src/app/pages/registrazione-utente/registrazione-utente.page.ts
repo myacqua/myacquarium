@@ -33,7 +33,6 @@ export class RegistrazioneUtentePage implements OnInit {
       }
       this.saveModel = {"id":null, "name":this.model.nome,"email":this.model.email,
                         "username":this.model.email,"password":this.model.password};
-      console.log("register");
       this.utenteService.save(this.saveModel, (response) => {
         
         this.notify.showNotification("Utente salvato", 'success');
