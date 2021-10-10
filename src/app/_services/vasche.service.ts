@@ -2,7 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BackendService } from './backend.service';
 import { LoadingService } from './loading.service';
-
+import { AppStateService } from './appstate.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,7 @@ export class VascheService {
 
   private loadingInProgress: boolean = false;
 
-  protected userID = 1;
-
-  constructor(private backend: BackendService, private loading: LoadingService) { }
+  constructor(private backend: BackendService, private loading: LoadingService, private appState: AppStateService) { }
 
   //  restituisce se ci sono chiamate in corso in questo service
   public get isLoading(): boolean {
@@ -41,7 +39,7 @@ export class VascheService {
 
     this.setLoading(true, false);
 
-    this.backend.post('tanks/recupera?identificativo=&identificativoUtente='+this.userID, new HttpParams() ).subscribe(
+    this.backend.post('tanks/recupera?identificativo=&identificativoUtente='+this.appState.user.id, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 
           callbackSuccess(response.aaData);
@@ -67,7 +65,7 @@ export class VascheService {
    */
   public saveVasca(model: any, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
-    model.idUtente = this.userID;
+    model.idUtente = this.appState.user.id;
 
     this.setLoading(true, true);
 
@@ -100,7 +98,7 @@ export class VascheService {
   public recuperaSingolaVasca(vascaID: string, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
     this.setLoading(true, true);
 
-    this.backend.post('tanks/recupera?identificativo='+vascaID+'&identificativoUtente='+this.userID, new HttpParams() ).subscribe(
+    this.backend.post('tanks/recupera?identificativo='+vascaID+'&identificativoUtente='+this.appState.user.id, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 
           callbackSuccess(response.aaData[0]);

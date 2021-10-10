@@ -39,6 +39,7 @@ export class AppComponent implements OnInit {
   
     ];
   public labels = ['Family'];
+  public mailTo = "mailto:alessandro.paolillo@gmail.com?subject=MyAquarium%20Segnalazione";
 
   constructor(
     private platform: Platform,
@@ -80,6 +81,10 @@ export class AppComponent implements OnInit {
   logout() {
     this.utente.logout();
     this.router.navigate(['login'], { replaceUrl: true });
+  }
+
+  inviaEmail() {
+    window.location.href = this.mailTo;
   }
 
   public get appstate() {

@@ -102,12 +102,11 @@
         </ion-list>
       </ion-list>
 
-      <!--Check Accetta Termini-->
-      
+      <!--Check Accetta Termini-->  
       <ion-list class="ion-margin-top secondary-color">
         <ion-item color="secondary">
-          <ion-checkbox [(ngModel)]="model.privacy" name="privacy" #privacy="ngModel" required></ion-checkbox>
-          <ion-label classclass="ion-text-center">Accetta i termini </ion-label>
+          <ion-checkbox [(ngModel)]="model.privacy" mode="md" name="privacy" #privacy="ngModel" required></ion-checkbox>
+          <ion-label class="ion-text-start ion-padding-start">Accetta i termini </ion-label>
         </ion-item>
         <!--ion-item>
           <ion-label>

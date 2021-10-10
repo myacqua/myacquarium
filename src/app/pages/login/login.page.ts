@@ -27,8 +27,13 @@ processForm(form) {
     {
       this.utenteService.authenticate(this.model, (response) => {
         
-        this.notify.showNotification("Benvenuto in MyAquarium", 'success');
-        this.router.navigate(['dashboard']);
+        this.utenteService.getUser(this.model, (response) => {
+
+          this.notify.showNotification("Benvenuto in MyAquarium", 'success');
+          this.router.navigate(['dashboard']);
+        }, () => {
+          this.notify.showNotification("Errore in fase di recupero Utente", 'danger');
+        });
       }, () => {
         this.notify.showNotification("Errore in fase di login", 'danger');
       });

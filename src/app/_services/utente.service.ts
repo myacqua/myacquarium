@@ -13,7 +13,6 @@ export class UtenteService {
   private loadingInProgress: boolean = false;
 
   private user : any = {};
-  protected userID = 1;
   protected token = '';
   
   constructor(private backend: BackendService, private loading: LoadingService,private notify: AlertService, private appState: AppStateService) { }
@@ -47,9 +46,37 @@ export class UtenteService {
       (response : any) => {
         if (typeof response != "undefined") {
           this.user = response;
-          this.appState.saveUser(response);
           this.backend.setToken(response.token);
           callbackSuccess(response);
+        } else
+          callbackError();
+          
+        this.setLoading(false);
+      }, 
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+        this.notify.showNetworkError("Attenzione", "Nome utente o password errate");
+        this.backend.showErrors(error);
+      }
+    )
+  }
+
+  /**
+   * Autentica l'utente
+   * @param model utente per l'autenticazione
+   */
+  public getUser(model, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+
+    this.setLoading(true);
+
+    this.backend.post(`getUser?username=${model.username}`, {}, new HttpParams() ).subscribe(
+      (response : any) => {
+        if (typeof response != "undefined") {
+          this.user = response;
+          this.appState.saveUser(response.aaData);
+          callbackSuccess(response.aaData);
         } else
           callbackError();
           
@@ -100,5 +127,29 @@ export class UtenteService {
     )
   }
 
-  
+  /**
+   * Registra l'utente
+   * @param model utente per registrarsi
+   */
+   public save(model, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+
+    this.setLoading(true);
+
+    this.backend.postAuth('register', model, new HttpParams() ).subscribe(
+      (response : any) => {
+        if (typeof response != "undefined") 
+          callbackSuccess(response);
+        else
+          callbackError();
+          
+        this.setLoading(false);
+      }, 
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+        this.backend.showErrors(error);
+      }
+    )
+  }
 }
