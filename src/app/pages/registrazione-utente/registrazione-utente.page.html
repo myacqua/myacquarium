@@ -17,12 +17,12 @@
     <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
 
       <!--Nome-->
-      <ion-list>
+      <ion-list class="secondary-color">
         <ion-item color="secondary">
           <ion-label position="floating">Nome</ion-label>
           <ion-input [(ngModel)]="model.nome" maxlength="64" name="nome" #nome="ngModel" required></ion-input>
         </ion-item>
-        <ion-list *ngIf="nome.dirty && nome.errors" lines="none">
+        <ion-list class="secondary-color" *ngIf="nome.dirty && nome.errors" lines="none">
           <ion-text color="danger" class="ion-margin-start ion-margin-end"
             >Questo campo è obbligatorio</ion-text
           >
@@ -50,13 +50,13 @@
           -->
       
       <!--Email-->
-      <ion-list>
+      <ion-list class="secondary-color">
         <ion-item color="secondary">
           <ion-label position="floating">Email</ion-label>
           <ion-input type="email" [(ngModel)]="model.email" pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
               maxlength="64" name="email" #email="ngModel" required></ion-input>
         </ion-item>
-        <ion-list *ngIf="email.dirty && email.errors" lines="none">
+        <ion-list class="secondary-color" *ngIf="email.dirty && email.errors" lines="none">
           <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
         </ion-list>
       </ion-list>
@@ -77,33 +77,33 @@
         -->
 
       <!--Password-->
-      <ion-list>
+      <ion-list class="secondary-color">
         <ion-item color="secondary">
           <ion-label position="floating">Password</ion-label>
           <ion-input type="password" [(ngModel)]="model.password" maxlength="64" name="password" #password="ngModel" required></ion-input>
         </ion-item>
-        <ion-list *ngIf="password.dirty && password.errors" lines="none">
+        <ion-list class="secondary-color" *ngIf="password.dirty && password.errors" lines="none">
           <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
         </ion-list>
       </ion-list>
 
       <!--Conferma Password-->
-      <ion-list>
+      <ion-list class="secondary-color">
         <ion-item color="secondary">
           <ion-label position="floating">Conferma Password</ion-label>
           <ion-input type="password" maxlength="64" name="confermapassword" [(ngModel)]="model.confermapassword" #confermapassword="ngModel" required></ion-input>
         </ion-item>
-        <ion-list *ngIf="model.confermapassword!=model.password" lines="none">
+        <ion-list class="secondary-color" *ngIf="model.confermapassword!=model.password" lines="none">
           <ion-text color="danger" class="ion-margin-start ion-margin-end">le password non coincidono</ion-text>
         </ion-list>
-        <ion-list *ngIf="confermapassword.dirty && confermapassword.errors" lines="none">
+        <ion-list class="secondary-color" *ngIf="confermapassword.dirty && confermapassword.errors" lines="none">
           <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
         </ion-list>
       </ion-list>
 
       <!--Check Accetta Termini-->
       
-      <ion-list class="ion-margin-top">
+      <ion-list class="ion-margin-top secondary-color">
         <ion-item color="secondary">
           <ion-checkbox [(ngModel)]="model.privacy" name="privacy" #privacy="ngModel" required></ion-checkbox>
           <ion-label classclass="ion-text-center">Accetta i termini </ion-label>

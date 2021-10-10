@@ -12,23 +12,23 @@
     <ion-img src="assets/img/logo-aquarium-clear.png"></ion-img>
   </div>
   <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
-    <ion-list>
+    <ion-list class="secondary-color">
       <ion-item color="secondary">
         <ion-label position="floating">Nome utente</ion-label>
         <ion-input type="username" [(ngModel)]="model.username" maxlength="64" name="username" #username="ngModel" required></ion-input>
       </ion-item>
-      <ion-list *ngIf="username.dirty && username.errors" lines="none">
-        <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
+      <ion-list class="secondary-color" *ngIf="username.dirty && username.errors" lines="none">
+        <ion-text class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
       </ion-list>
     </ion-list>
-    <ion-list>
+    <ion-list class="secondary-color">
       <ion-item color="secondary">
         <ion-label position="floating">Password</ion-label>
         <ion-input type="password" [(ngModel)]="model.password" maxlength="64" name="password" #password="ngModel"
           required></ion-input>
       </ion-item>
-      <ion-list *ngIf="password.dirty && password.errors" lines="none">
-        <ion-text color="danger" class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
+      <ion-list class="secondary-color" *ngIf="password.dirty && password.errors" lines="none">
+        <ion-text class="ion-margin-start ion-margin-end">Questo campo è obbligatorio</ion-text>
       </ion-list>
     </ion-list>
     <ion-toolbar color="secondary" style="margin-top: 60px;">
@@ -43,7 +43,7 @@
   <ion-item color="secondary">
     <ion-label>
       <p class="item-paragraph-full">
-        Se non hai un account, per favore <a routerLink='/registrazione-utente'>Clicca qui!</a> 
+        Se non hai un account, per favore <a class="text-white" routerLink='/registrazione-utente'>Clicca qui!</a> 
       </p>
     </ion-label>
   </ion-item> 
