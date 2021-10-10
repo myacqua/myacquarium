@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "com.michelecriscuolo.myaquarium",
   "appName": "myaquarium",
   "bundledWebRuntime": false,
   "npmClient": "npm",
