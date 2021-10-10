@@ -16,6 +16,7 @@
   <div class="ion-margin">
     <form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
 
+      
       <!--Nome-->
       <ion-list class="secondary-color">
         <ion-item color="secondary">
@@ -102,8 +103,12 @@
       </ion-list>
 
       <!--Check Accetta Termini-->
+<<<<<<< HEAD
       
       <ion-list class="ion-margin-top secondary-color">
+=======
+      <ion-list class="ion-margin-top">
+>>>>>>> e23acff4100424bf35aa60a8887559d5f36d5f8d
         <ion-item color="secondary">
           <ion-checkbox [(ngModel)]="model.privacy" name="privacy" #privacy="ngModel" required></ion-checkbox>
           <ion-label classclass="ion-text-center">Accetta i termini </ion-label>

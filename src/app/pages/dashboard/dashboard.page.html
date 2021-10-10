@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="secondary">
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -32,14 +32,13 @@
   </ion-card>
 
   <ion-list *ngIf="array_vasche.length > 0 && !vascheservice.isLoading">
-    <!--div class="container-center" *ngIf="array_vasche.length > 0 && !vascheservice.isLoading"-->
     <!-- Tutte le vasche dell'utente -->
     <ion-card *ngFor="let vasca of array_vasche" (click)="vascaOnclick(vasca)">
       <div class="ion-activatable ripple-parent">
-        <ion-card-header>
+        <ion-card-header style="padding-left: 10px;padding-right: 10px;padding-bottom: 5px;" color="primary">
           <ion-card-subtitle>{{vasca.nome}}</ion-card-subtitle>
         </ion-card-header>
-        <ion-card-content> 
+        <ion-card-content class="ion-margin-top"> 
           {{vasca.descrizione}} <br>
           <ion-grid>
             <ion-row>
@@ -51,8 +50,8 @@
         <ion-ripple-effect></ion-ripple-effect>
       </div>
     </ion-card>
-  <!--/div-->
   </ion-list>
+
 </ion-content>
 
 

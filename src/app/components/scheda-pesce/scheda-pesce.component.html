@@ -4,7 +4,9 @@
   <ion-card>
     <ion-list>
       <!--NOME PESCE-->
-      <ion-list-header style="padding-left: 0px;"><ion-label style="margin-top: 7px;" class="ion-text-center">{{pesce.commonName}}</ion-label></ion-list-header>
+      <ion-list-header style="padding-left: 0px;" color="primary">
+        <ion-label style="margin-top: 7px;" class="ion-text-center">{{pesce.commonName}}</ion-label>
+      </ion-list-header>
       <!-- SLIDER IMMAGINI DEL PESCE -->
       <ion-slides *ngIf="pesce.fishImages.length>0">
         <ion-slide *ngFor="let fImage of pesce.fishImages" style="width: 100%;padding: 0px 15px 10px 15px;">
@@ -16,7 +18,9 @@
 
   <!-- INFORMAZIONI DEL PESCE -->
   <ion-card>
-    <ion-list-header class="ion-text-center title-list-header "><ion-label>Informazioni</ion-label></ion-list-header>
+    <ion-list-header class="ion-text-center title-list-header" color="primary">
+      <ion-label class="ionLabelSchedaPesce">Informazioni</ion-label>
+    </ion-list-header>
     <ion-list>
       <ion-item>
         <ion-label>
@@ -77,7 +81,9 @@
 
   <!--PARAMETRI PESCE-->
   <ion-card>
-    <ion-list-header class="ion-text-center title-list-header"><ion-label>Parametri</ion-label></ion-list-header>
+    <ion-list-header class="ion-text-center title-list-header" color="primary">
+      <ion-label class="ionLabelSchedaPesce">Parametri</ion-label>
+    </ion-list-header>
     <ion-list>
       <ion-row class="ion-margin ion-text-center">
         <ion-col size="6">
