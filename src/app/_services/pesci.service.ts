@@ -38,7 +38,7 @@ export class PesciService {
     this.setLoading(true);
 
     var identificativo = currentVasca!=null ? currentVasca.id : "";
-    this.backend.post('fishs/ricerca?identificativo='+identificativo+'&commonName='+modelSearch.nomePesce, null, new HttpParams() ).subscribe(
+    this.backend.post('fishs/ricerca?identificativo='+identificativo+'&commonName='+modelSearch.nomePesce+'&validoVasca='+modelSearch.validoVasca, null, new HttpParams() ).subscribe(
       (response : any) => {
         if (response.success && typeof response.aaData != "undefined") 
           callbackSuccess(response.aaData);

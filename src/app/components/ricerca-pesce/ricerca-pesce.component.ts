@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AppStateService } from 'src/app/_services/appstate.service';
 import { PesciService } from 'src/app/_services/pesci.service';
+import { AlertService } from 'src/app/_services/alert.service';
 
 @Component({
   selector: 'app-ricerca-pesce',
@@ -16,10 +17,11 @@ export class RicercaPesceComponent implements OnInit {
 
   //  Oggetto per la ricerca di un pesce
   public modelSearch = {
-    nomePesce: ""
+    nomePesce: "",
+    validoVasca: false
   }
 
-  constructor(private appstate:AppStateService, private pesciService: PesciService) { }
+  constructor(private notify: AlertService, private appstate:AppStateService, private pesciService: PesciService) { }
 
   ngOnInit() { 
 
@@ -32,9 +34,12 @@ export class RicercaPesceComponent implements OnInit {
 
     this.formProcessed = true;
 
-    this.pesciService.ricercaPesce(this.modelSearch, this.appstate.currentVasca, (success) => {
-
-      this.array_pesci = success;
+    this.pesciService.ricercaPesce(this.modelSearch, this.appstate.currentVasca, (response) => {
+      if(response.length>0){
+        this.array_pesci = response;
+      } else {
+        this.notify.showNotification("Nessun pesce trovato", 'danger');
+      }
     });
     
   }

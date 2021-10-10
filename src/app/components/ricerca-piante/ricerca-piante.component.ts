@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppStateService } from 'src/app/_services/appstate.service';
 import { PianteService } from 'src/app/_services/piante.service';
 import { NgForm } from '@angular/forms';
+import { AlertService } from 'src/app/_services/alert.service';
 
 
 @Component({
@@ -19,10 +20,11 @@ export class RicercaPianteComponent implements OnInit {
   
     //  Oggetto per la ricerca di una pianta
   public modelSearch = {
-    nomePiante: ""
+    nomePiante: "",
+    validoVasca: false
   }
 
-  constructor(private appstate:AppStateService, private pianteService: PianteService) { }
+  constructor(private notify: AlertService, private appstate:AppStateService, private pianteService: PianteService) { }
    
   ngOnInit() {
 
@@ -35,8 +37,12 @@ export class RicercaPianteComponent implements OnInit {
 
     this.formProcessed = true;
 
-    this.pianteService.ricercaPiante(this.modelSearch, this.appstate.currentVasca, (success) => {
-      this.array_piante = success;
+    this.pianteService.ricercaPiante(this.modelSearch, this.appstate.currentVasca, (response) => {
+      if(response.length>0){
+        this.array_piante = response;
+      } else {
+        this.notify.showNotification("Nessuna pianta trovata", 'danger');
+      }
     });
   }
 
