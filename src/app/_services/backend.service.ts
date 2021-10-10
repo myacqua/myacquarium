@@ -51,7 +51,6 @@ export class BackendService {
   }
 
   post(resource: string, body: any, searchParams: HttpParams = new HttpParams()) {
-    console.log("###POST");
     let options = this.setupParams(searchParams);
     return this.http.post(
       environment.apiUrl + resource,
