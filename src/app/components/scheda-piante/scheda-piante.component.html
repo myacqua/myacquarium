@@ -4,7 +4,9 @@
   <ion-card>
     <ion-list>
       <!--NOME PIANTA-->
-      <ion-list-header style="padding-left: 0px;"><ion-label style="margin-top: 7px;" class="ion-text-center">{{piante.scientificName}}</ion-label></ion-list-header>
+      <ion-list-header style="padding-left: 0px;" color="primary">
+        <ion-label style="margin-top: 7px;" class="ion-text-center">{{piante.scientificName}}</ion-label>
+      </ion-list-header>
       <!-- SLIDER IMMAGINI DEL PIANTA -->
       <ion-slides *ngIf="piante.plantImages.length>0">
         <ion-slide *ngFor="let pImage of piante.plantImages" style="width: 100%;padding: 0px 15px 10px 15px;">
@@ -18,7 +20,9 @@
   <ion-card>
     
     
-      <ion-list-header class="ion-text-center title-list-header "><ion-label>Informazioni</ion-label></ion-list-header>
+      <ion-list-header class="ion-text-center title-list-header" color="primary">
+        <ion-label class="ionLabelSchedaPianta">Informazioni</ion-label>
+      </ion-list-header>
       <ion-list>
       <ion-item>
         <ion-label>
@@ -61,7 +65,9 @@
 
   <!--PARAMETRI PIANTA-->
   <ion-card>
-    <ion-list-header class="ion-text-center title-list-header"><ion-label>Parametri</ion-label></ion-list-header>
+    <ion-list-header class="ion-text-center title-list-header" color="primary">
+      <ion-label class="ionLabelSchedaPianta">Parametri</ion-label>
+    </ion-list-header>
     <ion-list>
       <ion-row class="ion-margin ion-text-center">
         <ion-col size="6">

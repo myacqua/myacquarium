@@ -19,6 +19,7 @@ export class DashboardPage implements OnInit {
 
   }
 
+  
   ionViewWillEnter() {
 
     this.appState.clearState();

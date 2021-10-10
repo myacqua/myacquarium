@@ -1,7 +1,7 @@
 .parameterMax {width: 100%;text-align: center;float: left;border-left: 1px solid #3880ff;border-right: 1px solid #3880ff;border-bottom: 1px solid #3880ff;padding-bottom: 5px;}
 .warning .parameterMax {border-color: #ffae09;}
 .danger .parameterMax {border-color: rgb(235 68 90);}
-.parameterMax p {font-size: 10px;margin-bottom: -5px;margin-top: 2px;}
+.parameterMax p {padding: 2px 0px;font-size: 10px;margin-bottom: -5px;margin-top: 2px;}
 
 .parameter {width: 100%;text-align: center;font-weight: bold;float: left;color: #3880ff;border-left: 1px solid #3880ff;border-right: 1px solid #3880ff;border-bottom: 1px solid #3880ff;line-height: 26px;min-height: 28px;padding: 5px 0px;}
 .warning .parameter {border-color: #ffae09; color:#ffae09;}
@@ -10,7 +10,7 @@
 .parameterMin {margin-bottom:20px;width: 100%;text-align: center;float: left;border-left: 1px solid #3880ff;border-right: 1px solid #3880ff;border-bottom: 1px solid #3880ff;padding-top: 5px;}
 .warning .parameterMin {border-color: #ffae09;}
 .danger .parameterMin {border-color: rgb(235 68 90);}
-.parameterMin p {font-size: 10px;margin-bottom: 2px;margin-top: -5px;}
+.parameterMin p {padding: 2px 0px;font-size: 10px;margin-bottom: 2px;margin-top: -5px;}
 
 .parameterBadge {background-color: #3880ff;padding: 2px 5px;border-radius: 5px;color: white;margin-bottom: 0px;width: 100%;float: left;text-align: center;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;}
 .warning .parameterBadge {background-color: #ffae09;}
