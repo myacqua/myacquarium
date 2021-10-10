@@ -6,8 +6,9 @@ export const environment = {
   production: false,
   // apiUrl: "http://localhost:8085/myaquarium/services/",
   // apiAuthUrl: "http://localhost:8085/myaquarium/"
-  apiUrl: "http://146.59.236.232:8085/myaquarium/services/",
-  apiAuthUrl: "http://146.59.236.232:8085/myaquarium/"
+  
+  apiUrl: "http://myaquarium.it:8085/myaquarium/services/",
+  apiAuthUrl: "http://myaquarium.it:8085/myaquarium/"
 };
 
 /*
