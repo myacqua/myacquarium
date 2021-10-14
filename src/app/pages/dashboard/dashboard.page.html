@@ -6,29 +6,29 @@
     <ion-title>
       Dashboard
     </ion-title>
-   </ion-toolbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <img class="my-background" src="assets/img/dashboard.jpg" />
-  <ion-card *ngIf="array_vasche.length == 0 || vascheservice.isLoading">
-    <!--div class="container-center" *ngIf="array_vasche.length == 0 || vascheservice.isLoading"-->
-      <!-- Loading centrale -->
-      <ion-card class="align-item-center" *ngIf="vascheservice.isLoading">
-        <ion-card-header>
-          <ion-spinner></ion-spinner>
-        </ion-card-header>
-        <ion-card-content> Carico i tuoi acquari </ion-card-content>
-      </ion-card>
+    <ion-card *ngIf="vascheservice.isLoading">
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <ion-card-content class="ion-text-center">
+          <ion-spinner></ion-spinner> <br>
+          <span>Carico i tuoi acquari</span>
+        </ion-card-content>
+      </div>
+    </ion-card>
+
+    <div *ngIf="array_vasche.length == 0 || vascheservice.isLoading">
       <!-- Messaggio che non ci sono acquari -->
-      <ion-card color="danger" class="align-item-center" *ngIf="!vascheservice.isLoading">
+      <ion-card color="danger" class="align-item-center" *ngIf="!vascheservice.isLoading" [routerLink]="['/nuovo-acquario']">
         <ion-card-header>
           <ion-card-subtitle>BENVENUTO IN MYAQUARIUM</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content> Crea il tuo primo acquario </ion-card-content>
       </ion-card>
-    <!--/div-->
-  </ion-card>
+    </div>
 
   <ion-list *ngIf="array_vasche.length > 0 && !vascheservice.isLoading">
     <!-- Tutte le vasche dell'utente -->
