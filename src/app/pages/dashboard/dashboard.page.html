@@ -4,14 +4,13 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      <!-- <img src="assets/img/logo1.png" /> -->
       Dashboard
     </ion-title>
    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <img src="assets/img/dashboard1.jpg" />
+  <img class="my-background" src="assets/img/dashboard.jpg" />
   <ion-card *ngIf="array_vasche.length == 0 || vascheservice.isLoading">
     <!--div class="container-center" *ngIf="array_vasche.length == 0 || vascheservice.isLoading"-->
       <!-- Loading centrale -->
