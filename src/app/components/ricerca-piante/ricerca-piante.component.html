@@ -1,12 +1,12 @@
-<form #form="ngForm" (ngSubmit)="processForm(form)" novalidate>
+<form #form="ngForm" (ngSubmit)="processForm()" novalidate>
 
-   <!--CAMPI UTILI PER LA RICERCA-->
+  <!--CAMPI UTILI PER LA RICERCA-->
 
 <ion-row>
   <ion-col>
     <ion-item>
       <ion-label position="stacked"[color]="!piante_commonname.valid && piante_commonname.touched ? 'danger' : ''">Nome pianta</ion-label>
-      <ion-input placeholder="utilizza il suo nome comune"  [(ngModel)]="modelSearch.nomePiante" required="true" minlength="3" #piante_commonname="ngModel" name="piante_commonname"></ion-input>
+      <ion-input #searchInput placeholder="utilizza il suo nome comune"  [(ngModel)]="modelSearch.nomePiante" required="true" minlength="3" #piante_commonname="ngModel" name="piante_commonname"></ion-input>
     </ion-item>
     <span class="ion-padding" *ngIf="!piante_commonname.valid && piante_commonname.touched">
       <ion-text class="helper-error" color="danger">Inserisci il nome con almeno 3 lettere</ion-text>
