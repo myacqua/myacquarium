@@ -45,10 +45,12 @@ export class MisureAcquarioPage implements OnInit {
 
     if (form.form.valid)
     {
+      //  se sto aggiungendo la temperatura allora aggiungo a mano i gradi celsius
+      if (this.modelMisura.tipo == 'TEMPERATURA')
+        this.modelMisura.unita = "°C"
+      
       this.vascheService.aggiungiMisurazione(this.appState.currentVasca, this.modelMisura, (response) => {
-        //this.appState.currentVasca = response;
         this.notify.showNotification("Vasca Aggiornata", 'success');
-        //this.location.back();
         this.router.navigate(['gestisci-acquario']);
       }, () => {
         this.notify.showNotification("Errore nell'aggiornamento della vasca", 'danger');

@@ -34,15 +34,15 @@
     <!-- Tutte le vasche dell'utente -->
     <ion-card *ngFor="let vasca of array_vasche" (click)="vascaOnclick(vasca)">
       <div class="ion-activatable ripple-parent">
-        <ion-card-header style="padding-left: 10px;padding-right: 10px;padding-bottom: 5px;" color="primary">
+        <ion-card-header class="MYionCardHeader" color="primary">
           <ion-card-subtitle>{{vasca.nome}}</ion-card-subtitle>
         </ion-card-header>
         <ion-card-content class="ion-margin-top"> 
           {{vasca.descrizione}} <br>
           <ion-grid>
             <ion-row>
-              <ion-col><ion-label color="secondary" stacked><ion-icon name="fish"></ion-icon>{{vasca.fishs.length}} Pesci</ion-label></ion-col>
-              <ion-col><ion-label color="success" stacked><ion-icon name="leaf"></ion-icon>{{vasca.plants.length}} Piante</ion-label></ion-col>
+              <ion-col><ion-label color="secondary" stacked><ion-icon name="fish"></ion-icon> {{vasca.fishs.length}} Pesci</ion-label></ion-col>
+              <ion-col><ion-label color="success" stacked><ion-icon name="leaf"></ion-icon> {{vasca.plants.length}} Piante</ion-label></ion-col>
             </ion-row>
           </ion-grid>
         </ion-card-content>

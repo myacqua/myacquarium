@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">Gestisci acquario</ion-title>
+    <ion-title>Gestisci acquario</ion-title>
     <ion-buttons slot="end">
       <ion-button [routerLink]="['/nuovo-acquario']">
         <ion-icon slot="icon-only" name="create-outline"></ion-icon>
@@ -24,7 +24,7 @@
   </ion-card>
 
   <ion-card style="padding-bottom:10px;">
-    <ion-card-header class="ionCardHeader" color="primary">
+    <ion-card-header class="MYionCardHeader" color="primary">
       <ion-card-subtitle><ion-label>Misurazioni</ion-label></ion-card-subtitle>
     </ion-card-header>
     <ion-card-content style="padding: 5px 0px;">
@@ -35,7 +35,7 @@
           <ion-slide *ngIf="acquario.parameter.phMax!=-1 && acquario.parameter.phMin!=-1" class="ionSlide">
             <div class="parameterContainer" [class]="(misuraPh=='') ? 'warning' : (misuraPh>acquario.parameter.phMax || misuraPh<acquario.parameter.phMin) ? 'danger' : ''">
               <span class="parameterBadge">PH</span>
-              <span class="parameterMax"><p >MAX</p>{{acquario.parameter.phMax}}</span>
+              <span class="parameterMax"><p>MAX</p>{{acquario.parameter.phMax}}</span>
               <span class="parameter">
                 <ion-label *ngIf="misuraPh!=''">{{misuraPh}}</ion-label>
                 <ion-label *ngIf="misuraPh==''">Registra una misura</ion-label>
@@ -86,10 +86,10 @@
     </ion-button>
   </ion-card>
 
- <ion-card style="padding-bottom:10px;">
+<ion-card style="padding-bottom:10px;">
     
-    <ion-card-header style="padding-left: 10px;padding-right: 10px;padding-bottom: 5px;" color="primary">
-       <ion-card-subtitle><ion-label>Vivo</ion-label></ion-card-subtitle>
+  <ion-card-header class="MYionCardHeader" color="primary">
+      <ion-card-subtitle><ion-label>Vivo</ion-label></ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content style="padding: 0px 0px 10px 0px;">
@@ -106,7 +106,7 @@
       </ion-segment>
 
       <!-- Lista dei pesci presenti nell'acquario -->
-      <ion-list *ngIf="segment.value == 'pesci'">
+      <ion-list [hidden]="segment.value != 'pesci'">
         <ion-item (click)="onClickPesce(pesce)" [routerLink]="['/selezione-oggetto']" *ngFor="let pesce of acquario.fishs">
 
           <ion-label>
@@ -150,7 +150,7 @@
       </ion-button>
       
       <!-- Lista delle piante presenti nell'acquario -->
-      <ion-list *ngIf="segment.value == 'piante'" >
+      <ion-list [hidden]="segment.value != 'piante'" >
         <ion-item (click)="onClickPianta(pianta)" [routerLink]="['/selezione-oggetto']" *ngFor="let pianta of acquario.plants">
           
           <ion-label>

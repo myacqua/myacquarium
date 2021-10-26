@@ -34,6 +34,40 @@ export class UtenteService {
     }
   }
 
+
+  /**
+   * Recupera password dalla email
+   * @param model 
+   * @param callbackSuccess 
+   * @param callbackError 
+   */
+  //  TODO:MICHELE: da terminare
+  public passwordRecover(model, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+
+    this.setLoading(true);
+
+    //  TODO_MARCO: cambiare l'url del recupera password
+    this.backend.postAuth('recuperapassword', model, new HttpParams() ).subscribe(
+      (response : any) => {
+
+        if (typeof response != "undefined")
+          callbackSuccess(response);
+        else
+          callbackError();
+
+        this.setLoading(false);
+      },
+      (error) => {
+        console.log(error)
+        callbackError();
+        this.setLoading(false);
+        this.notify.showNetworkError("Attenzione", "Email non presente");
+        this.backend.showErrors(error);
+      }
+    )
+  }
+
+
   /**
    * Autentica l'utente
    * @param model utente per l'autenticazione
@@ -131,7 +165,7 @@ export class UtenteService {
    * Registra l'utente
    * @param model utente per registrarsi
    */
-   public save(model, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
+  public save(model, callbackSuccess: any = () => {}, callbackError: any = () => {}) {
 
     this.setLoading(true);
 
