@@ -73,6 +73,10 @@
           <!--BADGE TEMPERATURE -->
           <ion-badge *ngIf="!pesce.temperatureAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
           <ion-badge *ngIf="pesce.temperatureAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
+
+          <!--BADGE VOLUME -->
+          <ion-badge *ngIf="!pesce.volumeAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Volume</ion-badge>
+          <ion-badge *ngIf="pesce.volumeAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Volume</ion-badge>
         </div>
       </ion-label>
     </ion-item>
