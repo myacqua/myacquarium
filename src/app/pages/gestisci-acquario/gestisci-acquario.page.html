@@ -43,6 +43,17 @@
               <span class="parameterMin">{{acquario.parameter.phMin}}<p>MIN</p></span>
             </div>
           </ion-slide>
+          <ion-slide *ngIf="acquario.parameter.phMax==-1 && acquario.parameter.phMin==-1" class="ionSlide">
+            <div class="parameterContainer">
+              <span class="parameterBadge">PH</span>
+              <span class="parameterMax"><p>MAX</p></span>
+              <span class="parameter">
+                <ion-label *ngIf="misuraPh!=''">{{misuraPh}}</ion-label>
+                <ion-label *ngIf="misuraPh==''">Registra una misura</ion-label>
+              </span>
+              <span class="parameterMin"><p>MIN</p></span>
+            </div>
+          </ion-slide>
           <ion-slide *ngIf="acquario.parameter.ghMax!=-1 && acquario.parameter.ghMin!=-1">
             <div class="parameterContainer" [class]="(misuraGh=='') ? 'warning' : (misuraGh>acquario.parameter.ghMax || misuraGh<acquario.parameter.ghMin) ? 'danger' : ''">
               <span class="parameterBadge">GH</span>
@@ -52,6 +63,17 @@
                 <ion-label *ngIf="misuraGh==''">Registra misura</ion-label>
               </span>
               <span class="parameterMin">{{acquario.parameter.ghMin}}<p>MIN</p></span>
+            </div>
+          </ion-slide>
+          <ion-slide *ngIf="acquario.parameter.ghMax==-1 && acquario.parameter.ghMin==-1">
+            <div class="parameterContainer">
+              <span class="parameterBadge">GH</span>
+              <span class="parameterMax"><p>MAX</p></span>
+              <span class="parameter">
+                <ion-label *ngIf="misuraGh!=''">{{misuraGh}}</ion-label>
+                <ion-label *ngIf="misuraGh==''">Registra misura</ion-label>
+              </span>
+              <span class="parameterMin"><p>MIN</p></span>
             </div>
           </ion-slide>
           <ion-slide *ngIf="acquario.parameter.khMax!=-1 && acquario.parameter.khMin!=-1">
@@ -65,6 +87,17 @@
               <span class="parameterMin">{{acquario.parameter.khMin}}<p>MIN</p></span>
             </div>
           </ion-slide>
+          <ion-slide *ngIf="acquario.parameter.khMax==-1 && acquario.parameter.khMin==-1">
+            <div class="parameterContainer">
+              <span class="parameterBadge">KH</span>
+              <span class="parameterMax"><p>MAX</p></span>
+              <span class="parameter">
+                <ion-label *ngIf="misuraKh!=''">{{misuraKh}}</ion-label>
+                <ion-label *ngIf="misuraKh==''">Registra una misura</ion-label>
+              </span>
+              <span class="parameterMin"><p>MIN</p></span>
+            </div>
+          </ion-slide>
           <ion-slide *ngIf="acquario.parameter.temperatureMax!=-1 && acquario.parameter.temperatureMin!=-1">
             <div class="parameterContainer" [class]="(misuraTemperatura=='') ? 'warning' : (misuraTemperatura>acquario.parameter.temperatureMax || misuraTemperatura<acquario.parameter.temperatureMin) ? 'danger' : ''">
               <span class="parameterBadge">Temperature</span>
@@ -74,6 +107,17 @@
                 <ion-label *ngIf="misuraTemperatura==''">Registra una misura</ion-label>
               </span>
               <span class="parameterMin">{{acquario.parameter.temperatureMin}}°<p>MIN</p></span>
+            </div>
+          </ion-slide>
+          <ion-slide *ngIf="acquario.parameter.temperatureMax==-1 && acquario.parameter.temperatureMin==-1">
+            <div class="parameterContainer">
+              <span class="parameterBadge">Temperature</span>
+              <span class="parameterMax"><p>MAX</p></span>
+              <span class="parameter">
+                <ion-label *ngIf="misuraTemperatura!=''">{{misuraTemperatura}}°</ion-label>
+                <ion-label *ngIf="misuraTemperatura==''">Registra una misura</ion-label>
+              </span>
+              <span class="parameterMin"><p>MIN</p></span>
             </div>
           </ion-slide>
         </ion-slides>
