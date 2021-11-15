@@ -182,6 +182,10 @@
               <!--BADGE TEMPERATURE -->
               <ion-badge *ngIf="!pesce.temperatureAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
               <ion-badge *ngIf="pesce.temperatureAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Temperature</ion-badge>
+
+              <!--VOLUME -->
+              <ion-badge *ngIf="!pesce.volumeAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Volume</ion-badge>
+              <ion-badge *ngIf="pesce.volumeAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Volume</ion-badge>
             </div>
           </ion-label>
           
@@ -227,7 +231,8 @@
               <!--BADGE KH -->
               <ion-badge *ngIf="!pianta.khAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">KH</ion-badge>
               <ion-badge *ngIf="pianta.khAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">KH</ion-badge>
-              
+            </div>
+            <div style="width: 100%;padding:5px 5px 0px 0px;float:left">
               <!--BADGE HEIGHT -->
               <ion-badge *ngIf="!pianta.heightAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Altezza</ion-badge>
               <ion-badge *ngIf="pianta.heightAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Altezza</ion-badge>
@@ -235,6 +240,10 @@
               <!--BADGE TEMPERATURE -->
               <ion-badge *ngIf="!pianta.temperatureAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Temperatura</ion-badge>
               <ion-badge *ngIf="pianta.temperatureAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Temperatura</ion-badge>
+
+              <!--VOLUME -->
+              <ion-badge *ngIf="!pianta.volumeAlert" color="success" slot="end" style="margin: 0px 5px 0px 0px;">Volume</ion-badge>
+              <ion-badge *ngIf="pianta.volumeAlert" color="danger" slot="end" style="margin: 0px 5px 0px 0px;">Volume</ion-badge>
             </div>
           </ion-label>
 
