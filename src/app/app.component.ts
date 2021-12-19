@@ -34,8 +34,14 @@ export class AppComponent implements OnInit {
       slug: 'piante',
       url: '/ricerca',
       icon: 'leaf'
+    },
+    {
+      title: 'Guida',
+      slug: 'guida',
+      url: '/guida',
+      icon: 'help-circle'
     }
-    
+  
   
     ];
   public labels = ['Family'];
